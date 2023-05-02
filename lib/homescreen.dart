@@ -79,7 +79,22 @@ class _homescreenState extends State<homescreen> {
                         ),
                       ),
                     ),
-                    GestureDetector(
+                  GestureDetector(
+                    onTap: (){
+                      //   Navigator.push(context, MaterialPageRoute(builder: context =>));
+                    },
+                    child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.lightBlueAccent),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset("images/cash-on-delivery.png",height: 80,),
+                          Text("Payment",style: TextStyle(color: Colors.white,fontSize:30 ),)
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  GestureDetector(
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>chat()));
                       },
@@ -95,23 +110,9 @@ class _homescreenState extends State<homescreen> {
                       ),
                     ),
 
-               GestureDetector(
-                 onTap: (){
-                //   Navigator.push(context, MaterialPageRoute(builder: context =>));
-                 },
-                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.pinkAccent),
-                 child: Column(
-                   mainAxisAlignment: MainAxisAlignment.center,
-                   children: [
-                     Image.asset("images/cash-on-delivery.png",height: 80,),
-                     Text("Payment",style: TextStyle(color: Colors.white,fontSize:30 ),)
-                   ],
-                 ),
-                 ),
-               ),
 
 
-                  ],
+        ],
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,mainAxisSpacing: 10,crossAxisSpacing: 10),
                 ),
 
