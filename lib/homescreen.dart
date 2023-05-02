@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:industrialvisit/homescreen.dart';
 import 'package:industrialvisit/packagecreation.dart';
 
+import 'booking.dart';
 import 'chat.dart';
 import 'login.dart';
 
@@ -65,7 +66,7 @@ class _homescreenState extends State<homescreen> {
                     ),
                     GestureDetector(
                       onTap: () {
-                     //   Navigator.push(context, MaterialPageRoute(builder: (context)=>));
+                       Navigator.push(context, MaterialPageRoute(builder: (context)=>booking()));
                       },
                       child: Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.black12,),
 
@@ -94,21 +95,20 @@ class _homescreenState extends State<homescreen> {
                       ),
                     ),
 
-                  GestureDetector(
-                    onTap: () {
-                      //  Navigator.push(context, MaterialPageRoute(builder: (context)=>));
-                    },
-                    child: Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.green,),
-
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset("images/cash-payment.png",height: 80,),
-                          Text("Payment",style: TextStyle(color: Colors.white,fontSize: 30),)
-                        ],
-                      ),
-                    ),
-                  ),
+               GestureDetector(
+                 onTap: (){
+                //   Navigator.push(context, MaterialPageRoute(builder: context =>));
+                 },
+                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.pinkAccent),
+                 child: Column(
+                   mainAxisAlignment: MainAxisAlignment.center,
+                   children: [
+                     Image.asset("images/cash-on-delivery.png",height: 80,),
+                     Text("Payment",style: TextStyle(color: Colors.white,fontSize:30 ),)
+                   ],
+                 ),
+                 ),
+               ),
 
 
                   ],
