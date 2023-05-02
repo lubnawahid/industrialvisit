@@ -14,7 +14,7 @@ class welcome extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
         const Text("Welcome!",style: TextStyle(fontSize: 40,fontWeight: FontWeight.bold),),
-    const SizedBox(height: 25,),
+    const SizedBox(height: 4,),
     const Align(
     alignment: Alignment.center,
     child: Text("This application will Helps you to an memorable industrial visit ",style: TextStyle(fontSize: 20),textAlign: TextAlign.center,),
@@ -22,9 +22,9 @@ class welcome extends StatelessWidget {
     const SizedBox(height: 35,),
 
         Image.asset(
-          "Images/welcome.jpg",
-          width: 540.0,
-          height: 350.0,
+          "images/welcome.jpg",
+          width: 520.0,
+          height: 395.0,
           fit: BoxFit.cover,
         ),
         const SizedBox(height: 35,),
@@ -32,7 +32,7 @@ class welcome extends StatelessWidget {
         ElevatedButton(onPressed: (){
           Navigator.push(context, MaterialPageRoute(builder: (context)=>const login()));
         },
-          style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(29.0)),backgroundColor: Colors.green,fixedSize: Size(350, 57)),
+          style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(29.0)),backgroundColor: Colors.blue,fixedSize: Size(350, 57)),
           child: const Text("Login",style: TextStyle(
               fontSize: 18,color: Colors.white
           ),),),
@@ -41,7 +41,7 @@ class welcome extends StatelessWidget {
         ElevatedButton(onPressed: (){
       Navigator.push(context, MaterialPageRoute(builder: (context)=>const registration()));
         },
-          style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(29.0)),backgroundColor: Colors.green,fixedSize: Size(350, 57)),
+          style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(29.0)),backgroundColor: Colors.blue,fixedSize: Size(350, 57)),
           child: const Text("Signup",style: TextStyle(
               fontSize: 18,color: Colors.white
           )),),

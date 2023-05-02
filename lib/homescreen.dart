@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:industrialvisit/homescreen.dart';
 import 'package:industrialvisit/packagecreation.dart';
+import 'package:industrialvisit/payment.dart';
 
 import 'booking.dart';
 import 'chat.dart';
@@ -81,7 +82,7 @@ class _homescreenState extends State<homescreen> {
                     ),
                   GestureDetector(
                     onTap: (){
-                      //   Navigator.push(context, MaterialPageRoute(builder: context =>));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) =>payment()));
                     },
                     child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.lightBlueAccent),
                       child: Column(
