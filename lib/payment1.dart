@@ -1,4 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:industrialvisit/homescreen.dart';
 
@@ -20,16 +23,16 @@ class _paymentState extends State<payment1> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset("images/paymentsucessful.jpg",
-                height: 300,
+              Image.asset("images/pay.png",
+                height: 600,
                 width: 300,
-                alignment: Alignment.topCenter,),
+                alignment: Alignment.center,),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              padding: EdgeInsets.all(10),
                 child: Text("Your payment was done successfully",
-                  textAlign: TextAlign.center, selectionColor: Colors.green,),
-
+                  textAlign: TextAlign.center, selectionColor: Colors.blue,),
               ),
+
 
               ElevatedButton(onPressed: () {
                 Navigator.push(context,
@@ -37,7 +40,7 @@ class _paymentState extends State<payment1> {
               },
                 style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50.0)),
-                    primary: Colors.green,
+                    primary: Colors.blue,
                     fixedSize: Size(200, 50)),
                 child: Text("OK", style: TextStyle(color: Colors.white),),
               ),

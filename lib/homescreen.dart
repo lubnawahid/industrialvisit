@@ -34,6 +34,7 @@ class _homescreenState extends State<homescreen> {
               padding:const EdgeInsets.all(20),
               child: GridView(
 
+
                 children: [
 
                   GestureDetector(
@@ -87,7 +88,7 @@ class _homescreenState extends State<homescreen> {
                   ),
                   GestureDetector(
                     onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) =>payment1()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) =>payment()));
                     },
                     child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.lightBlueAccent),
                       child: Column(
