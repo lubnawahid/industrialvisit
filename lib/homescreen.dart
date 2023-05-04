@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:industrialvisit/bookeditems.dart';
 import 'package:industrialvisit/homescreen.dart';
 import 'package:industrialvisit/packagecreation.dart';
 import 'package:industrialvisit/packages.dart';
@@ -145,7 +146,7 @@ height: 600,
     leading: Icon(Icons.book),
     title: const Text('My Booked Items'),
     onTap: (){
-    // Navigator.push(context, MaterialPageRoute(builder: (context)=>));
+     Navigator.push(context, MaterialPageRoute(builder: (context)=>const bookeditems()));
     },
     ),
     ListTile(
