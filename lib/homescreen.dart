@@ -41,7 +41,7 @@ height: 600,
             children: [
               Image.asset("images/luggage.png",height: 80,),
 
-              Text("packages",style: TextStyle(color: Colors.white,fontSize: 30),)
+              Text("Packages",style: TextStyle(color: Colors.white,fontSize: 30),)
             ],
           ),
         ),

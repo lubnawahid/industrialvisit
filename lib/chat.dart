@@ -22,7 +22,7 @@ class _chatState extends State<chat> {
     body: Stack(
       children: <Widget>[
 
-        ListView.builder(
+        /*ListView.builder(
           itemCount: messages.length,
           shrinkWrap: true,
           padding: EdgeInsets.only(top: 10,bottom: 10),
@@ -33,7 +33,7 @@ class _chatState extends State<chat> {
               child: Text(messages[index].messageContent),
             );
           },
-        ),
+        ),*/
     ListView.builder(
     itemCount: messages.length,
     shrinkWrap: true,
@@ -45,7 +45,7 @@ class _chatState extends State<chat> {
     child:
         Align(
 
-          alignment: (messages[index].messageType == "receiver"?Alignment.topLeft:Alignment.topRight),
+          alignment: (messages[index].messageType == "sender"?Alignment.topLeft:Alignment.topRight),
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
@@ -59,10 +59,10 @@ class _chatState extends State<chat> {
     },
     ),
 
-       align( alignment: Alignment.bottomLeft,
+       Align( alignment: Alignment.bottomLeft,
           child: Container(
             padding: EdgeInsets.only(left: 10,bottom: 10,top: 10),
-            height: 60,
+            height: 70,
             width: double.infinity,
             color: Colors.white,
             child: Row(
@@ -104,10 +104,9 @@ class _chatState extends State<chat> {
         ),
       ],
     ),
-    );*/
-      ],
-    ),
     );
+
+
 
   }
 }
