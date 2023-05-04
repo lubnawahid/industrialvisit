@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:industrialvisit/homescreen.dart';
+
+import 'package:industrialvisit/packagecreation.dart';
+import 'package:industrialvisit/packages.dart';
 import 'package:industrialvisit/registration.dart';
 import 'package:industrialvisit/welcome.dart';
 
@@ -13,7 +16,8 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context){
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:welcome(),
+      home:homescreen(),
+
     );
   }
 

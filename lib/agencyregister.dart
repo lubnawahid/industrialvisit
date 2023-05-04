@@ -79,6 +79,48 @@ class _agencyregisterState extends State<agencyregister> {
                 )  ),
 
 
+            Padding(
+
+                padding: const EdgeInsets.all(8),
+
+                child: TextField(
+
+                  decoration: InputDecoration(
+
+
+
+
+
+                    labelText: " agency name",
+
+                    hintText: "agency name",
+
+                    border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
+
+                  ),
+
+                )  ),
+            Padding(
+
+                padding: const EdgeInsets.all(8),
+
+                child: TextField(
+
+                  decoration: InputDecoration(
+
+
+
+
+
+                    labelText: " email",
+
+                    hintText: "email",
+
+                    border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
+
+                  ),
+
+                )  ),
 
             Padding(
 
