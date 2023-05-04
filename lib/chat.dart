@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'chatdetailpage.dart';
+
 class chat extends StatefulWidget {
   const chat({Key? key}) : super(key: key);
 
@@ -19,8 +21,45 @@ class _chatState extends State<chat> {
       ),
     body: Stack(
       children: <Widget>[
+
+        ListView.builder(
+          itemCount: messages.length,
+          shrinkWrap: true,
+          padding: EdgeInsets.only(top: 10,bottom: 10),
+          physics: NeverScrollableScrollPhysics(),
+          itemBuilder: (context, index){
+            return Container(
+              padding: EdgeInsets.only(left: 16,right: 16,top: 10,bottom: 10),
+              child: Text(messages[index].messageContent),
+            );
+          },
+        ),
+    ListView.builder(
+    itemCount: messages.length,
+    shrinkWrap: true,
+    padding: EdgeInsets.only(top: 10,bottom: 10),
+    physics: NeverScrollableScrollPhysics(),
+    itemBuilder: (context, index){
+    return Container(
+    padding: EdgeInsets.only(left: 14,right: 14,top: 10,bottom: 10),
+    child:
         Align(
-          alignment: Alignment.bottomLeft,
+
+          alignment: (messages[index].messageType == "receiver"?Alignment.topLeft:Alignment.topRight),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: (messages[index].messageType  == "receiver"?Colors.grey.shade200:Colors.blue[200]),
+            ),
+            padding: EdgeInsets.all(16),
+            child: Text(messages[index].messageContent, style: TextStyle(fontSize: 15),),
+          ),
+        ),
+    );
+    },
+    ),
+
+       align( alignment: Alignment.bottomLeft,
           child: Container(
             padding: EdgeInsets.only(left: 10,bottom: 10,top: 10),
             height: 60,
@@ -65,6 +104,10 @@ class _chatState extends State<chat> {
         ),
       ],
     ),
+    );*/
+      ],
+    ),
     );
+
   }
 }
