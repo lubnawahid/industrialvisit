@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:industrialvisit/travelagency/packageadd.dart';
+import 'package:industrialvisit/travelagency/packageedit.dart';
 
 class managepackages extends StatefulWidget {
   const managepackages({Key? key}) : super(key: key);
@@ -14,14 +16,15 @@ class _managepackagesState extends State<managepackages> {
 
 
     return Scaffold(
+
       appBar: AppBar(
           leading:
           IconButton( onPressed: (){
             Navigator.pop(context);
           },icon:Icon(Icons.arrow_back_ios,size: 20,color: Colors.black,)),
-          title: Text("Event")),
+          title: Text("Packages")),
       body: ListView.builder(
-          itemCount: 4,
+          itemCount: 7,
           itemBuilder: (context, index)
           {
             index += 1;
@@ -35,14 +38,14 @@ class _managepackagesState extends State<managepackages> {
                   decoration: BoxDecoration(),
                   child: ListTile(
                     title: Text(
-                      "Event $index",
+                      "Packages $index",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    subtitle: Text("24/06/23"),
-                    leading: Icon(Icons.event,color: Colors.black,),
+                   // subtitle: Text("24/06/23"),
+                    leading: Icon(Icons.event,color: Colors.red,),
                     trailing: GestureDetector(
                         onTap: () => {
-                        //  Navigator.push(context, MaterialPageRoute(builder: (context) => Aeventedit() )),
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => packageedit())),
                         },
                         child: Icon(Icons.edit,color: Colors.black,)),
                   )
@@ -53,9 +56,9 @@ class _managepackagesState extends State<managepackages> {
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: FloatingActionButton(
         child:  Icon(Icons.add),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.blue,
         onPressed: () {
-         // Navigator.push(context, MaterialPageRoute(builder: (context) => Aeventpage()));
+         Navigator.push(context, MaterialPageRoute(builder: (context) => packageadd()));
           setState(() {
             var i;
             i++;

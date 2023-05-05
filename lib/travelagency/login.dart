@@ -4,9 +4,18 @@ import 'package:industrialvisit/agencyregister.dart';
 import 'package:industrialvisit/travelagency/homescreen.dart';
 import 'package:industrialvisit/travelagency/registration.dart';
 
-class agencylogin extends StatelessWidget {
+class agencylogin extends StatefulWidget {
   const agencylogin({Key? key}) : super(key: key);
 
+  @override
+  State<agencylogin> createState() => _agencyloginState();
+}
+
+class _agencyloginState extends State<agencylogin> {
+  String user="user";
+  String ta="agency";
+  TextEditingController userController=TextEditingController();
+  TextEditingController pwdController=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +39,7 @@ class agencylogin extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8),
               child: TextField(
+                controller: userController,
                 decoration: InputDecoration(
                   prefixIcon:Icon(Icons.person),
                   labelText: "username",
@@ -45,6 +55,7 @@ class agencylogin extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8),
               child: TextField(
+                controller: pwdController,
                 obscureText: true,
                 decoration: InputDecoration(
 
@@ -61,7 +72,12 @@ class agencylogin extends StatelessWidget {
             ),
             SizedBox(height: 20,),
             ElevatedButton(onPressed: (){
-             Navigator.push(context, MaterialPageRoute(builder: (context)=>agencyhomescreen()));
+              if(userController.text==user){
+
+              }else if(userController.text==ta){
+
+              }
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>agencyhomescreen()));
             },
               style:ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),primary: Colors.blue,fixedSize: Size(300, 50)),
               child: Text("Login",style: TextStyle(color: Colors.white),),

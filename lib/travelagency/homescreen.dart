@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:industrialvisit/login.dart';
+import 'package:industrialvisit/travelagency/agencyprofile1.dart';
 
 import '../agencyprofile.dart';
 import '../welcome.dart';
@@ -125,7 +126,7 @@ SizedBox(height: 20,),
                   leading: Icon(Icons.person),
                   title: const Text('Profile'),
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>agencyprofile()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>agencyprofile1()));
                   },
                 ),
 

@@ -2,12 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:industrialvisit/homescreen.dart';
 import 'package:industrialvisit/login.dart';
 import 'package:industrialvisit/registration.dart';
+import 'package:industrialvisit/travelagency/homescreen.dart';
 import 'userregister.dart';
 
 
-class login extends StatelessWidget {
+class login extends StatefulWidget {
     const login({ Key? key }) : super(key: key);
 
+  @override
+  State<login> createState() => _loginState();
+}
+
+class _loginState extends State<login> {
+  String user="user";
+  String ta="agency";
+  TextEditingController userController=TextEditingController();
+  TextEditingController pwdController=TextEditingController();
     @override
     Widget build(BuildContext context) {
     return Scaffold(
@@ -31,6 +41,7 @@ class login extends StatelessWidget {
     Padding(
     padding: const EdgeInsets.all(8),
     child: TextField(
+        controller: userController,
     decoration: InputDecoration(
     prefixIcon:Icon(Icons.person),
     labelText: "username",
@@ -46,6 +57,7 @@ class login extends StatelessWidget {
     Padding(
     padding: const EdgeInsets.all(8),
     child: TextField(
+      controller: pwdController,
     obscureText: true,
     decoration: InputDecoration(
 
@@ -61,11 +73,22 @@ class login extends StatelessWidget {
     ),
     ),
     SizedBox(height: 20,),
-    ElevatedButton(onPressed: (){
-   Navigator.push(context, MaterialPageRoute(builder: (context)=>homescreen()));
+    ElevatedButton(
+      child: Text("Login",style: TextStyle(color: Colors.white),),
+      onPressed: () {
+      if (pwdController.text == user) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => homescreen()));
+      } else if (pwdController.text == ta) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => agencyhomescreen()));
+      }else{
+        print("error");
+      }
     },
     style:ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),primary: Colors.blue,fixedSize: Size(300, 50)),
-    child: Text("Login",style: TextStyle(color: Colors.white),),
+
     ),
     SizedBox(height: 30.0,),
     Row(
@@ -90,4 +113,4 @@ class login extends StatelessWidget {
 
     );
     }
-    }
+}
