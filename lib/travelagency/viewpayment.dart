@@ -38,12 +38,12 @@ class _viewpaymentState extends State<viewpayment> {
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                      subtitle: Text("Payment Details"),
-                    leading: Icon(Icons.payment,color: Colors.red,),
+                    leading: Icon(Icons.payment,color: Colors.black,),
                     trailing: GestureDetector(
                         onTap: () => {
                         //  Navigator.push(context, MaterialPageRoute(builder: (context) => packageedit())),
                         },
-                        child: Icon(Icons.edit,color: Colors.black,)),
+                        child: Text("Date")),
                   )
               ),
             );
