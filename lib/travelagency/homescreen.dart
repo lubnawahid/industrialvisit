@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:industrialvisit/login.dart';
 import 'package:industrialvisit/travelagency/agencyprofile1.dart';
+import 'package:industrialvisit/travelagency/viewpayment.dart';
 
 import '../agencyprofile.dart';
 import '../welcome.dart';
@@ -79,7 +80,7 @@ SizedBox(height: 18,),
 
                   GestureDetector(
                     onTap: () {
-                      //Navigator.push(context, MaterialPageRoute(builder: (context)=>payment()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>viewpayment()));
                     },
                     child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.lightBlueAccent),
                       child: Column(
