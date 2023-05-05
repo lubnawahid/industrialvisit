@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:industrialvisit/bookeddescription.dart';
+import 'package:industrialvisit/packagedescription.dart';
 
 class bookeditems extends StatefulWidget {
   const bookeditems({Key? key}) : super(key: key);
@@ -14,35 +15,43 @@ class _bookeditemsState extends State<bookeditems> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(title: Text("Booked items")),
-      body: ListView.builder(
-          itemCount: 7,
-          itemBuilder: (context, index)
-          {
-            index += 1;
-            return GestureDetector(
-              onTap: () => {
-              Navigator.push(context, MaterialPageRoute(builder: (context) =>const bookeddescription()))
-              },
-              child: Container(
-                margin: EdgeInsets.all(8),
-                padding: EdgeInsets.all(4),
-                decoration: BoxDecoration(color: Colors.blueGrey),
-                child: ListTile(
-                  title: Text(
-                    "Package $index",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  subtitle: Text("Package Description"),
-                  leading: Icon(Icons.event,color: Colors.red,),
-                  trailing: Icon(Icons.forward,color: Colors.red,
-                  ),
+        appBar: AppBar(
+          backgroundColor: Colors.blue,
+          title: Text('Booked items',),
 
-                ),
-              ),
-            );
-          }),
+        ),
+
+        body: Padding(
+          padding: EdgeInsets.all(5),
+          child: ListView.separated(
+            itemBuilder: (context,index){
+              return ListTile(
+                leading: CircleAvatar(
+                    backgroundColor: Colors.blue,
+                    child: Icon(Icons.event, size: 25,color: Colors.white,)
+                ) ,
+                title: Text("Packages 1",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
+                subtitle: Text("Booked",style: TextStyle(fontSize: 16),),
+
+                trailing: Text('24/10/2023'),
+
+                onTap: () {Navigator.push(context,
+                  MaterialPageRoute(
+                      builder: (context) => packagedescription(),
+                    ),
+                  );
+                },
+              );
+            },
+            separatorBuilder: (context, index) {
+              return Divider(height: 30, thickness: 1,);
+            },
+            itemCount: 13,
+
+          ),
+        )
+
+
     );
   }
 }
-

@@ -28,7 +28,7 @@ class _packagesState extends State<packages> {
               child: Container(
                 margin: EdgeInsets.all(8),
                 padding: EdgeInsets.all(4),
-                decoration: BoxDecoration(color: Colors.blueGrey),
+                decoration: BoxDecoration(color: Colors.white),
                 child: ListTile(
                   title: Text(
                     "Package $index",
