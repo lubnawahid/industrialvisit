@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'homescreen.dart';
+
 class userprofile extends StatefulWidget {
   const userprofile({Key? key}) : super(key: key);
 
@@ -148,7 +150,11 @@ border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
 
 SizedBox(height: 20,),
 
-ElevatedButton(onPressed: (){},style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),primary: Colors.blue,fixedSize: Size(300,50)),
+ElevatedButton(onPressed: (){
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>homescreen()));
+    },
+
+  style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),primary: Colors.blue,fixedSize: Size(300,50)),
 
 
 
