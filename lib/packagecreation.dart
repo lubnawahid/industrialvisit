@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:industrialvisit/packagecreation1.dart';
 
 class packagecreation extends StatefulWidget {
   const packagecreation({Key? key}) : super(key: key);
@@ -159,7 +160,9 @@ class _packagecreationState extends State<packagecreation> {
 
             SizedBox(height: 20,),
 
-            ElevatedButton(onPressed: (){},style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),primary: Colors.blue,fixedSize: Size(300,50)),
+            ElevatedButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>const packagecretion1()));
+            },style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),primary: Colors.blue,fixedSize: Size(300,50)),
 
 
 

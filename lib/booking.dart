@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'booking1.dart';
+
 class booking extends StatefulWidget {
   const booking({Key? key}) : super(key: key);
 
@@ -189,7 +191,10 @@ class _bookingState extends State<booking> {
     ),
     SizedBox(height: 20,),
 
-    ElevatedButton(onPressed: (){},style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),primary: Colors.blue,fixedSize: Size(300,50)),
+    ElevatedButton(onPressed: (){
+
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>const booking1()));
+    },style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),primary: Colors.blue,fixedSize: Size(300,50)),
 
 
 
