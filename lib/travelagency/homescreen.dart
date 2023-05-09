@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:industrialvisit/login.dart';
 import 'package:industrialvisit/travelagency/agencyprofile1.dart';
+import 'package:industrialvisit/travelagency/userpackagedetail.dart';
+import 'package:industrialvisit/travelagency/viewbookings.dart';
 import 'package:industrialvisit/travelagency/viewpayment.dart';
 
 import '../agencyprofile.dart';
@@ -49,7 +51,7 @@ SizedBox(height: 18,),
                   ),
                   GestureDetector(
                     onTap: () {
-                      //Navigator.push(context, MaterialPageRoute(builder: (context)=>packagecreation()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>userpackagedetail()));
                     },
                     child: Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.pink,),
                       child: Column(
@@ -64,7 +66,7 @@ SizedBox(height: 18,),
                   ),
                   GestureDetector(
                     onTap: () {
-                     // Navigator.push(context, MaterialPageRoute(builder: (context)=>booking()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>viewbookings()));
                     },
                     child: Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.red,),
                       child: Column(
