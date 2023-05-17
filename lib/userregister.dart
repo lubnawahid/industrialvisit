@@ -44,6 +44,7 @@ class _userregisterState extends State<userregister> {
                     labelText: "name",
 
                     hintText: "name",
+                    prefixIcon: Icon(Icons.mail),
 
                     border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
 
@@ -73,6 +74,7 @@ class _userregisterState extends State<userregister> {
                       labelText: "address",
 
                       hintText: "address",
+                      prefixIcon: Icon(Icons.person),
 
                       border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
 
@@ -95,6 +97,7 @@ class _userregisterState extends State<userregister> {
                       labelText: "username",
 
                       hintText: "username",
+                      prefixIcon: Icon(Icons.person),
 
                       border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
 
@@ -211,6 +214,7 @@ class _userregisterState extends State<userregister> {
                       labelText: " phone number",
 
                       hintText: "phone number",
+                      prefixIcon: Icon(Icons.phone_android),
 
                       border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
 

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:industrialvisit/welcome.dart';
 
 import 'homescreen.dart';
 
@@ -11,172 +12,179 @@ class agencyprofile extends StatefulWidget {
 }
 
 class _agencyprofileState extends State<agencyprofile> {
+
+  bool isObscurePassword=true;
+
+  int currentTab = 2;
+  final List<Widget> screen =[
+
+    agencyprofile(),
+
+  ];
+
+  Widget currentScreen = agencyprofile();
+
+  TextEditingController unameController=TextEditingController();
+  TextEditingController plcController=TextEditingController();
+  TextEditingController emailController=TextEditingController();
+  TextEditingController pwdController=TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
+
+
       appBar: AppBar(
-        title: Text("Agency Profile"),
-
-
+        title: Text("Profile"),
+        actions: [
+          IconButton(
+            tooltip: "Logout",
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>welcome()));
+            },
+            icon: Icon(
+              Icons.logout,
+            ),
+          )
+        ],
       ),
-      body: SingleChildScrollView(
-      child:   Column(
 
-      mainAxisAlignment:MainAxisAlignment.center,
-
-      children: [
-
-      //Text("REGISTER HERE!",style: TextStyle(color: Colors.black),),
-
-    SizedBox(height: 20,),
-
-    Padding(
-
-    padding: const EdgeInsets.all(8),
-
-    child: TextField(
-
-    decoration: InputDecoration(
-
-    labelText: "name",
-
-    hintText: "name",
-
-    border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
-
-
-
-
-
-    ),
-
-    ),
-
-    ),
-
-    Padding(
-
-    padding: const EdgeInsets.all(8),
-
-    child: TextField(
-
-    decoration: InputDecoration(
-
-
-
-
-
-    labelText: "address",
-
-    hintText: "address",
-
-    border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
-
-    ),
-
-    )  ),
+      body: Container(
+        padding: EdgeInsets.only(left: 15, top: 20, right: 15),
+        child: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).unfocus();
+          },
+          child: ListView(
+            children: [
+              Center(
+                child: Stack(
+                  children: [
+                    Container(
+                      width: 130,
+                      height: 130,
+                      decoration: BoxDecoration(
+                          border: Border.all(width: 4, color: Colors.white),
+                          boxShadow: [
+                            BoxShadow(
+                                spreadRadius: 2,
+                                blurRadius: 10,
+                                color: Colors.black.withOpacity(0.1)
+                            )
+                          ],
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                                ""
+                            ),
+                          )
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      right: 0,
+                      child: Container(
+                          height: 40,
+                          width: 40,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                  width: 4,
+                                  color: Colors.white
+                              ),
+                              color: Colors.blue
+                          ),
+                          child: Icon(
+                            Icons.edit,
+                            color: Colors.white,
+                          )
+                      ),
+                    ),
 
 
-
-
-
-        Padding(
-
-            padding: const EdgeInsets.all(8),
-
-            child: TextField(
-
-              decoration: InputDecoration(
-
-
-
-
-
-                labelText: " agency name",
-
-                hintText: "agency name",
-
-                border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
-
+                  ],
+                ),
               ),
+              SizedBox(height: 30,),
 
-            )  ),
-
-
-
-
-
+              buildTextField(" name", "raghu PS", false),
+              buildTextField("adress", "Ps", false),
+              buildTextField("agencyname", "sarikha agency", false),
 
 
+              buildTextField("Email", "Artistps@gmail.com", false),
+              buildTextField("Password", "9898934", true),
+              buildTextField("Phone number", "9897458711", false),
 
-    Padding(
+              SizedBox(height: 30,),
 
-    padding: const EdgeInsets.all(8),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  OutlinedButton(
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>agencyprofile()));
+                    },
+                    child: Text("CANCEL",style: TextStyle(
+                        fontSize: 15,
+                        letterSpacing: 2,
+                        color: Colors.black
+                    )),
+                    style: OutlinedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(horizontal: 50),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))
+                    ),
+                  ),
 
-    child: TextField(
-
-    decoration: InputDecoration(
-
-
-
-
-
-    labelText: " email",
-
-    hintText: "email",
-
-    border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
-
-    ),
-
-    )  ),
-    Padding(
-
-    padding: const EdgeInsets.all(8),
-
-    child: TextField(
-
-    decoration: InputDecoration(
-
-
-
-
-
-    labelText: " phone number",
-
-    hintText: "phone number",
-
-    border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
-
-    ),
-
-    )  ),
-
-
-
-    SizedBox(height: 20,),
-
-    ElevatedButton(onPressed: (){
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>homescreen()));
-
-    },
-      style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),primary: Colors.blue,fixedSize: Size(300,50)),
-
-
-
-
-
-    child: Text('Save',style: TextStyle(color: Colors.white),),
-
-    ),
-],
+                  ElevatedButton(
+                    onPressed: (){},
+                    child: Text("SUBMIT",style: TextStyle(fontSize: 15, letterSpacing: 2, color: Colors.white),),
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.blue,
+                        padding: EdgeInsets.symmetric(horizontal: 50),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))
+                    ),
+                  )
+                ],
+              )
+            ],
+          ),
+        ),
       ),
-    ),
+
     );
   }
+
+  Widget buildTextField(String labelText, String placeholder, bool isPasswordTextField){
+    return Padding(
+      padding: EdgeInsets.only(bottom: 30),
+      child: TextFormField(
+        obscureText: isPasswordTextField ? isObscurePassword: false,
+        decoration: InputDecoration(
+            suffixIcon: isPasswordTextField ?
+            IconButton(
+              onPressed: () {
+                setState(() {
+                  isObscurePassword=!isObscurePassword;
+                });
+              },
+              icon: Icon(Icons.remove_red_eye,color: Colors.grey,),
+            ):null,
+            contentPadding: EdgeInsets.only(bottom: 5),
+            labelText: labelText,
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            hintText: placeholder,
+            hintStyle: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey
+            )
+
+        ),
+      ),
+    );
+  }
+
+
 }
-
-
-
-

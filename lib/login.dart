@@ -3,6 +3,7 @@ import 'package:industrialvisit/homescreen.dart';
 import 'package:industrialvisit/login.dart';
 import 'package:industrialvisit/registration.dart';
 import 'package:industrialvisit/travelagency/homescreen.dart';
+import 'forgotpassword.dart';
 import 'userregister.dart';
 
 
@@ -21,6 +22,7 @@ class _loginState extends State<login> {
     @override
     Widget build(BuildContext context) {
     return Scaffold(
+
     appBar:AppBar(
     title: Text("login page"),
 
@@ -73,6 +75,14 @@ class _loginState extends State<login> {
     ),
     ),
     SizedBox(height: 20,),
+    TextButton(onPressed: (){
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => fpassword()));
+    },
+        child:Text("Forgot Password?",style: TextStyle(fontSize: 14),),
+
+
+    ),
     ElevatedButton(
       child: Text("Login",style: TextStyle(color: Colors.white),),
       onPressed: () {
