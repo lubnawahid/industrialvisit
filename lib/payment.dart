@@ -10,119 +10,153 @@ class payment extends StatefulWidget {
 }
 
 class _paymentState extends State<payment> {
+  TextEditingController amountController=TextEditingController();
+  TextEditingController cardnumController=TextEditingController();
+  TextEditingController expiryController=TextEditingController();
+  TextEditingController cvvController=TextEditingController();
 
-String _payment = 'payment';
+
+  String value="";
+  String i="";
+  final List paymentLabels=[
+    'Credi card/ Debit card',
+    'cash on delivery',
+    'Google pay',
+  ];
+  final List paymentIcons=[
+    Icons.credit_card,
+    Icons.money_off,
+    Icons.account_balance_wallet,
+
+  ];
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
 
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text('payment'),
+      ),
 
-String _selectedGender='Credit Card';
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(padding: EdgeInsets.all(8),
+              child:Text(
+                  'choose your payment method',
 
-
-
-    return
-      SafeArea(
-          child: Scaffold(
-            appBar: AppBar(
-              backgroundColor: Colors.blue,
+                  style:TextStyle(fontSize: 20.0)
+              ),
             ),
-            body: Padding(
-                padding: const EdgeInsets.all(25),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text('Please let us know your Payment Method:'),
-                      ListTile(
-                        leading: Radio<String>(
-                          value: 'Credit Card',
-                          groupValue: _selectedGender,
-                          onChanged: (value) {
-                            setState(() {
-                              _selectedGender = value!;
-                            });
-                          },
-                        ),
-                        title: const Text('Credit Card'),
-                      ),
-                      ListTile(
-                        leading: Radio<String>(
-                          value: 'Debit Card',
-                          groupValue: _selectedGender,
-                          onChanged: (value) {
-                            setState(() {
-                              _selectedGender = value!;
-                            });
-                          },
-                        ),
-                        title: const Text('Debit Card'),
-                      ),
-                      const SizedBox(height: 25),
-                      Text(_selectedGender == 'Credit Card' ? 'You Selected Credit Card ' : 'You Selected Debit Card')
-                      ,
+            SizedBox(height: 20,),
+            Card(
 
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextField(
-                            decoration: InputDecoration(
-                              // prefixIcon: Icon(Icons.),
-                                label: Text("Card Number"),
-                                hintText: "Enter your card Number",
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20)
-                                ))
-
-                        ),
+              child: Column(
+                children: [
+                  RadioListTile(
+                      title: Text(
+                        'Credit Card',
+                        style: TextStyle(color: Colors.black, fontSize: 20),
                       ),
-
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextField(
-                            decoration: InputDecoration(
-                                prefixIcon: Icon(Icons.numbers),
-                                label: Text("CVV Number"),
-                                // hintText: "Enter your CVV Number",
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20)
-                                ))
-                        ),
+                      value: 'credit',
+                      groupValue: payment,
+                      onChanged: (value) {
+                        setState(() {
+                          payment = value.toString();
+                        });
+                      }),
+                  RadioListTile(
+                      title: Text(
+                        'Cash on Delivery',
+                        style: TextStyle(color: Colors.black, fontSize: 20),
                       ),
-                      SizedBox(height: 10,),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextField(
-                            decoration: InputDecoration(
-                                prefixIcon: Icon(Icons.date_range),
-                                label: Text("Expiry Date"),
-                                // hintText: "Enter Expiry Date of your Card",
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20)
-                                ))
-                        ),
+                      value: 'debit',
+                      groupValue: payment,
+                      onChanged: (value) {
+                        setState(() {
+                          payment = value.toString();
+                        });
+                      }),
+                  RadioListTile(
+                      title: Text(
+                        'UPI',
+                        style: TextStyle(color: Colors.black, fontSize: 20),
                       ),
-                      SizedBox(height: 10,),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextField(
-                            obscureText: true,
-                            decoration: InputDecoration(
-                                prefixIcon: Icon(Icons.lock),
-                                label: Text("password"),
-                                hintText: "Enter your Password",
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20)
-                                ))
-                        ),
+                      value: 'upi',
+                      groupValue: payment,
+                      onChanged: (value) {
+                        setState(() {
+                          payment = value.toString();
+                        });
+                      }),
+                  RadioListTile(
+                      title: Text(
+                        'Net Banking',
+                        style: TextStyle(color: Colors.black, fontSize: 20),
                       ),
-                      SizedBox(height: 10,),
-                      ElevatedButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>const payment1()));},
-                        style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(29.0)),primary: Colors.blue,fixedSize: Size(350, 57)),
-                        child: Text("Pay Now",style: TextStyle(
-                            fontSize: 18,color: Colors.white
-                        )),),
-                    ])
+                      value: 'netBanking',
+                      groupValue: payment,
+                      onChanged: (value) {
+                        setState(() {
+                          payment = value.toString();
+                        });
+                      }),
+                ],
+              ),
             ),
-          )
-      );
+
+
+            Column(
+
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text('Amount',style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
+                  ),
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    controller: amountController,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(22),
+                        )
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+
+
+
+
+            SizedBox(height: 20,),
+
+            Align(
+              alignment: Alignment.center,
+              child: ElevatedButton(
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>const payment1()));
+                },
+                child: Text('pay',style: TextStyle(fontSize: 18),),
+                style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(29.0)),fixedSize: Size(180, 53)),
+              ),
+            ),
+            SizedBox(height: 20,)
+          ],
+        ),
+      ),
+
+    );
+
 
   }
+  String ? payment;
+
 }
