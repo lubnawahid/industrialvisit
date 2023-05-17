@@ -37,13 +37,13 @@ class _viewpaymentState extends State<viewpayment> {
                       "Payment $index",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                     subtitle: Text("Payment Details"),
+                     subtitle: Text("shyam kumar"),
                     leading: Icon(Icons.payment,color: Colors.black,),
                     trailing: GestureDetector(
                         onTap: () => {
                         //  Navigator.push(context, MaterialPageRoute(builder: (context) => packageedit())),
                         },
-                        child: Text("Date")),
+                        child: Text("24/10/23")),
                   )
               ),
             );
