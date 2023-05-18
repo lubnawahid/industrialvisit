@@ -111,11 +111,12 @@ class _agencyprofileState extends State<agencyprofile> {
               buildTextField(" name", "raghu PS", false),
               buildTextField("adress", "Ps", false),
               buildTextField("agencyname", "sarikha agency", false),
-
+              buildTextField("agencyplace", "calicut", false),
 
               buildTextField("Email", "Artistps@gmail.com", false),
               buildTextField("Password", "9898934", true),
               buildTextField("Phone number", "9897458711", false),
+
 
               SizedBox(height: 30,),
 

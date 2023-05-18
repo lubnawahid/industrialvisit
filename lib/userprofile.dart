@@ -111,6 +111,9 @@ SizedBox(height: 30,),
 buildTextField(" name", "raghu PS", false),
   buildTextField("adress", "Ps", false),
   buildTextField("collegename", "CCSIt", false),
+  buildTextField("collegeplace", "thehnipalam", false),
+  buildTextField("year", "2023", false),
+  buildTextField("collegenumber", "8085102003", false),
 
 
 buildTextField("Email", "Artistps@gmail.com", false),

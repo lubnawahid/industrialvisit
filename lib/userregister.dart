@@ -168,6 +168,48 @@ class _userregisterState extends State<userregister> {
 
 
 
+                      labelText: "email",
+
+                      hintText: "email",
+
+                      border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
+
+                    ),
+
+                  )  ),
+              Padding(
+
+                  padding: const EdgeInsets.all(8),
+
+                  child: TextField(
+
+                    decoration: InputDecoration(
+
+
+
+
+
+                      labelText: "phone number",
+
+                      hintText: "phone number",
+
+                      border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
+
+                    ),
+
+                  )  ),
+              Padding(
+
+                  padding: const EdgeInsets.all(8),
+
+                  child: TextField(
+
+                    decoration: InputDecoration(
+
+
+
+
+
                       labelText: "college name",
 
                       hintText: "college name",
@@ -190,9 +232,9 @@ class _userregisterState extends State<userregister> {
 
 
 
-                      labelText: " email",
+                      labelText: " college number",
 
-                      hintText: "email",
+                      hintText: "college number",
 
                       border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
 
@@ -211,10 +253,31 @@ class _userregisterState extends State<userregister> {
 
 
 
-                      labelText: " phone number",
+                      labelText: " year",
 
-                      hintText: "phone number",
-                      prefixIcon: Icon(Icons.phone_android),
+                      hintText: "yera",
+                      prefixIcon: Icon(Icons.calendar_month),
+
+                      border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
+
+                    ),
+
+                  )  ),
+              Padding(
+
+                  padding: const EdgeInsets.all(8),
+
+                  child: TextField(
+
+                    decoration: InputDecoration(
+
+
+
+
+
+                      labelText: "college place",
+
+                      hintText: "college place",
 
                       border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
 

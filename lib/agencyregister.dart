@@ -209,9 +209,9 @@ class _agencyregisterState extends State<agencyregister> {
 
 
 
-                    labelText: " email",
+                    labelText: "place",
 
-                    hintText: "email",
+                    hintText: "place",
 
                     border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
 
