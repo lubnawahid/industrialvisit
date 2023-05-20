@@ -74,7 +74,7 @@ class _userregisterState extends State<userregister> {
                       labelText: "address",
 
                       hintText: "address",
-                      prefixIcon: Icon(Icons.person),
+                      prefixIcon: Icon(Icons.location_on),
 
                       border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
 
@@ -126,6 +126,7 @@ class _userregisterState extends State<userregister> {
                       labelText: "password",
 
                       hintText: "password",
+                      prefixIcon: Icon(Icons.lock),
 
                       border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
 
@@ -149,6 +150,7 @@ class _userregisterState extends State<userregister> {
                       labelText: "confirm password",
 
                       hintText: "confirm password",
+                      prefixIcon: Icon(Icons.lock),
 
                       border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
 
@@ -171,6 +173,7 @@ class _userregisterState extends State<userregister> {
                       labelText: "email",
 
                       hintText: "email",
+                      prefixIcon: Icon(Icons.mail),
 
                       border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
 
@@ -192,6 +195,7 @@ class _userregisterState extends State<userregister> {
                       labelText: "phone number",
 
                       hintText: "phone number",
+                      prefixIcon: Icon(Icons.phone_android),
 
                       border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
 
@@ -213,6 +217,7 @@ class _userregisterState extends State<userregister> {
                       labelText: "college name",
 
                       hintText: "college name",
+                      prefixIcon: Icon(Icons.drive_file_rename_outline),
 
                       border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
 
@@ -235,6 +240,7 @@ class _userregisterState extends State<userregister> {
                       labelText: " college number",
 
                       hintText: "college number",
+                      prefixIcon: Icon(Icons.phone),
 
                       border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
 
@@ -255,7 +261,7 @@ class _userregisterState extends State<userregister> {
 
                       labelText: " year",
 
-                      hintText: "yera",
+                      hintText: "year",
                       prefixIcon: Icon(Icons.calendar_month),
 
                       border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
@@ -278,6 +284,7 @@ class _userregisterState extends State<userregister> {
                       labelText: "college place",
 
                       hintText: "college place",
+                      prefixIcon: Icon(Icons.place),
 
                       border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
 

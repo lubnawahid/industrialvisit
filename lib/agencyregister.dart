@@ -43,6 +43,7 @@ class _agencyregisterState extends State<agencyregister> {
                   labelText: "name",
 
                   hintText: "name",
+                  prefixIcon: Icon(Icons.person),
 
                   border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
 
@@ -71,6 +72,7 @@ class _agencyregisterState extends State<agencyregister> {
                     labelText: "address",
 
                     hintText: "address",
+                    prefixIcon: Icon(Icons.location_on),
 
                     border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
 
@@ -94,6 +96,7 @@ class _agencyregisterState extends State<agencyregister> {
                     labelText: " agency name",
 
                     hintText: "agency name",
+                    prefixIcon: Icon(Icons.person_2),
 
                     border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
 
@@ -115,7 +118,7 @@ class _agencyregisterState extends State<agencyregister> {
                     labelText: " email",
 
                     hintText: "email",
-
+                    prefixIcon: Icon(Icons.mail),
                     border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
 
                   ),
@@ -137,7 +140,7 @@ class _agencyregisterState extends State<agencyregister> {
                     labelText: "username",
 
                     hintText: "username",
-
+                    prefixIcon: Icon(Icons.person),
                     border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
 
                   ),
@@ -165,7 +168,7 @@ class _agencyregisterState extends State<agencyregister> {
                     labelText: "password",
 
                     hintText: "password",
-
+                    prefixIcon: Icon(Icons.lock),
                     border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
 
                   ),
@@ -188,7 +191,7 @@ class _agencyregisterState extends State<agencyregister> {
                     labelText: "confirm password",
 
                     hintText: "confirm password",
-
+                    prefixIcon: Icon(Icons.lock),
                     border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
 
                   ),
@@ -212,7 +215,7 @@ class _agencyregisterState extends State<agencyregister> {
                     labelText: "place",
 
                     hintText: "place",
-
+                    prefixIcon: Icon(Icons.location_on),
                     border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
 
                   ),
@@ -233,7 +236,7 @@ class _agencyregisterState extends State<agencyregister> {
                     labelText: " phone number",
 
                     hintText: "phone number",
-
+                    prefixIcon: Icon(Icons.phone_android),
                     border: OutlineInputBorder(borderRadius:BorderRadius.circular(30)),
 
                   ),
