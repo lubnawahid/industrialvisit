@@ -107,8 +107,8 @@ class packageadd extends StatelessWidget {
                         decoration: const InputDecoration(
 
                           border: OutlineInputBorder(),
-                          labelText: 'Destination',
-                          hintText: 'Destination',
+                          labelText: 'Company name',
+                          hintText: 'Company name',
                         ),
                       ),
                     ),
