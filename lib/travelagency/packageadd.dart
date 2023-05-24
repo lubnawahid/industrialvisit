@@ -58,8 +58,8 @@ class packageadd extends StatelessWidget {
                         controller: nameController,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
-                          labelText: 'Package Description',
-                          hintText: 'Package Description',
+                          labelText: 'Comapany Description',
+                          hintText: 'Company Description',
                         ),
                       ),
 
