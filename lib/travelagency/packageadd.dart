@@ -88,10 +88,70 @@ class packageadd extends StatelessWidget {
                         ),
                       ),
                     ),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      child: TextField(
+                        controller: nameController,
+                        decoration: const InputDecoration(
+
+                          border: OutlineInputBorder(),
+                          labelText: 'Accommodation',
+                          hintText: 'Accommodation',
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      child: TextField(
+                        controller: nameController,
+                        decoration: const InputDecoration(
+
+                          border: OutlineInputBorder(),
+                          labelText: 'Destination',
+                          hintText: 'Destination',
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      child: TextField(
+                        controller: nameController,
+                        decoration: const InputDecoration(
+
+                          border: OutlineInputBorder(),
+                          labelText: 'Food Details',
+                          hintText: 'Food Details',
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      child: TextField(
+                        controller: nameController,
+                        decoration: const InputDecoration(
+
+                          border: OutlineInputBorder(),
+                          labelText: 'Guide Details',
+                          hintText: 'Guide Details',
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      child: TextField(
+                        controller: nameController,
+                        decoration: const InputDecoration(
+
+                          border: OutlineInputBorder(),
+                          labelText: 'Package Cost',
+                          hintText: 'Package Cost',
+                        ),
+                      ),
+                    ),
                     SizedBox(height: 20,),
                     Container(
                         height: 50,
-                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                        padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
                         child: ElevatedButton(
                           child: const Text('Submit'),
                           onPressed: () {

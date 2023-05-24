@@ -70,7 +70,6 @@ class _userregisterState extends State<userregister> {
 
 
 
-
                       labelText: "address",
 
                       hintText: "address",
