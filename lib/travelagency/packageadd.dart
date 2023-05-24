@@ -70,6 +70,18 @@ class packageadd extends StatelessWidget {
                         controller: nameController,
                         decoration: const InputDecoration(
 
+                          border: OutlineInputBorder(),
+                          labelText: 'Company name',
+                          hintText: 'Company name',
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      child: TextField(
+                        controller: nameController,
+                        decoration: const InputDecoration(
+
                             border: OutlineInputBorder(),
                             labelText: 'Package Date',
                             hintText: 'Package Date'
@@ -88,6 +100,7 @@ class packageadd extends StatelessWidget {
                         ),
                       ),
                     ),
+
                     Container(
                       padding: const EdgeInsets.all(10),
                       child: TextField(
@@ -100,18 +113,7 @@ class packageadd extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      child: TextField(
-                        controller: nameController,
-                        decoration: const InputDecoration(
 
-                          border: OutlineInputBorder(),
-                          labelText: 'Company name',
-                          hintText: 'Company name',
-                        ),
-                      ),
-                    ),
                     Container(
                       padding: const EdgeInsets.all(10),
                       child: TextField(
