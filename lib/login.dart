@@ -23,11 +23,6 @@ class _loginState extends State<login> {
     Widget build(BuildContext context) {
     return Scaffold(
 
-    appBar:AppBar(
-    title: Text("login page"),
-
-
-    ),
     body:Column(
     mainAxisAlignment:MainAxisAlignment.center,
     children: [
@@ -79,7 +74,7 @@ class _loginState extends State<login> {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => fpassword()));
     },
-        child:Text("Forgot Password?",style: TextStyle(fontSize: 14),),
+        child:Text("Forgot Password?",style: TextStyle(color:Colors.pinkAccent,fontSize: 14),),
 
 
     ),
@@ -97,7 +92,7 @@ class _loginState extends State<login> {
         print("error");
       }
     },
-    style:ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),primary: Colors.blue,fixedSize: Size(300, 50)),
+    style:ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),primary: Colors.pinkAccent,fixedSize: Size(300, 50)),
 
     ),
     SizedBox(height: 30.0,),
@@ -108,7 +103,7 @@ class _loginState extends State<login> {
     TextButton(onPressed: (){
     Navigator.push(context, MaterialPageRoute(builder: (context)=>registration()));
     },
-    child: const Text('Register Here',style: TextStyle(fontSize: 16),),
+    child: const Text('Register Here',style: TextStyle(color:Colors.pinkAccent,fontSize: 16),),
     ),
 
     ],
