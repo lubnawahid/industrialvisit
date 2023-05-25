@@ -298,7 +298,7 @@ class _userregisterState extends State<userregister> {
               ElevatedButton(onPressed: (){
     Navigator.push(context, MaterialPageRoute(builder: (context)=>login()));
 
-              },style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),primary: Colors.blue,fixedSize: Size(300,50)),
+              },style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),primary: Colors.pinkAccent,fixedSize: Size(300,50)),
 
 
 
@@ -322,7 +322,7 @@ class _userregisterState extends State<userregister> {
 
                   },
 
-                    child: const Text('login',style: TextStyle(fontSize: 16),),
+                    child: const Text('login',style: TextStyle(color:Colors.pinkAccent,fontSize: 16),),
 
                   ),
 

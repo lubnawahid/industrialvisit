@@ -79,7 +79,7 @@ class _agencyloginState extends State<agencylogin> {
               }
               Navigator.push(context, MaterialPageRoute(builder: (context)=>agencyhomescreen()));
             },
-              style:ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),primary: Colors.blue,fixedSize: Size(300, 50)),
+              style:ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),primary: Colors.pinkAccent,fixedSize: Size(300, 50)),
               child: Text("Login",style: TextStyle(color: Colors.white),),
             ),
             SizedBox(height: 30.0,),
@@ -90,7 +90,7 @@ class _agencyloginState extends State<agencylogin> {
                 TextButton(onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>const agencyregistration()));
                 },
-                  child: const Text('Register Here',style: TextStyle(fontSize: 16),),
+                  child: const Text('Register Here',style: TextStyle(color:Colors.pinkAccent,fontSize: 16),),
                 ),
 
               ],

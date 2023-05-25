@@ -32,7 +32,7 @@ class welcome extends StatelessWidget {
         ElevatedButton(onPressed: (){
           Navigator.push(context, MaterialPageRoute(builder: (context)=>const login()));
         },
-          style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(29.0)),backgroundColor: Colors.blue,fixedSize: Size(350, 57)),
+          style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(29.0)),backgroundColor: Colors.pinkAccent,fixedSize: Size(350, 57)),
           child: const Text("Login",style: TextStyle(
               fontSize: 18,color: Colors.white
           ),),),
@@ -41,7 +41,7 @@ class welcome extends StatelessWidget {
         ElevatedButton(onPressed: (){
       Navigator.push(context, MaterialPageRoute(builder: (context)=>const registration()));
         },
-          style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(29.0)),backgroundColor: Colors.blue,fixedSize: Size(350, 57)),
+          style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(29.0)),backgroundColor: Colors.pinkAccent,fixedSize: Size(350, 57)),
           child: const Text("Signup",style: TextStyle(
               fontSize: 18,color: Colors.white
           )),),
