@@ -4,17 +4,16 @@ import 'package:industrialvisit/login.dart';
 import 'package:industrialvisit/registration.dart';
 import 'package:industrialvisit/travelagency/homescreen.dart';
 import 'forgotpassword.dart';
-import 'userregister.dart';
 
 
-class login extends StatefulWidget {
-    const login({ Key? key }) : super(key: key);
+class LoginPage extends StatefulWidget {
+    const LoginPage({ Key? key }) : super(key: key);
 
   @override
-  State<login> createState() => _loginState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _loginState extends State<login> {
+class _LoginPageState extends State<LoginPage> {
   String user="user";
   String ta="agency";
   TextEditingController userController=TextEditingController();

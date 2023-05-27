@@ -44,16 +44,17 @@ class _userregisterState extends State<userregister> {
       "username": usernamecontroller.text,
       "password": passwordcontroller.text,
     };
-    print("user data${data}");
     var res = await Api().authData(data, 'api/user_register');
     var body = json.decode(res.body);
-    print('body${body}');
+
     if (body['sucess'] == true) {
+      print('body${body}');
+
       Fluttertoast.showToast(
         msg: body['message'].toString(),
         backgroundColor: Colors.grey,
       );
-      Navigator.push(context, MaterialPageRoute(builder: (context) => login()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
     } else {
       Fluttertoast.showToast(
         msg: body['message'].toString(),
@@ -67,6 +68,7 @@ class _userregisterState extends State<userregister> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Registration"),
+        backgroundColor: Colors.pinkAccent,
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -97,7 +99,7 @@ class _userregisterState extends State<userregister> {
                     hintText: "Enter Your Name",
                     prefixIcon: Icon(Icons.mail),
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30)),
+                        borderRadius: BorderRadius.circular(30),),
                   ),
                 ),
               ),
@@ -116,6 +118,7 @@ class _userregisterState extends State<userregister> {
                       hintText: "Enter Your Address",
                       prefixIcon: Icon(Icons.location_on),
                       border: OutlineInputBorder(
+
                           borderRadius: BorderRadius.circular(30)),
                     ),
                   )),
@@ -279,7 +282,7 @@ controller: emailcontroller,
                       }
                     },
                     keyboardType: TextInputType.number,
-                    controller: collegenamecontroller,
+                    controller: collegenumbercontroller,
                     decoration: InputDecoration(
                       labelText: " college number",
                       hintText: "college number",
@@ -335,8 +338,7 @@ controller: emailcontroller,
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => login()));
+                registerUser();
                 },
                 style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
@@ -362,7 +364,7 @@ controller: emailcontroller,
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => login(),
+                            builder: (context) => LoginPage(),
                           ));
                     },
                     child: const Text(
