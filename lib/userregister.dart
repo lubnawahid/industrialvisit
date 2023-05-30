@@ -44,18 +44,21 @@ class _userregisterState extends State<userregister> {
       "username": usernamecontroller.text,
       "password": passwordcontroller.text,
     };
+    print("User data${data}");
     var res = await Api().authData(data, 'api/user_register');
     var body = json.decode(res.body);
+    print('body${body}');
+    if (body['sucess'] == true)
+    {
 
-    if (body['sucess'] == true) {
-      print('body${body}');
 
       Fluttertoast.showToast(
         msg: body['message'].toString(),
         backgroundColor: Colors.grey,
       );
       Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
-    } else {
+    } else
+    {
       Fluttertoast.showToast(
         msg: body['message'].toString(),
         backgroundColor: Colors.grey,
