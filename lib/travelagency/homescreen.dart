@@ -103,7 +103,8 @@ SizedBox(height: 20,),
           ),
         ),
         appBar: AppBar
-          ( /*leading: IconButton(onPressed:(){},
+          (
+          backgroundColor: Colors.pinkAccent,/*leading: IconButton(onPressed:(){},
     icon:Icon(Icons.menu)),*/
           title: Text("HomePage"),
         ),

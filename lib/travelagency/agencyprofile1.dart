@@ -39,6 +39,7 @@ class _agencyprofileState1 extends State<agencyprofile1> {
 
 
       appBar: AppBar(
+        backgroundColor: Colors.pinkAccent,
         title: Text("Profile"),
         actions: [
           IconButton(
@@ -149,7 +150,7 @@ class _agencyprofileState1 extends State<agencyprofile1> {
                     child: Text("SUBMIT", style: TextStyle(
                         fontSize: 15, letterSpacing: 2, color: Colors.white),),
                     style: ElevatedButton.styleFrom(
-                        primary: Colors.blue,
+                        primary: Colors.pinkAccent,
                         padding: EdgeInsets.symmetric(horizontal: 50),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20))
