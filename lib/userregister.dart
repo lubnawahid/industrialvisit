@@ -14,10 +14,10 @@ class userregister extends StatefulWidget {
 }
 
 class _userregisterState extends State<userregister> {
-  bool _isLoading = false;
+  bool _isLoading=false;
   final _formKey = GlobalKey<FormState>();
   bool _obscureText = true;
-  TextEditingController namecontroller = TextEditingController();
+  TextEditingController namecontroller =TextEditingController();
   TextEditingController addresscontroller = TextEditingController();
   TextEditingController collegenamecontroller = TextEditingController();
   TextEditingController emailcontroller = TextEditingController();
@@ -27,7 +27,7 @@ class _userregisterState extends State<userregister> {
   TextEditingController collegenumbercontroller = TextEditingController();
   TextEditingController usernamecontroller = TextEditingController();
   TextEditingController passwordcontroller = TextEditingController();
-  void registerUser() async {
+  void registerUser()async {
     setState(() {
       _isLoading = true;
     });
@@ -43,25 +43,27 @@ class _userregisterState extends State<userregister> {
       "username": usernamecontroller.text,
       "password": passwordcontroller.text,
     };
-    print("User data${data}");
-    var res = await Api().authData(data, 'api/user_register');
+    print("user data${data}");
+    var res = await Api().authData(data,'/api/user_register');
     var body = json.decode(res.body);
     print('body${body}');
-    if (body['sucess'] == true)
-    {
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage()));
-
-
-      Fluttertoast.showToast(
-        msg: body['message'].toString(),
-        backgroundColor: Colors.grey,
-      );
-    } else
+    if(body['success']==true)
     {
       Fluttertoast.showToast(
         msg: body['message'].toString(),
         backgroundColor: Colors.grey,
       );
+
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>login()));
+
+    }
+    else
+    {
+      Fluttertoast.showToast(
+        msg: body['message'].toString(),
+        backgroundColor: Colors.grey,
+      );
+
     }
   }
 

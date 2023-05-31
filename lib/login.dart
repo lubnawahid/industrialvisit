@@ -11,14 +11,14 @@ import 'api.dart';
 import 'forgotpassword.dart';
 
 
-class LoginPage extends StatefulWidget {
-    const LoginPage({ Key? key }) : super(key: key);
+class login extends StatefulWidget {
+    const login({ Key? key }) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<login> createState() => _loginState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _loginState extends State<login> {
 
 
 
