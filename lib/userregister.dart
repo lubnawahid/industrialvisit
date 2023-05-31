@@ -3,9 +3,8 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:industrialvisit/userregister.dart';
+import 'package:industrialvisit/login.dart';
 import 'api.dart';
-import 'login.dart';
 
 class userregister extends StatefulWidget {
   const userregister({Key? key}) : super(key: key);
@@ -50,13 +49,13 @@ class _userregisterState extends State<userregister> {
     print('body${body}');
     if (body['sucess'] == true)
     {
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage()));
 
 
       Fluttertoast.showToast(
         msg: body['message'].toString(),
         backgroundColor: Colors.grey,
       );
-      Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
     } else
     {
       Fluttertoast.showToast(

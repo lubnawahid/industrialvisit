@@ -10,7 +10,8 @@ class welcome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
+        body:SingleChildScrollView(
+        child:Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
         const Text("Welcome!",style: TextStyle(fontSize: 40,fontWeight: FontWeight.bold),),
@@ -47,7 +48,7 @@ class welcome extends StatelessWidget {
           )),),
         ]
         ),
-
+        ),
     );
   }
 }

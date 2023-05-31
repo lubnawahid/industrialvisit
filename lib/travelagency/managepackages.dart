@@ -59,10 +59,7 @@ class _managepackagesState extends State<managepackages> {
         backgroundColor: Colors.blue,
         onPressed: () {
          Navigator.push(context, MaterialPageRoute(builder: (context) => packageadd()));
-          setState(() {
-            var i;
-            i++;
-          });
+
         },
       ),
     );

@@ -4,7 +4,7 @@ import 'package:industrialvisit/homescreen.dart';
 import 'package:industrialvisit/packagecreation.dart';
 import 'package:industrialvisit/packages.dart';
 import 'package:industrialvisit/registration.dart';
-import 'package:industrialvisit/travelagency/login.dart';
+
 import 'package:industrialvisit/travelagency/registration.dart';
 import 'package:industrialvisit/welcome.dart';
 

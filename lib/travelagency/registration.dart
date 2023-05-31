@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:industrialvisit/travelagency/login.dart';
+//import 'package:industrialvisit/travelagency/login.dart';
 import 'package:industrialvisit/travelagency/registration.dart';
 
 class agencyregistration extends StatefulWidget {
@@ -221,7 +221,7 @@ class _agencyregistrationState extends State<agencyregistration> {
 
             ElevatedButton(
               onPressed: () {
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>agencylogin()));
+   // Navigator.push(context, MaterialPageRoute(builder: (context)=>agencylogin()));
     },
 
               style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(
@@ -242,8 +242,7 @@ class _agencyregistrationState extends State<agencyregistration> {
                   'Already have an account?', style: TextStyle(fontSize: 16),),
 
                 TextButton(onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => agencylogin(),));
+                  //Navigator.push(context,MaterialPageRoute(builder: (context) => agencylogin(),));
                 },
 
                   child: const Text('login', style: TextStyle(fontSize: 16),),
