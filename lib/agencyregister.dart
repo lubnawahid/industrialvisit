@@ -3,11 +3,12 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:industrialvisit/api.dart';
+//import 'package:industrialvisit/api.dart';
 
 import 'login.dart';
 
-
+import 'api.dart';
+import 'homescreen.dart';
 
 class agencyregister extends StatefulWidget {
   const agencyregister({Key? key}) : super(key: key);
@@ -42,31 +43,29 @@ class _agencyregisterState extends State<agencyregister> {
       "username": usernamecontroller.text,
       "password": passwordcontroller.text,
     };
-    print('data${data}');
-    var res = await Api().authData(data, 'api/travelagency_register');
+    print("user data${data}");
+    var res = await Api().authData(data,'/api/travelagency_register');
     var body = json.decode(res.body);
     print('body${body}');
-    if (body['sucess'] == true) {
-
-      print('body${body}');
-
+    if(body['success']==true)
+    {
       Fluttertoast.showToast(
         msg: body['message'].toString(),
         backgroundColor: Colors.grey,
       );
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage()));
-      //Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage()));
+
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>login()));
+
     }
-
-    else {
+    else
+    {
       Fluttertoast.showToast(
         msg: body['message'].toString(),
         backgroundColor: Colors.grey,
       );
-     // Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage()));
+
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -305,7 +304,7 @@ class _agencyregisterState extends State<agencyregister> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => LoginPage(),
+                            builder: (context) => login(),
                           ));
                     },
                     child: const Text(

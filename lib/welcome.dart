@@ -31,7 +31,7 @@ class welcome extends StatelessWidget {
         const SizedBox(height: 35,),
 
         ElevatedButton(onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>const LoginPage()));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>const login()));
         },
           style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(29.0)),backgroundColor: Colors.pinkAccent,fixedSize: Size(350, 57)),
           child: const Text("Login",style: TextStyle(

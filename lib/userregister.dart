@@ -3,9 +3,10 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:industrialvisit/login.dart';
-import 'api.dart';
 
+import 'api.dart';
+import 'homescreen.dart';
+import 'login.dart';
 class userregister extends StatefulWidget {
   const userregister({Key? key}) : super(key: key);
 
@@ -337,9 +338,7 @@ controller: emailcontroller,
                           borderRadius: BorderRadius.circular(30)),
                     ),
                   )),
-              SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: 20,),
               ElevatedButton(
                 onPressed: () {
                 registerUser();
@@ -368,7 +367,7 @@ controller: emailcontroller,
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => LoginPage(),
+                            builder: (context) => login(),
                           ));
                     },
                     child: const Text(

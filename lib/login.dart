@@ -20,15 +20,15 @@ class login extends StatefulWidget {
 
 class _loginState extends State<login> {
 
-
-
   String user="user";
   String ta="agency";
-  late SharedPreferences localStorage;
-  bool _isLoading = false;
   String role="";
   String status ="";
   String ststatus="1";
+  bool _isLoading = false;
+  late SharedPreferences localStorage;
+
+
   TextEditingController userController=TextEditingController();
   TextEditingController pwdController=TextEditingController();
 
@@ -59,27 +59,19 @@ class _loginState extends State<login> {
       localStorage = await SharedPreferences.getInstance();
       localStorage.setString('role', role.toString());
       localStorage.setInt('login_id', body['data']['login_id']);
-      localStorage.setInt('user_id', body['data']['user_id']);
+      //localStorage.setInt('user_id', body['data']['user_id']);
 
       print('login_id ${body['data']['login_id']}');
       print('user_id ${body['data']['user_id']}');
 
-      /*   if (user == role.replaceAll('"', '') &&
-        storedvalue == status.replaceAll('"', '')) {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => MyHomePage()));
-    } else if (doctor == role.replaceAll('"', '') &&
-        storedvalue == status.replaceAll('"', '')) {
-      Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => DoctHome(),
-      ));
-   }*/
 
       if (user == role ) {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => homescreen()));
       }
-      else if (ta == role ) {
+      else if (ta == role &&
+ststatus == status
+      ) {
         Navigator.of(context).push(MaterialPageRoute(builder: (context) => agencyhomescreen()));
       }
 
@@ -153,17 +145,19 @@ class _loginState extends State<login> {
     ElevatedButton(
       child: Text("Login",style: TextStyle(color: Colors.white),),
       onPressed: () {
-      if (pwdController.text == user) {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => homescreen()));
-      } else if (pwdController.text == ta) {
-        Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => agencyhomescreen()));
-      }else{
-        print("error");
-      }
-    },
+        _pressLoginButton();
+      },
+     // if (pwdController.text == user) {
+      //  Navigator.push(
+          //  context, MaterialPageRoute(builder: (context) => homescreen()));
+     // } else if (pwdController.text == ta) {
+       // Navigator.push(
+         //   context,
+           // MaterialPageRoute(builder: (context) => agencyhomescreen()));
+     // }else{
+      //  print("error");
+    //  }
+   // },
     style:ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),primary: Colors.pinkAccent,fixedSize: Size(300, 50)),
 
     ),
