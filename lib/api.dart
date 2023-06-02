@@ -2,30 +2,30 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class Api {
-  final String _url = "http://127.0.0.1:8000/";
+  final String url = "http://127.0.0.1:8000/";
 
   authData(data, apiUrl) async {
-    var fullUrl = _url + apiUrl;
+    var fullUrl = url + apiUrl;
     return await http.post(
       Uri.parse(fullUrl),
       body: data,
     );
   }
   postData( apiUrl) async {
-    var fullUrl = _url + apiUrl;
+    var fullUrl = url + apiUrl;
     return await http.post(
       Uri.parse(fullUrl),
     );
   }
   putData(data, apiUrl) async {
-    var fullUrl = _url + apiUrl;
+    var fullUrl = url + apiUrl;
     return await http.put(
       Uri.parse(fullUrl),
       body: data,
     );
   }
   getData(apiUrl) async {
-    var fullUrl = _url + apiUrl;
+    var fullUrl = url + apiUrl;
     // await _getToken();
     return await http.get(
       Uri.parse(fullUrl),
@@ -33,7 +33,7 @@ class Api {
     );
   }
   deleteData(apiUrl)async{
-    var fullUrl = _url + apiUrl;
+    var fullUrl = url + apiUrl;
     return await http.get(
       Uri.parse(fullUrl),
     );

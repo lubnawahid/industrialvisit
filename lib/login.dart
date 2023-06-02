@@ -74,7 +74,6 @@ ststatus == status
         localStorage.setInt('login_id', body['data']['login_id']);
         localStorage.setInt('user_id', body['data']['user_id']);
 
-        //localStorage.setInt('travelagency_id',body['data']['user_id']);
         print('login_id ${body['data']['login_id']}');
          print('user_id ${body['data']['user_id']}');
 

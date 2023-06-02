@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class packageedit extends StatelessWidget {
-  const packageedit({Key? key}) : super(key: key);
+  const packageedit(int id, {Key? key}) : super(key: key);
 
   get nameController => null;
 

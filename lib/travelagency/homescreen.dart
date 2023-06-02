@@ -7,7 +7,7 @@ import 'package:industrialvisit/travelagency/viewbookings.dart';
 import 'package:industrialvisit/travelagency/viewpayment.dart';
 
 import '../agencyprofile.dart';
-import '../welcome.dart';
+//import '../welcome.dart';
 import 'managepackages.dart';
 
 class agencyhomescreen extends StatefulWidget {
@@ -139,7 +139,7 @@ SizedBox(height: 20,),
                   leading: Icon(Icons.logout),
                   title: const Text('logout'),
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>const welcome()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>const login()));
                   },
                 ),
               ],

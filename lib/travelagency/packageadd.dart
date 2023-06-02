@@ -254,6 +254,7 @@ class _packageaddState extends State<packageadd> {
                         return null;
                       },
                       controller: packagecostcontroller,
+                      keyboardType: TextInputType.number,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Package Cost',

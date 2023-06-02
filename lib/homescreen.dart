@@ -153,7 +153,7 @@ height: 600,
     leading: Icon(Icons.logout),
     title: const Text('logout'),
     onTap: (){
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>const welcome()));
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>const login()));
     },
     ),
     ],
