@@ -21,7 +21,7 @@ class login extends StatefulWidget {
 class _loginState extends State<login> {
 
   String user="user";
-  String ta="agency";
+  String ta="travelagency";
   String role="";
   String status ="";
   String ststatus="1";
@@ -56,13 +56,8 @@ class _loginState extends State<login> {
 
 
 
-      localStorage = await SharedPreferences.getInstance();
-      localStorage.setString('role', role.toString());
-      localStorage.setInt('login_id', body['data']['login_id']);
-      //localStorage.setInt('user_id', body['data']['user_id']);
 
-      print('login_id ${body['data']['login_id']}');
-      print('user_id ${body['data']['user_id']}');
+     // print('travelagency_id ${body['data']['travelagency_id']}');
 
 
       if (user == role ) {
@@ -73,7 +68,19 @@ class _loginState extends State<login> {
 ststatus == status
       ) {
         Navigator.of(context).push(MaterialPageRoute(builder: (context) => agencyhomescreen()));
+
+        localStorage = await SharedPreferences.getInstance();
+        localStorage.setString('role', role.toString());
+        localStorage.setInt('login_id', body['data']['login_id']);
+        localStorage.setInt('user_id', body['data']['user_id']);
+
+        //localStorage.setInt('travelagency_id',body['data']['user_id']);
+        print('login_id ${body['data']['login_id']}');
+         print('user_id ${body['data']['user_id']}');
+
       }
+
+
 
       else {
         Fluttertoast.showToast(
