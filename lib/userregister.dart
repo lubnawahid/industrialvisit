@@ -312,6 +312,7 @@ controller: emailcontroller,
                       }
                     },
                     controller: yearcontroller,
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       labelText: " year",
                       hintText: "year",

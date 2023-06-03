@@ -17,6 +17,23 @@ class packageadd extends StatefulWidget {
 }
 
 class _packageaddState extends State<packageadd> {
+  DateTime selectedDate = DateTime.now();
+  late SharedPreferences prefs;
+  late String startDate;
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime.now(),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+        startDate =
+        '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}';
+      });
+    }
+  }
 
   late SharedPreferences localStrorage;
   late int travelagency;
@@ -160,22 +177,51 @@ class _packageaddState extends State<packageadd> {
                       ),
                     ),
                   ),
+
                   Container(
-                    padding: const EdgeInsets.all(10),
-                    child: TextFormField(
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'please enter date';
-                        }
-                        return null;
-                      },
-                      controller: packagedatecontroller,
-                      decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Package Date',
-                          hintText: 'Package Date'),
+                    padding:  const EdgeInsets.all(20.0),
+                    child: Row(
+                      children: [
+                        ElevatedButton(
+                          onPressed: () => _selectDate(context),
+                          child: const Text('Select date'),
+
+                        ),SizedBox(width: 20,),
+                        Container(
+                          height: 45,
+                          width: 150,
+                          margin: const EdgeInsets.all(15.0),
+                          padding: const EdgeInsets.all(3.0),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black26)),
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: Text(
+                              '${selectedDate.day}-${selectedDate.month}-${selectedDate.year}',
+                              style: TextStyle(fontSize: 16, color: Colors.black38),
+                            ),
+                          ),
+                        ),
+
+                      ],
                     ),
                   ),
+                  // Container(
+                  //   padding: const EdgeInsets.all(10),
+                  //   child: TextFormField(
+                  //     validator: (value) {
+                  //       if (value == null || value.isEmpty) {
+                  //         return 'please enter date';
+                  //       }
+                  //       return null;
+                  //     },
+                  //     controller: packagedatecontroller,
+                  //     decoration: const InputDecoration(
+                  //         border: OutlineInputBorder(),
+                  //         labelText: 'Package Date',
+                  //         hintText: 'Package Date'),
+                  //   ),
+                  // ),
                   Container(
                     padding: const EdgeInsets.all(10),
                     child: TextFormField(
