@@ -2,13 +2,15 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:industrialvisit/travelagency/packageedit.dart';
+//import 'package:industrialvisit/travelagency/packageedit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../api.dart';
 
 class packageedit extends StatefulWidget {
-  final int id,
-   packageedit({required this.id});
+  final int id;
+      packageedit({required this.id});
 
   @override
   State<packageedit> createState() => _packageeditState();
@@ -66,7 +68,17 @@ class _packageeditState extends State<packageedit> {
       companydescription = body['data']['description'];
       packagedate = body['data']['packagedate'];
       packagetime = body['data']['packagetime'];
-  Widget build(BuildContext context) {
+
+      companynameController.text = companyname;
+      companydescriptionController.text= companydescription;
+      packagedateController.text=packagedate;
+      packagetimeController.text = packagetime;
+
+
+    });
+  }
+
+      Widget build(BuildContext context) {
 
     return Scaffold(
 
