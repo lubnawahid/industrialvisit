@@ -226,8 +226,9 @@ class _agencyprofile1State extends State<agencyprofile1> {
   String place='';
   String phonenumber='';
   late SharedPreferences prefs;
-  TextEditingController agencynameController=TextEditingController();
   TextEditingController nameController=TextEditingController();
+  TextEditingController agencynameController=TextEditingController();
+
   TextEditingController placeController=TextEditingController();
   TextEditingController phonenumberController=TextEditingController();
   @override
@@ -242,7 +243,7 @@ class _agencyprofile1State extends State<agencyprofile1> {
     prefs = await SharedPreferences.getInstance();
     user_id = (prefs.getInt('user_id') ?? 0 );
     print('login_idupdate ${user_id }');
-    var res = await Api().getData('/api/singletravelagencyprofie_view/'+user_id.toString());
+    var res = await Api().getData('/api/travelagency_single_view/'+user_id.toString());
 
     var body = json.decode(res.body);
     print(body);
@@ -255,8 +256,8 @@ class _agencyprofile1State extends State<agencyprofile1> {
       phonenumber = body['data']['phonenumber'];
 
 
-      nameController.text = name;
 
+      nameController.text = name;
       agencynameController.text = agencyname;
       placeController.text=place;
       phonenumberController.text=phonenumber;
@@ -265,7 +266,7 @@ class _agencyprofile1State extends State<agencyprofile1> {
   }
 
 
-  Future<void> _update(String name,String place,String contact, String agencyname) async {
+  Future<void> _update(String name,String agencyname,String place, String contact) async {
 
     prefs = await SharedPreferences.getInstance();
     user_id = (prefs.getInt('user_id') ?? 0 );
@@ -273,7 +274,7 @@ class _agencyprofile1State extends State<agencyprofile1> {
     var uri = Uri.parse(Api().url+'/api/travelagencyprofile_update/'+user_id.toString()); // Replace with your API endpoint
     var request = http.MultipartRequest('PUT', uri);
     request.fields['name'] = name;
-    request.fields['agencyname'] = name;
+    request.fields['agencyname'] = agencyname;
     request.fields['place'] = place;
     request.fields['phonenumber'] = contact;
 
@@ -295,6 +296,7 @@ class _agencyprofile1State extends State<agencyprofile1> {
       return Scaffold(
 
         appBar: AppBar(
+          backgroundColor: Colors.pinkAccent,
           title: Text("Profile"),
           leading: IconButton(
             onPressed: (){
@@ -385,7 +387,7 @@ class _agencyprofile1State extends State<agencyprofile1> {
                       },
                       child: Text("EDIT",style: TextStyle(fontSize: 15, letterSpacing: 2, color: Colors.white),),
                       style: ElevatedButton.styleFrom(
-                          primary: Colors.blue,
+                          primary: Colors.pinkAccent,
                           padding: EdgeInsets.symmetric(horizontal: 50),
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))
                       ),

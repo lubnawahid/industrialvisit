@@ -35,6 +35,7 @@ class _agencyprofileState extends State<agencyprofile> {
 
 
       appBar: AppBar(
+        backgroundColor: Colors.pinkAccent,
         title: Text("Profile"),
         actions: [
           IconButton(

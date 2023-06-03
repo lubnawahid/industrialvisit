@@ -7,6 +7,7 @@ import 'package:industrialvisit/packages.dart';
 import 'package:industrialvisit/payment.dart';
 import 'package:industrialvisit/payment1.dart';
 import 'package:industrialvisit/profile.dart';
+import 'package:industrialvisit/userprofile.dart';
 import 'package:industrialvisit/welcome.dart';
 import 'booking.dart';
 import 'chat.dart';
@@ -139,7 +140,7 @@ height: 600,
     leading: Icon(Icons.person),
     title: const Text('Profile'),
     onTap: (){
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>profile()));
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>userprofile()));
     },
     ),
     ListTile(

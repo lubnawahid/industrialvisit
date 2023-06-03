@@ -47,13 +47,12 @@ class _userprofileState extends State<userprofile> {
     prefs = await SharedPreferences.getInstance();
     user_id =(prefs.getInt('user_id') ?? 0);
     print('login_id update ${user_id}');
-    var res = await Api().getData(
-        '/api/user_single_view/' + user_id.toString());
+    var res = await Api().getData('/api/user_single_view/'+ user_id.toString());
     var body = json.decode(res.body);
     print(body);
     setState(() {
       name = body['data']['name'];
-      place = body['data']['address'];
+      place = body['data']['place'];
       phonenumber = body['data']['phonenumber'];
 
 

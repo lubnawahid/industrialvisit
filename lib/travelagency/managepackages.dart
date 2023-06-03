@@ -105,7 +105,7 @@ class _managepackagesState extends State<managepackages> {
                     trailing: ElevatedButton(
 
                         onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => packageedit(id) ));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => packageedit(id:id) ));
                         },
                         child:const Text('Edit'),
                   )
