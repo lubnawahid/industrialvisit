@@ -118,6 +118,8 @@ height: 600,
     icon:Icon(Icons.menu)),*/
     title: Text("HomePage"),
     ),
+
+    backgroundColor: Colors.white,
     drawer: Drawer(
     child: ListView(
     padding: EdgeInsets.zero,
