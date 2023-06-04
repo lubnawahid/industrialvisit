@@ -41,7 +41,7 @@ class _packageeditState extends State<packageedit> {
   String packagedate='';
   String packagetime='';
   get nameController => null;
-  late SharedPreferences prefs;
+  //late SharedPreferences prefs;
   TextEditingController companynameController=TextEditingController();
 
   TextEditingController companydescriptionController=TextEditingController();
