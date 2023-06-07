@@ -42,11 +42,13 @@ class _packageeditState extends State<packageedit> {
   }
 
   late int id;
+  String packagename ='';
   String companyname = '';
   String companydescription = '';
   String packagedate = '';
   String packagetime = '';
 
+  TextEditingController packagenameController = TextEditingController();
   TextEditingController companynameController = TextEditingController();
 
   TextEditingController companydescriptionController = TextEditingController();
@@ -72,11 +74,13 @@ class _packageeditState extends State<packageedit> {
     var body = json.decode(res.body);
     print(body);
     setState(() {
+      packagename = body['data']['packagename'];
       companyname = body['data']['companyname'];
       companydescription = body['data']['companydescription'];
       packagedate = body['data']['packagedate'];
       packagetime = body['data']['packagetime'];
 
+      packagenameController.text = packagename;
       companynameController.text = companyname;
       companydescriptionController.text = companydescription;
       packagedateController.text = packagedate;
@@ -84,12 +88,13 @@ class _packageeditState extends State<packageedit> {
     });
   }
 
-  Future<void> _update(String companyname, String companydescription, String packagedate, String packagetime) async {
+  Future<void> _update(String packagename,String companyname, String companydescription, String packagedate, String packagetime) async {
     prefs = await SharedPreferences.getInstance();
     int id =widget.id;
     print(id);
     var uri = Uri.parse(Api().url + '/api/packages_update/' +id.toString()); // Replace with your API endpoint
     var request = http.MultipartRequest('PUT', uri);
+    request.fields['packagename'] = packagename;
     request.fields['companyname'] = companyname;
     request.fields['companydescription'] = companydescription;
     request.fields['packagedate'] = startDate;
@@ -170,6 +175,18 @@ class _packageeditState extends State<packageedit> {
                     //   ],
                     // ),
                     SizedBox(height: 20,),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      child: TextField(
+                        controller: packagenameController,
+                        decoration: const InputDecoration(
+
+                            border: OutlineInputBorder(),
+
+                            hintText: 'packagename'
+                        ),
+                      ),
+                    ),
                     Container(
                       padding: const EdgeInsets.all(10),
                       child: TextField(
@@ -265,7 +282,7 @@ class _packageeditState extends State<packageedit> {
                     children: [
                       ElevatedButton(
                         onPressed: () {
-                          _update(companynameController.text,companydescriptionController.text , packagedateController.text, packagetimeController.text);
+                          _update(packagenameController.text,companynameController.text,companydescriptionController.text , packagedateController.text, packagetimeController.text);
                           //Navigator.push(context, MaterialPageRoute(builder: (context) => managepackages()));
                         },
                         child: Text("Update", style: TextStyle(fontSize: 15,
