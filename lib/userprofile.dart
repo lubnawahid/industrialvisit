@@ -261,6 +261,7 @@ class _userprofileState extends State<userprofile> {
     var res = await Api().getData('/api/user_single_view/'+user_id.toString());
 
     var body = json.decode(res.body);
+    // var body = json.decode(res.body);
     print(body);
 
 

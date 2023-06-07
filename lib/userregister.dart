@@ -196,7 +196,8 @@ class _userregisterState extends State<userregister> {
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30)),
                     ),
-                  )),
+                  )
+              ),
               Padding(
                   padding: const EdgeInsets.all(8),
                   child: TextFormField(

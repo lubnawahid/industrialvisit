@@ -2,10 +2,13 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:industrialvisit/packages.dart';
+import 'package:industrialvisit/travelagency/managepackages.dart';
 import 'package:industrialvisit/travelagency/packageedit.dart';
 //import 'package:industrialvisit/travelagency/packageedit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:http/http.dart' as http;
 import '../api.dart';
 
 class packageedit extends StatefulWidget {
@@ -19,8 +22,10 @@ class packageedit extends StatefulWidget {
 class _packageeditState extends State<packageedit> {
 
   DateTime selectedDate = DateTime.now();
-  late SharedPreferences prefs;
+
+  //late SharedPreferences prefs;
   late String startDate;
+
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
@@ -35,51 +40,100 @@ class _packageeditState extends State<packageedit> {
       });
     }
   }
+
   late int id;
-  String companyname='';
-  String companydescription='';
-  String packagedate='';
-  String packagetime='';
+  String companyname = '';
+  String companydescription = '';
+  String packagedate = '';
+  String packagetime = '';
+
+  TextEditingController companynameController = TextEditingController();
+
+  TextEditingController companydescriptionController = TextEditingController();
+  TextEditingController packagedateController = TextEditingController();
+
   get nameController => null;
-  //late SharedPreferences prefs;
-  TextEditingController companynameController=TextEditingController();
-
-  TextEditingController companydescriptionController=TextEditingController();
-  TextEditingController packagedateController=TextEditingController();
-  TextEditingController packagetimeController=TextEditingController();
-
-  @override
+  late SharedPreferences prefs;
+  TextEditingController packagetimeController = TextEditingController();
 
   void initState() {
     // TODO: implement initState
     super.initState();
     _viewPro();
   }
+
   int currentTab = 2;
+
   Future<void> _viewPro() async {
     prefs = await SharedPreferences.getInstance();
     int id = widget.id;
-   // print('login_idupdate ${id }');
-    var res = await Api().getData('/api/packages_single_view/'+id.toString());
+    // print('login_idupdate ${id }');
+    var res = await Api().getData('/api/packages_single_view/' + id.toString());
     var body = json.decode(res.body);
     print(body);
     setState(() {
       companyname = body['data']['companyname'];
-      companydescription = body['data']['description'];
+      companydescription = body['data']['companydescription'];
       packagedate = body['data']['packagedate'];
       packagetime = body['data']['packagetime'];
 
       companynameController.text = companyname;
-      companydescriptionController.text= companydescription;
-      packagedateController.text=packagedate;
+      companydescriptionController.text = companydescription;
+      packagedateController.text = packagedate;
       packagetimeController.text = packagetime;
-
-
     });
   }
 
-      Widget build(BuildContext context) {
+  Future<void> _update(String companyname, String companydescription, String packagedate, String packagetime) async {
+    prefs = await SharedPreferences.getInstance();
+    int id =widget.id;
+    print(id);
+    var uri = Uri.parse(Api().url + '/api/packages_update/' +id.toString()); // Replace with your API endpoint
+    var request = http.MultipartRequest('PUT', uri);
+    request.fields['companyname'] = companyname;
+    request.fields['companydescription'] = companydescription;
+    request.fields['packagedate'] = startDate;
+    request.fields['packagetime'] = packagetime;
+    print(request.fields);
+    final response = await request.send();
+    print(response);
 
+    if (response.statusCode == 200) {
+      print('Package Updated successfully');
+      Navigator.push(
+          this.context,
+          MaterialPageRoute(builder: (context) => managepackages()));
+    } else {
+      print('Error Updating packages. Status code: ${response.statusCode}');
+    }
+  }
+  _deleteData(int id) async {
+    var res = await Api().deleteData('/api/delete_packages/'+ id.toString());
+    if (res.statusCode == 200) {
+      setState(() {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => managepackages()));
+        Fluttertoast.showToast(
+          msg: "Package Deleted Successfully",
+          backgroundColor: Colors.grey,
+        );
+      });
+    } else {
+      setState(() {
+        Fluttertoast.showToast(
+          msg: "Currently there is no data available",
+          backgroundColor: Colors.grey,
+        );
+      });
+    }
+  }
+
+
+  Widget currentScreen = packages();
+
+  @override
+  Widget build(BuildContext context) {
+    // var companynameController;
     return Scaffold(
 
       resizeToAvoidBottomInset: false,
@@ -89,17 +143,20 @@ class _packageeditState extends State<packageedit> {
         elevation: 0,
         brightness: Brightness.light,
         backgroundColor: Colors.pinkAccent,
-        title:Text ('Add Packages'),
+        title: Text('Edit Packages'),
         leading:
-        IconButton( onPressed: (){
+        IconButton(onPressed: () {
           Navigator.pop(context);
-        },icon:Icon(Icons.arrow_back_ios,size: 20,color: Colors.black,)),
+        }, icon: Icon(Icons.arrow_back_ios, size: 20, color: Colors.black,)),
       ),
 
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            height: MediaQuery.of(context).size.height,
+            height: MediaQuery
+                .of(context)
+                .size
+                .height,
             width: double.infinity,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -116,12 +173,12 @@ class _packageeditState extends State<packageedit> {
                     Container(
                       padding: const EdgeInsets.all(10),
                       child: TextField(
-                        controller: nameController,
+                        controller: companynameController,
                         decoration: const InputDecoration(
 
                             border: OutlineInputBorder(),
 
-                            hintText: 'J V ELECTRONICS PVT Ltd'
+                            hintText: 'companyname'
                         ),
                       ),
                     ),
@@ -129,26 +186,40 @@ class _packageeditState extends State<packageedit> {
                     Container(
                       padding: const EdgeInsets.all(10),
                       child: TextField(
+                        controller: companydescriptionController,
                         maxLines: 5,
-                        controller: nameController,
                         decoration: const InputDecoration(
 
                           border: OutlineInputBorder(),
 
-                          hintText: 'Started in the year 1991 in a small way, when acceptability of Small scale manufacturers to make high end products like relays was a challenge across the globe, JVS established itself by proving its excellence and commitment to inventing and producing products of great quality. JVS has since come a long way and is one of the leading relay manufacturers, supplying products in India and abroad. it is located in Banglore Mysore-NH,Bidadi,Ramangara,Banglore.'
-                          ,
+                           hintText: 'companydescription'
+
                         ),
                       ),
 
                     ),
+                    // Container(
+                    //
+                    //   padding: const EdgeInsets.all(20.0),
+                    //   child: TextField(
+                    //     controller: packagetimeController,
+                    //     maxLines: 5,
+                    //     decoration: const InputDecoration(
+                    //       border: OutlineInputBorder(),
+                    //     ),
+                    //   ),
+                    // ),
                     Container(
-                      padding:  const EdgeInsets.all(20.0),
+
+                      padding: const EdgeInsets.all(20.0),
+
                       child: Row(
+
                         children: [
                           ElevatedButton(
                             onPressed: () => _selectDate(context),
                             child: const Text('Select date'),
-                          ),SizedBox(width: 20,),
+                          ), SizedBox(width: 20,),
                           Container(
                             height: 45,
                             width: 150,
@@ -159,8 +230,10 @@ class _packageeditState extends State<packageedit> {
                             child: Padding(
                               padding: const EdgeInsets.only(top: 8.0),
                               child: Text(
-                                '${selectedDate.day}-${selectedDate.month}-${selectedDate.year}',
-                                style: TextStyle(fontSize: 16, color: Colors.black38),
+                                '${selectedDate.year}-${selectedDate
+                                    .month}-${selectedDate.day}',
+                                style: TextStyle(
+                                    fontSize: 16, color: Colors.black38),
                               ),
                             ),
                           ),
@@ -170,8 +243,8 @@ class _packageeditState extends State<packageedit> {
                     ),
                     Container(
                       padding: const EdgeInsets.all(10),
-                      child: TextField(
-                        controller: nameController,
+                      child: TextFormField(
+                        controller: packagetimeController,
                         decoration: const InputDecoration(
 
                           border: OutlineInputBorder(),
@@ -186,27 +259,40 @@ class _packageeditState extends State<packageedit> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 80.0),
+                  padding: const EdgeInsets.only(bottom: 130.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       ElevatedButton(
-                        onPressed: (){},
-                        child: Text("Update",style: TextStyle(fontSize: 15, letterSpacing: 2, color: Colors.white),),
+                        onPressed: () {
+                          _update(companynameController.text,companydescriptionController.text , packagedateController.text, packagetimeController.text);
+                          //Navigator.push(context, MaterialPageRoute(builder: (context) => managepackages()));
+                        },
+                        child: Text("Update", style: TextStyle(fontSize: 15,
+                            letterSpacing: 2,
+                            color: Colors.white),),
                         style: ElevatedButton.styleFrom(
                             primary: Colors.blue,
-                            padding: EdgeInsets.symmetric(horizontal: 50,vertical: 25,),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 50, vertical: 25,),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20))
                         ),
                       ),
 
                       ElevatedButton(
-                        onPressed: (){},
-                        child: Text("Delete",style: TextStyle(fontSize: 15, letterSpacing: 2, color: Colors.white),),
+                        onPressed: () {
+                       _deleteData(widget.id);
+                        },
+                        child: Text("Delete", style: TextStyle(fontSize: 15,
+                            letterSpacing: 2,
+                            color: Colors.white),),
                         style: ElevatedButton.styleFrom(
                             primary: Colors.blue,
-                            padding: EdgeInsets.symmetric(horizontal: 50,vertical: 25,),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 50, vertical: 25,),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20))
                         ),
                       ),
 
@@ -224,34 +310,35 @@ class _packageeditState extends State<packageedit> {
 
       ),);
   }
-}
 
-Widget makeInput({label,obsureText = false}){
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text(label,style:TextStyle(
-          fontSize: 15,
-          fontWeight: FontWeight.w400,
-          color: Colors.black87
-      ),),
-      SizedBox(height: 5,),
-      TextField(
-        obscureText: obsureText,
-        decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(vertical: 0,horizontal: 10),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Colors.grey,
+
+  Widget makeInput({label, obsureText = false}) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(label, style: TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.w400,
+            color: Colors.black87
+        ),),
+        SizedBox(height: 5,),
+        TextField(
+          obscureText: obsureText,
+          decoration: InputDecoration(
+            contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Colors.grey,
+              ),
+            ),
+            border: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.grey)
             ),
           ),
-          border: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey)
-          ),
         ),
-      ),
-      SizedBox(height: 30,)
+        SizedBox(height: 30,)
 
-    ],
-  );
+      ],
+    );
+  }
 }

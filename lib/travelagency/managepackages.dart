@@ -54,7 +54,7 @@ class _managepackagesState extends State<managepackages> {
     return Scaffold(
 
       appBar: AppBar(
-        backgroundColor: Colors.pinkAccent,
+        backgroundColor: Colors.blue,
           leading:
           IconButton( onPressed: (){
             Navigator.pop(context);

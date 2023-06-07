@@ -64,7 +64,7 @@ class _packageaddState extends State<packageadd> {
       "packagename": packagenamecontroller.text.trim(),
       "companyname": companynamecontroller.text.trim(),
       "companydescription": companydescriptioncontroller.text.trim(),
-      "packagedate": packagedatecontroller.text,
+      "packagedate": startDate,
       "packagetime": packagetimecontroller.text,
       "accommodation": accommodationcontroller.text.trim(),
       "fooddetails": fooddetailscontroller.text.trim(),
@@ -101,7 +101,7 @@ class _packageaddState extends State<packageadd> {
       appBar: AppBar(
         elevation: 0,
         brightness: Brightness.light,
-        backgroundColor: Colors.pinkAccent,
+        backgroundColor: Colors.blue,
         title: Text('Add Packages'),
         leading: IconButton(
             onPressed: () {
@@ -180,6 +180,7 @@ class _packageaddState extends State<packageadd> {
 
                   Container(
                     padding:  const EdgeInsets.all(20.0),
+
                     child: Row(
                       children: [
                         ElevatedButton(
@@ -197,7 +198,7 @@ class _packageaddState extends State<packageadd> {
                           child: Padding(
                             padding: const EdgeInsets.only(top: 8.0),
                             child: Text(
-                              '${selectedDate.day}-${selectedDate.month}-${selectedDate.year}',
+                              '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}',
                               style: TextStyle(fontSize: 16, color: Colors.black38),
                             ),
                           ),
