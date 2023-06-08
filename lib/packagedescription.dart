@@ -1,50 +1,283 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:industrialvisit/booking.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'api.dart';
 
 class packagedescription extends StatefulWidget {
-  const packagedescription({Key? key}) : super(key: key);
+  final int id;
+   packagedescription({required this.id});
+
 
   @override
   State<packagedescription> createState() => _packagedescriptionState();
 }
 
 class _packagedescriptionState extends State<packagedescription> {
+  bool   _isLoading = false;
+  late SharedPreferences localStorage;
+  TextEditingController packagenameController=TextEditingController();
+
+  TextEditingController companynameController=TextEditingController();
+  TextEditingController companydescriptionController=TextEditingController();
+  TextEditingController packagedateController=TextEditingController();
+  TextEditingController packagetimeController=TextEditingController();
+  TextEditingController accommodationController=TextEditingController();
+  TextEditingController fooddetailsController=TextEditingController();
+  TextEditingController guidedetailsController=TextEditingController();
+  TextEditingController packagecostController = TextEditingController();
+
+var packagename,companyname,companydescription,packagedate,packagetime,accommodation,fooddetails,guidedetails,packagecost;
+  Future<void> _viewPro() async {
+    int id = widget.id;
+    var res = await Api()
+        .getData('/api/packages_single_view/' + id.toString());
+    var body = json.decode(res.body);
+    print(body);
+    setState(() {
+
+      packagename = body['data']['packagename'];
+      companyname = body['data']['companyname'];
+      companydescription = body['data']['companydescription'];
+      packagedate = body['data']['packagedate'];
+      packagetime = body['data']['packagetime'];
+      accommodation = body['data']['accommodation'];
+      fooddetails = body['data']['fooddetails'];
+      guidedetails = body['data']['guidedetails'];
+      packagecost = body['data']['packagecost'];
+
+
+
+      packagenameController.text = packagename;
+      companynameController.text=companyname;
+      companydescriptionController.text=companydescription;
+      packagedateController.text = packagedate;
+      packagetimeController.text = packagetime;
+      accommodationController.text = accommodation;
+      fooddetailsController.text = fooddetails;
+      guidedetailsController.text = guidedetails;
+      packagecostController.text = packagecost;
+
+    });
+    }
   @override
+
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _viewPro();
+  }
   Widget build(BuildContext context) {
 
 
+    var style;
     return Scaffold(
-      appBar: AppBar(title: Text("Package Details"),
-        leading:
-        IconButton( onPressed: (){
-          Navigator.pop(context);
-        },icon:Icon(Icons.arrow_back_ios,size: 20,color: Colors.black,)),
-      ),
-      body: Center(
-        child: Column(
-            children: [
-              Image.asset("images/jvs.jpg", width: MediaQuery.of(context).size.width,height: 300,),
-              SizedBox(height: 30,),
-              Column(
-                children: [
-                  Text(
-                    'J V ELECTRONICS PVT Ltd',
-                    style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,),
-                  ),
-                  SizedBox(height: 30,),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text('Started in the year 1991 in a small way, when acceptability of Small scale manufacturers to make high end products like relays was a challenge across the globe, JVS established itself by proving its excellence and commitment to inventing and producing products of great quality. JVS has since come a long way and is one of the leading relay manufacturers, supplying products in India and abroad. it is located in Banglore Mysore-NH,Bidadi,Ramangara,Banglore.'
+        backgroundColor: Colors.grey[200],
+        appBar: AppBar(
+          leading:
+          IconButton(onPressed: () {
+            Navigator.pop(context);
+          }, icon: Icon(Icons.arrow_back_ios, size: 20, color: Colors.black,)),
+
+          elevation: 0,
+          centerTitle: true,
+          title: Text(
+            'Package Details',
+            style: TextStyle(
+              color: Colors.black,
+            ),
+          ),
+
+        ),
+        body: SingleChildScrollView(
+          child: Container(
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(50),
+                  topRight: Radius.circular(50),
+                )
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(40),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+
+                    SizedBox(height: 10,),
+                     Text(
+                       "Package Name",
+                       style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                     ),
+                     SizedBox(
+                     height: 20,
+                     ),
+
+                    Text(packagename,
+                      style: TextStyle(
+                        fontSize: 15,
+                      ),
+                     ),
+
+                     SizedBox(
+                      height: 40,
+                     ),
+                     Text(
+                     "Company Name",
+                     style: TextStyle(
+                         fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                       height: 20,
                     ),
 
-                  ),
+                    Text(
+                       companyname,
+                    ),
 
-                ],
+                    SizedBox(
+                      height: 40,
+                    ),
+                    Text(
+                      "Company Description",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+
+                    Text(
+                      companydescription,
+style: TextStyle(fontSize: 15),
+                    ),
+                    SizedBox(
+                      height: 40,
+                    ),
+                    Text(
+                      "Package Time",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+
+                    Text(
+                      packagetime,
+                        style: TextStyle(
+                          fontSize: 15,
+                    ),
+                    ),
+                    SizedBox(
+                      height: 40,
+                    ),
+                    Text(
+                      "Accommodation",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+
+                    Text(
+                      accommodation,
+                      style: TextStyle(
+                        fontSize: 15,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 40,
+                    ),
+                    Text(
+                      "Food Details",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+
+                    Text(
+                      fooddetails,
+                      style: TextStyle(
+                        fontSize: 15,
+                      ),
+                    ),
+
+                    SizedBox(
+                      height: 40,
+                    ),
+                    Text(
+                      "Guide Details",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+
+                    Text(
+                      guidedetails,
+                      style: TextStyle(
+                        fontSize: 15,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 40,
+                    ),
+                    Text(
+                      "Package Cost",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+
+                    Text(
+                      packagecost,
+                      style: TextStyle(
+                        fontSize: 15,
+                      ),
+                    ),
+                    SizedBox(height: 40,),
+                    Center(
+                      child: ElevatedButton(
+                        style: style,
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => booking()));
+                        },
+                        child: const Text('Book Now'),
+                      ),
+                    ),
+
+                  ]
               ),
-            ]
-        ),
-
-      ),
+            ),
+          ),
+        )
     );
   }
 }
