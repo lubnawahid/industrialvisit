@@ -7,6 +7,7 @@ import 'package:industrialvisit/packages.dart';
 import 'package:industrialvisit/payment.dart';
 import 'package:industrialvisit/payment1.dart';
 import 'package:industrialvisit/profile.dart';
+import 'package:industrialvisit/usercreatedpackages.dart';
 import 'package:industrialvisit/userprofile.dart';
 import 'package:industrialvisit/welcome.dart';
 import 'booking.dart';
@@ -21,6 +22,7 @@ class _homescreenState extends State<homescreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
         body: SingleChildScrollView(
         child:Container(
 height: 600,
@@ -37,13 +39,13 @@ height: 600,
         onTap: () {
           Navigator.push(context, MaterialPageRoute(builder: (context)=>packages()));
         },
-        child: Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.pink,),
+        child: Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.white,),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset("images/luggage.png",height: 80,),
 
-              Text("Packages",style: TextStyle(color: Colors.white,fontSize: 30),)
+              Text("Packages",style: TextStyle(color: Colors.black,fontSize: 25,fontStyle: FontStyle.italic),)
             ],
           ),
         ),
@@ -52,12 +54,26 @@ height: 600,
         onTap: () {
           Navigator.push(context, MaterialPageRoute(builder: (context)=>packagecreation()));
         },
-        child: Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.yellow,),
+        child: Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.white,),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset("images/product-design.png",height: 80,),
-              Text("Package creation",style: TextStyle(color: Colors.white,fontSize: 22),)
+              Text("Package creation",style: TextStyle(color: Colors.black,fontSize: 22,fontStyle: FontStyle.italic),)
+            ],
+          ),
+        ),
+      ),
+      GestureDetector(
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>usercreatedpackages()));
+        },
+        child: Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.white,),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset("images/package.png",height: 80,),
+              Text("User Created Packages",style: TextStyle(color: Colors.black,fontSize: 19,fontStyle: FontStyle.italic),)
             ],
           ),
         ),
@@ -66,7 +82,7 @@ height: 600,
         onTap: () {
           Navigator.push(context, MaterialPageRoute(builder: (context)=>booking()));
         },
-        child: Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.grey,),
+        child: Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.white,),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -80,13 +96,13 @@ height: 600,
         onTap: () {
           Navigator.push(context, MaterialPageRoute(builder: (context)=>chat()));
         },
-        child: Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.green,),
+        child: Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.white,),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset("images/chat.png",height: 80,),
 
-              Text("Chat",style: TextStyle(color: Colors.white,fontSize: 30),)
+              Text("Chat",style: TextStyle(color: Colors.black,fontSize: 30,fontStyle: FontStyle.italic),)
             ],
           ),
         ),
@@ -95,13 +111,13 @@ height: 600,
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context)=>payment()));
       },
-    child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.lightBlueAccent),
+    child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.white),
     child: Column(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
     Image.asset("images/cash-on-delivery.png",height: 80,),
 
-    Text("Payment",style: TextStyle(color: Colors.white,fontSize:30 ),)
+    Text("Payment",style: TextStyle(color: Colors.black,fontSize:30,fontStyle: FontStyle.italic ),)
     ],
     ),
     ),

@@ -54,6 +54,14 @@ class _loginState extends State<login> {
       print("user${user}");
       print("agency${ta}");
 
+      localStorage = await SharedPreferences.getInstance();
+      localStorage.setString('role', role.toString());
+      localStorage.setInt('login_id', body['data']['login_id']);
+      localStorage.setInt('user_id', body['data']['user_id']);
+
+      print('login_id ${body['data']['login_id']}');
+      print('user_id ${body['data']['user_id']}');
+
 
 
 
@@ -69,13 +77,6 @@ ststatus == status
       ) {
         Navigator.of(context).push(MaterialPageRoute(builder: (context) => agencyhomescreen()));
 
-        localStorage = await SharedPreferences.getInstance();
-        localStorage.setString('role', role.toString());
-        localStorage.setInt('login_id', body['data']['login_id']);
-        localStorage.setInt('user_id', body['data']['user_id']);
-
-        print('login_id ${body['data']['login_id']}');
-         print('user_id ${body['data']['user_id']}');
 
       }
 
