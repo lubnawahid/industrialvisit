@@ -78,20 +78,20 @@ height: 600,
           ),
         ),
       ),
-      GestureDetector(
-        onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>booking()));
-        },
-        child: Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.white,),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset("images/booking.png",height: 80,),
-             // Text("booking",style: TextStyle(color: Colors.white,fontSize: 30),)
-            ],
-          ),
-        ),
-      ),
+      // GestureDetector(
+      //   onTap: () {
+      //     Navigator.push(context, MaterialPageRoute(builder: (context)=>booking()));
+      //   },
+      //   child: Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.white,),
+      //     child: Column(
+      //       mainAxisAlignment: MainAxisAlignment.center,
+      //       children: [
+      //         Image.asset("images/booking.png",height: 80,),
+      //        // Text("booking",style: TextStyle(color: Colors.white,fontSize: 30),)
+      //       ],
+      //     ),
+      //   ),
+      // ),
       GestureDetector(
         onTap: () {
           Navigator.push(context, MaterialPageRoute(builder: (context)=>chat()));
@@ -102,7 +102,7 @@ height: 600,
             children: [
               Image.asset("images/chat.png",height: 80,),
 
-              Text("Chat",style: TextStyle(color: Colors.black,fontSize: 30,fontStyle: FontStyle.italic),)
+              Text("Chat",style: TextStyle(color: Colors.black,fontSize: 19,fontStyle: FontStyle.italic),)
             ],
           ),
         ),
@@ -117,11 +117,26 @@ height: 600,
     children: [
     Image.asset("images/cash-on-delivery.png",height: 80,),
 
-    Text("Payment",style: TextStyle(color: Colors.black,fontSize:30,fontStyle: FontStyle.italic ),)
+    Text("Payment",style: TextStyle(color: Colors.black,fontSize:19,fontStyle: FontStyle.italic ),)
     ],
     ),
     ),
     ),
+      GestureDetector(
+        onTap: () {
+         // Navigator.push(context, MaterialPageRoute(builder: (context)=>payment()));
+        },
+        child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.white),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset("images/eye.png",height: 80,),
+
+              Text("View Bookings",style: TextStyle(color: Colors.black,fontSize:19,fontStyle: FontStyle.italic ),)
+            ],
+          ),
+        ),
+      ),
 
     ],
     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,mainAxisSpacing: 10,crossAxisSpacing: 10),
@@ -161,13 +176,13 @@ height: 600,
     Navigator.push(context, MaterialPageRoute(builder: (context)=>userprofile()));
     },
     ),
-    ListTile(
-    leading: Icon(Icons.book),
-    title: const Text('My Booked Items'),
-    onTap: (){
-     Navigator.push(context, MaterialPageRoute(builder: (context)=>const bookeditems()));
-    },
-    ),
+    // ListTile(
+    // leading: Icon(Icons.book),
+    // title: const Text('My Booked Items'),
+    // onTap: (){
+    //  Navigator.push(context, MaterialPageRoute(builder: (context)=>const bookeditems()));
+    // },
+    // ),
     ListTile(
     leading: Icon(Icons.logout),
     title: const Text('logout'),

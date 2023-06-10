@@ -47,6 +47,7 @@ class _packagecreationState extends State<packagecreation> {
   TextEditingController placecontroller = TextEditingController();
   TextEditingController datecontroller = TextEditingController();
   TextEditingController dayscontroller = TextEditingController();
+  TextEditingController pricecontroller = TextEditingController();
   void createPackages() async {
     localStrorage = await SharedPreferences.getInstance();
     user = (localStrorage.getInt('user_id') ?? 0);
@@ -60,6 +61,7 @@ class _packagecreationState extends State<packagecreation> {
       "companydescription":companydescriptioncontroller.text.trim(),
       "place": placecontroller.text.trim(),
       "days" : dayscontroller.text,
+      "price":pricecontroller.text,
       "date": startDate,
       "user": user.toString(),
 
@@ -218,24 +220,24 @@ class _packagecreationState extends State<packagecreation> {
                           hintText: 'Days'),
                     ),
                   ),
-                  // Container(
-                  //   padding: const EdgeInsets.all(10),
-                  //   child: TextFormField(
-                  //     validator: (value) {
-                  //       if (value == null || value.isEmpty) {
-                  //         return 'please enter time';
-                  //       }
-                  //       return null;
-                  //     },
-                  //     controller: dayscontroller,
-                  //     keyboardType: TextInputType.number,
-                  //     decoration: const InputDecoration(
-                  //       border: OutlineInputBorder(),
-                  //       labelText: 'Package Days',
-                  //       hintText: 'Package Days',
-                  //     ),
-                  //   ),
-                  // ),
+                   Container(
+                    padding: const EdgeInsets.all(10),
+                    child: TextFormField(
+                       validator: (value) {
+                         if (value == null || value.isEmpty) {
+                          return 'please enter price';
+                         }
+                       return null;
+                      },
+                      controller: pricecontroller,
+                       keyboardType: TextInputType.number,
+                     decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                       labelText: 'Package Price',
+                        hintText: 'Package Price',
+                     ),
+                    ),
+                   ),
 
 
 
