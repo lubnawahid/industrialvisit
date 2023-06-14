@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:industrialvisit/usercreatedpackagebookings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'api.dart';
@@ -25,6 +26,8 @@ class _userpackagedescriptionState extends State<userpackagedescription> {
   TextEditingController dateController=TextEditingController();
   TextEditingController daysController=TextEditingController();
   var companyname,companydescription,place,date,days;
+
+
 
   Future<void> _viewPro() async {
     int id = widget.id;
@@ -255,7 +258,8 @@ class _userpackagedescriptionState extends State<userpackagedescription> {
                       child: ElevatedButton(
                         style: style,
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => booking()));
+                          int id= widget.id;
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => usercreatedpackagebooking(id: id)));
                         },
                         child: const Text('Book Now'),
                       ),

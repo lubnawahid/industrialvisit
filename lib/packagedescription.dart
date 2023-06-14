@@ -19,6 +19,7 @@ class packagedescription extends StatefulWidget {
 class _packagedescriptionState extends State<packagedescription> {
   bool   _isLoading = false;
   late SharedPreferences localStorage;
+
   TextEditingController packagenameController=TextEditingController();
 
   TextEditingController companynameController=TextEditingController();
@@ -31,10 +32,13 @@ class _packagedescriptionState extends State<packagedescription> {
   TextEditingController packagecostController = TextEditingController();
 
 var packagename,companyname,companydescription,packagedate,packagetime,accommodation,fooddetails,guidedetails,packagecost;
+
+
+
+
   Future<void> _viewPro() async {
     int id = widget.id;
-    var res = await Api()
-        .getData('/api/packages_single_view/' + id.toString());
+    var res = await Api().getData('/api/packages_single_view/' + id.toString());
     var body = json.decode(res.body);
     print(body);
     setState(() {
@@ -48,9 +52,6 @@ var packagename,companyname,companydescription,packagedate,packagetime,accommoda
       fooddetails = body['data']['fooddetails'];
       guidedetails = body['data']['guidedetails'];
       packagecost = body['data']['packagecost'];
-
-
-
       packagenameController.text = packagename;
       companynameController.text=companyname;
       companydescriptionController.text=companydescription;
@@ -267,7 +268,8 @@ style: TextStyle(fontSize: 15),
                       child: ElevatedButton(
                         style: style,
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => booking()));
+                          int id= widget.id;
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => booking(id : id)));
                         },
                         child: const Text('Book Now'),
                       ),

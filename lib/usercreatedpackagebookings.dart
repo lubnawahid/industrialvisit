@@ -3,49 +3,50 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:industrialvisit/usercreatedpackagebooking1.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'api.dart';
 import 'booking1.dart';
 
-class booking extends StatefulWidget {
+class usercreatedpackagebooking extends StatefulWidget {
   final int id;
-  const booking({required this.id});
+  const usercreatedpackagebooking({required this.id});
 
 
   @override
-  State<booking> createState() => _bookingState();
+  State<usercreatedpackagebooking> createState() => _usercreatedpackagebookingState();
 }
 
-class _bookingState extends State<booking> {
-  DateTime selectedDate = DateTime.now();
-  late SharedPreferences prefs;
-  late String startDate;
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-        context: context,
-        initialDate: selectedDate,
-        firstDate: DateTime.now(),
-        lastDate: DateTime(2101));
-    if (picked != null && picked != selectedDate) {
-      setState(() {
-        selectedDate = picked;
-        startDate =
-        '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}';
-      });
-    }
-  }
+class _usercreatedpackagebookingState extends State<usercreatedpackagebooking> {
+  // DateTime selectedDate = DateTime.now();
+  // late SharedPreferences prefs;
+  // late String startDate;
+  // Future<void> _selectDate(BuildContext context) async {
+  //   final DateTime? picked = await showDatePicker(
+  //       context: context,
+  //       initialDate: selectedDate,
+  //       firstDate: DateTime.now(),
+  //       lastDate: DateTime(2101));
+  //   if (picked != null && picked != selectedDate) {
+  //     setState(() {
+  //       selectedDate = picked;
+  //       startDate =
+  //       '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}';
+  //     });
+  //   }
+  // }
   String name = "";
   String collegename = "";
-  String bookingdate = "";
- // String place = "";
+  //String bookingdate = "";
+  // String place = "";
   String numberofstudents = "";
   late int user_id;
   late SharedPreferences localStorage;
   bool  _isLoading = false;
   TextEditingController namecontroller = TextEditingController();
   TextEditingController collegenamecontroller = TextEditingController();
-  TextEditingController bookingdatecontroller = TextEditingController();
+  //TextEditingController bookingdatecontroller = TextEditingController();
   TextEditingController numberofstudentscontroller = TextEditingController();
 
 
@@ -58,20 +59,20 @@ class _bookingState extends State<booking> {
   Future<void> _viewPro() async {
     int id = widget.id;
     print("id${id}");
-    var res = await Api().getData('/api/packages_single_view/' + id.toString());
+    var res = await Api().getData('/api/user_packages_single_view/' + id.toString());
     var body = json.decode(res.body);
     print(body);
     setState(() {
       name = body['data']['name'];
       collegename = body['data']['collegename'];
-      bookingdate = body['data']['bookingdate'];
-     // place = body['data']['place'];
+     // bookingdate = body['data']['bookingdate'];
+      // place = body['data']['place'];
       numberofstudents = body['data']['numberofstudents'];
 
     });
   }
 
-  Future<void> bookpackage() async {
+  Future<void> bookuserpackage() async {
     setState(() {
       _isLoading = true;
     });
@@ -81,14 +82,14 @@ class _bookingState extends State<booking> {
     var data = {
       "user": user_id.toString(),
       "packages":id.toString(),
-      "bookingdate":startDate,
-"collegename":collegenamecontroller.text,
+
+      "collegename":collegenamecontroller.text,
       "numberofstudents":numberofstudentscontroller.text,
       "name":namecontroller.text,
 
     };
     print(data);
-    var res = await Api().authData(data,'/api/package_booking');
+    var res = await Api().authData(data,'/api/usercreatedpackage_booking');
     var body = json.decode(res.body);
     print(body);
     if(body['success']==true)
@@ -123,15 +124,15 @@ class _bookingState extends State<booking> {
         backgroundColor: Colors.blue,
         title: Text('Booking'),
         //leading: IconButton(
-         //   onPressed: () {
-            //  Navigator.pop(context);
-           // },
-            // icon: Icon(
-            //   Icons.arrow_back_ios,
-            //   size: 20,
-            //   color: Colors.black,
-            // )
-    ),
+        //   onPressed: () {
+        //  Navigator.pop(context);
+        // },
+        // icon: Icon(
+        //   Icons.arrow_back_ios,
+        //   size: 20,
+        //   color: Colors.black,
+        // )
+      ),
 
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -198,35 +199,7 @@ class _bookingState extends State<booking> {
                   //   ),
                   // ),
 
-                  Container(
-                    padding:  const EdgeInsets.all(20.0),
 
-                    child: Row(
-                      children: [
-                        ElevatedButton(
-                          onPressed: () => _selectDate(context),
-                          child: const Text('Select date'),
-
-                        ),SizedBox(width: 20,),
-                        Container(
-                          height: 45,
-                          width: 150,
-                          margin: const EdgeInsets.all(15.0),
-                          padding: const EdgeInsets.all(3.0),
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black26)),
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 8.0),
-                            child: Text(
-                              '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}',
-                              style: TextStyle(fontSize: 16, color: Colors.black38),
-                            ),
-                          ),
-                        ),
-
-                      ],
-                    ),
-                  ),
                   // Container(
                   //   padding: const EdgeInsets.all(10),
                   //   child: TextFormField(
@@ -340,7 +313,7 @@ class _bookingState extends State<booking> {
                       child: ElevatedButton(
                         child: const Text('Book'),
                         onPressed: () {
-                          bookpackage();
+                          bookuserpackage();
 
                           // print(nameController.text);
                           // var passwordController;
