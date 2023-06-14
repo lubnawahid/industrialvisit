@@ -296,7 +296,7 @@ class _agencyprofile1State extends State<agencyprofile1> {
       return Scaffold(
 
         appBar: AppBar(
-          backgroundColor: Colors.pinkAccent,
+          backgroundColor: Colors.blue,
           title: Text("Profile"),
           leading: IconButton(
             onPressed: (){
@@ -368,7 +368,7 @@ class _agencyprofile1State extends State<agencyprofile1> {
                   children: [
                     OutlinedButton(
                       onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>profile()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>agencyhomescreen()));
                       },
                       child: Text("CANCEL",style: TextStyle(
                           fontSize: 15,
@@ -387,7 +387,7 @@ class _agencyprofile1State extends State<agencyprofile1> {
                       },
                       child: Text("EDIT",style: TextStyle(fontSize: 15, letterSpacing: 2, color: Colors.white),),
                       style: ElevatedButton.styleFrom(
-                          primary: Colors.pinkAccent,
+                          primary: Colors.blue,
                           padding: EdgeInsets.symmetric(horizontal: 50),
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))
                       ),

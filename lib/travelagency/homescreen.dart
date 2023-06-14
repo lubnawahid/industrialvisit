@@ -38,13 +38,13 @@ class _agencyhomescreenState extends State<agencyhomescreen> {
                     onTap: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>managepackages()));
                     },
-                    child: Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.blue,),
+                    child: Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.white,),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset("images/project-management.png",height: 80,),
 SizedBox(height: 18,),
-                          Text("Manage Packages",style: TextStyle(color: Colors.white,fontSize: 20),)
+                          Text("Manage Packages",style: TextStyle(color: Colors.black,fontSize: 20),)
                         ],
                       ),
                     ),
@@ -53,13 +53,13 @@ SizedBox(height: 18,),
                     onTap: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>userpackagedetail()));
                     },
-                    child: Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.pink,),
+                    child: Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.white,),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset("images/eye.png",height: 80,),
                           SizedBox(height: 17,),
-                          Text("View Users Package",style: TextStyle(color: Colors.white,fontSize: 16),)
+                          Text("View Users Package",style: TextStyle(color: Colors.black,fontSize: 16),)
                         ],
                       ),
                     ),
@@ -68,13 +68,13 @@ SizedBox(height: 18,),
                     onTap: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>viewbookings()));
                     },
-                    child: Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.red,),
+                    child: Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.white,),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset("images/vision.png",height: 80,),
                            SizedBox(height: 18,),
-                           Text("View bookings",style: TextStyle(color: Colors.white,fontSize: 23),)
+                           Text("View bookings",style: TextStyle(color: Colors.black,fontSize: 23),)
                         ],
                       ),
                     ),
@@ -84,13 +84,13 @@ SizedBox(height: 18,),
                     onTap: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>viewpayment()));
                     },
-                    child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.lightBlueAccent),
+                    child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.white),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset("images/payment-method.png",height: 80,),
 SizedBox(height: 20,),
-                          Text("View Payment",style: TextStyle(color: Colors.white,fontSize:23 ),)
+                          Text("View Payment",style: TextStyle(color: Colors.black,fontSize:23 ),)
                         ],
                       ),
                     ),
@@ -104,7 +104,7 @@ SizedBox(height: 20,),
         ),
         appBar: AppBar
           (
-          backgroundColor: Colors.pinkAccent,/*leading: IconButton(onPressed:(){},
+          backgroundColor: Colors.blue,/*leading: IconButton(onPressed:(){},
     icon:Icon(Icons.menu)),*/
           title: Text("HomePage"),
         ),

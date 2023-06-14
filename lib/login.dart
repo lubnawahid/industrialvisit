@@ -165,7 +165,7 @@ ststatus == status
       //  print("error");
     //  }
    // },
-    style:ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),primary: Colors.pinkAccent,fixedSize: Size(300, 50)),
+    style:ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),primary: Colors.blue,fixedSize: Size(300, 50)),
 
     ),
     SizedBox(height: 30.0,),
