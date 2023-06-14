@@ -122,15 +122,7 @@ class _bookingState extends State<booking> {
         brightness: Brightness.light,
         backgroundColor: Colors.blue,
         title: Text('Booking'),
-        //leading: IconButton(
-         //   onPressed: () {
-            //  Navigator.pop(context);
-           // },
-            // icon: Icon(
-            //   Icons.arrow_back_ios,
-            //   size: 20,
-            //   color: Colors.black,
-            // )
+
     ),
 
       body: Container(

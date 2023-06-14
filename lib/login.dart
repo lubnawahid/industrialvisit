@@ -145,7 +145,7 @@ ststatus == status
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => fpassword()));
     },
-        child:Text("Forgot Password?",style: TextStyle(color:Colors.pinkAccent,fontSize: 14),),
+        child:Text("Forgot Password?",style: TextStyle(color:Colors.blue,fontSize: 14),),
 
 
     ),
@@ -176,7 +176,7 @@ ststatus == status
     TextButton(onPressed: (){
     Navigator.push(context, MaterialPageRoute(builder: (context)=>registration()));
     },
-    child: const Text('Register Here',style: TextStyle(color:Colors.pinkAccent,fontSize: 16),),
+    child: const Text('Register Here',style: TextStyle(color:Colors.blue,fontSize: 16),),
     ),
 
     ],

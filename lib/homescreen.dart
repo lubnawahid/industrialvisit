@@ -31,10 +31,12 @@ height: 600,
 
         child:Padding(
         padding:const EdgeInsets.all(20),
+
     child: GridView(
 
 
     children: [
+
       GestureDetector(
         onTap: () {
           Navigator.push(context, MaterialPageRoute(builder: (context)=>packages()));
@@ -45,7 +47,7 @@ height: 600,
             children: [
               Image.asset("images/luggage.png",height: 80,),
 
-              Text("Packages",style: TextStyle(color: Colors.black,fontSize: 25,fontStyle: FontStyle.italic),)
+              Text("Packages",style: TextStyle(color: Colors.black,fontSize: 22,fontStyle: FontStyle.normal),)
             ],
           ),
         ),
@@ -59,7 +61,7 @@ height: 600,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset("images/product-design.png",height: 80,),
-              Text("Package creation",style: TextStyle(color: Colors.black,fontSize: 22,fontStyle: FontStyle.italic),)
+              Text("Package creation",style: TextStyle(color: Colors.black,fontSize: 22,fontStyle: FontStyle.normal),)
             ],
           ),
         ),
@@ -73,7 +75,7 @@ height: 600,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset("images/package.png",height: 80,),
-              Text("User Created Packages",style: TextStyle(color: Colors.black,fontSize: 19,fontStyle: FontStyle.italic),)
+              Text("User Created Packages",style: TextStyle(color: Colors.black,fontSize: 19,fontStyle: FontStyle.normal),)
             ],
           ),
         ),
@@ -102,7 +104,7 @@ height: 600,
             children: [
               Image.asset("images/chat.png",height: 80,),
 
-              Text("Chat",style: TextStyle(color: Colors.black,fontSize: 19,fontStyle: FontStyle.italic),)
+              Text("Chat",style: TextStyle(color: Colors.black,fontSize: 19,fontStyle: FontStyle.normal),)
             ],
           ),
         ),
@@ -117,7 +119,7 @@ height: 600,
     children: [
     Image.asset("images/cash-on-delivery.png",height: 80,),
 
-    Text("Payment",style: TextStyle(color: Colors.black,fontSize:19,fontStyle: FontStyle.italic ),)
+    Text("Payment",style: TextStyle(color: Colors.black,fontSize:19,fontStyle: FontStyle.normal ),)
     ],
     ),
     ),
@@ -132,7 +134,7 @@ height: 600,
             children: [
               Image.asset("images/eye.png",height: 80,),
 
-              Text("View Bookings",style: TextStyle(color: Colors.black,fontSize:19,fontStyle: FontStyle.italic ),)
+              Text("View Bookings",style: TextStyle(color: Colors.black,fontSize:19,fontStyle: FontStyle.normal ),)
             ],
           ),
         ),

@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:industrialvisit/usercreatedpackagebookings.dart';
+import 'package:industrialvisit/userpackagebooking.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'api.dart';
@@ -259,7 +259,7 @@ class _userpackagedescriptionState extends State<userpackagedescription> {
                         style: style,
                         onPressed: () {
                           int id= widget.id;
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => usercreatedpackagebooking(id: id)));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => usercreatedbooking(id: id)));
                         },
                         child: const Text('Book Now'),
                       ),

@@ -312,7 +312,7 @@ class _userprofileState extends State<userprofile> {
     return Scaffold(
 
       appBar: AppBar(
-        backgroundColor: Colors.pinkAccent,
+        backgroundColor: Colors.blue,
         title: Text("Profile"),
         leading: IconButton(
           onPressed: (){
@@ -403,7 +403,7 @@ class _userprofileState extends State<userprofile> {
                     },
                     child: Text("EDIT",style: TextStyle(fontSize: 15, letterSpacing: 2, color: Colors.white),),
                     style: ElevatedButton.styleFrom(
-                        primary: Colors.pinkAccent,
+                        primary: Colors.blue,
                         padding: EdgeInsets.symmetric(horizontal: 50),
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))
                     ),
