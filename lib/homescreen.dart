@@ -5,6 +5,7 @@ import 'package:industrialvisit/homescreen.dart';
 import 'package:industrialvisit/packagecreation.dart';
 import 'package:industrialvisit/packages.dart';
 import 'package:industrialvisit/payment.dart';
+import 'package:industrialvisit/payment0.dart';
 import 'package:industrialvisit/payment1.dart';
 import 'package:industrialvisit/profile.dart';
 import 'package:industrialvisit/usercreatedpackages.dart';
@@ -18,6 +19,8 @@ class homescreen extends StatefulWidget {
   @override
   State<homescreen> createState() => _homescreenState();
 }
+
+String? payment;
 class _homescreenState extends State<homescreen> {
   @override
   Widget build(BuildContext context) {
@@ -111,7 +114,7 @@ height: 600,
       ),
     GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>payment()));
+        Navigator.push(context, MaterialPageRoute(builder: (context)=> Pay()));
       },
     child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.white),
     child: Column(

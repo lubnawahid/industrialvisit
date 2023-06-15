@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:industrialvisit/payment.dart';
+import 'package:industrialvisit/payment1.dart';
 
 import 'homescreen.dart';
 
@@ -33,7 +35,7 @@ class _booking1State extends State<booking1> {
 
               ElevatedButton(onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => homescreen()));
+                    MaterialPageRoute(builder: (context) => Payment2(price: '',)));
               },
                 style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50.0)),

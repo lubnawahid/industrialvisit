@@ -330,7 +330,7 @@ class _bookingState extends State<booking> {
                       height: 50,
                       padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
                       child: ElevatedButton(
-                        child: const Text('Book'),
+                        child: const Text('Continue'),
                         onPressed: () {
                           bookpackage();
 
