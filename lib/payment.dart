@@ -11,165 +11,6 @@ import 'api.dart';
 import 'homescreen.dart';
 
 
-
-// class _paymentState extends State<payment> {
-//   TextEditingController amountController=TextEditingController();
-//   TextEditingController cardnumController=TextEditingController();
-//   TextEditingController expiryController=TextEditingController();
-//   TextEditingController cvvController=TextEditingController();
-//
-//
-//   String value="";
-//   String i="";
-//   final List paymentLabels=[
-//     'Credi card/ Debit card',
-//     'cash on delivery',
-//     'Google pay',
-//   ];
-//   final List paymentIcons=[
-//     Icons.credit_card,
-//     Icons.money_off,
-//     Icons.account_balance_wallet,
-//
-//   ];
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//
-//       backgroundColor: Colors.white,
-//       appBar: AppBar(
-//         title: Text('payment'),
-//       ),
-//
-//       body: SingleChildScrollView(
-//         child: Column(
-//           children: [
-//             Padding(padding: EdgeInsets.all(8),
-//               child:Text(
-//                   'choose your payment method',
-//
-//                   style:TextStyle(fontSize: 20.0)
-//               ),
-//             ),
-//             SizedBox(height: 20,),
-//             Card(
-//
-//               child: Column(
-//                 children: [
-//                   RadioListTile(
-//                       title: Text(
-//                         'Credit Card',
-//                         style: TextStyle(color: Colors.black, fontSize: 20),
-//                       ),
-//                       value: 'credit',
-//                       groupValue: payment,
-//                       onChanged: (value) {
-//                         setState(() {
-//                           payment = value.toString();
-//                         });
-//                       }),
-//                   RadioListTile(
-//                       title: Text(
-//                         'Cash on Delivery',
-//                         style: TextStyle(color: Colors.black, fontSize: 20),
-//                       ),
-//                       value: 'debit',
-//                       groupValue: payment,
-//                       onChanged: (value) {
-//                         setState(() {
-//                           payment = value.toString();
-//                         });
-//                       }),
-//                   RadioListTile(
-//                       title: Text(
-//                         'UPI',
-//                         style: TextStyle(color: Colors.black, fontSize: 20),
-//                       ),
-//                       value: 'upi',
-//                       groupValue: payment,
-//                       onChanged: (value) {
-//                         setState(() {
-//                           payment = value.toString();
-//                         });
-//                       }),
-//                   RadioListTile(
-//                       title: Text(
-//                         'Net Banking',
-//                         style: TextStyle(color: Colors.black, fontSize: 20),
-//                       ),
-//                       value: 'netBanking',
-//                       groupValue: payment,
-//                       onChanged: (value) {
-//                         setState(() {
-//                           payment = value.toString();
-//                         });
-//                       }),
-//                 ],
-//               ),
-//             ),
-//
-//
-//             Column(
-//
-//               children: [
-//                 Align(
-//                   alignment: Alignment.centerLeft,
-//                   child: Padding(
-//                     padding: const EdgeInsets.all(8.0),
-//                     child: Text('Amount',style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
-//                   ),
-//                 ),
-//
-//                 Padding(
-//                   padding: const EdgeInsets.all(8.0),
-//                   child: TextFormField(
-//                     controller: amountController,
-//                     keyboardType: TextInputType.number,
-//                     decoration: InputDecoration(
-//                         border: OutlineInputBorder(
-//                           borderRadius: BorderRadius.circular(22),
-//                         )
-//                     ),
-//                   ),
-//                 ),
-//               ],
-//             ),
-//
-//
-//
-//
-//
-//             SizedBox(height: 20,),
-//
-//             Align(
-//               alignment: Alignment.center,
-//               child: ElevatedButton(
-//                 onPressed: (){
-//                   Navigator.push(context, MaterialPageRoute(builder: (context)=>const payment1()));
-//                 },
-//                 child: Text('pay',style: TextStyle(fontSize: 18),),
-//                 style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(29.0)),fixedSize: Size(180, 53)),
-//               ),
-//             ),
-//             SizedBox(height: 20,)
-//           ],
-//         ),
-//       ),
-//
-//     );
-//
-//
-//   }
-//   String ? payment;
-
-
-
-
-
-//
-// }
-
-
 class Payment2 extends StatefulWidget {
   final String price;
 
@@ -189,8 +30,8 @@ class _Payment2State extends State<Payment2> {
   DateTime? _selectDate;
   late SharedPreferences prefs;
   bool isLoading = false;
-  late int user_id, order_id,booking_id;
-  late String packageprice;
+  late int user_id,booking_id;
+  late String price;
   Future<void> _showDialog(BuildContext context) {
     return showDialog(
         context: context,
@@ -211,13 +52,13 @@ class _Payment2State extends State<Payment2> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    packageprice=widget.price;
-    print(packageprice);
+    price=widget.price;
+    print(price);
   }
-  Future PlaceOrders() async {
-    packageprice=widget.price;
+  Future placepackage() async {
+    price=widget.price;
 
-    print(packageprice);
+    print(price);
     prefs = await SharedPreferences.getInstance();
     user_id = (prefs.getInt('user_id') ?? 0);
     booking_id =(prefs.getInt('booking_id') ?? 0);
@@ -229,7 +70,7 @@ class _Payment2State extends State<Payment2> {
     var data = {
       "user_id": user_id.toString(),
       "booking_id":booking_id.toString(),
-      "amount": packageprice,
+      "amount": price,
       "date":formattedDate
     };
     print(data);
@@ -237,10 +78,11 @@ class _Payment2State extends State<Payment2> {
     var body = json.decode(res.body);
     print(body);
     if (body['success'] == true) {
+     // price=body['data']['price'];
+     // print("package${price}");
+       _showDialog(context);
 
-      _showDialog(context);
-
-      print(body);
+       print(body);
       Fluttertoast.showToast(
         msg: body['message'].toString(),
         backgroundColor: Colors.grey,
@@ -337,8 +179,8 @@ class _Payment2State extends State<Payment2> {
               TextField(
                 readOnly: true,
                 decoration: InputDecoration(
-                  labelText:packageprice ,
-                  hintText:packageprice ,
+                  labelText:price ,
+                  hintText:price ,
                   hintStyle: TextStyle(
                       color: Colors.green
                   ),
@@ -359,7 +201,7 @@ class _Payment2State extends State<Payment2> {
                       // padding: EdgeInsets.all(20)
                     ),
                     onPressed: (){
-                      PlaceOrders();
+                      placepackage();
                     } ,
                     child: Text("CONTINUE")),
               ),

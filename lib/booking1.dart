@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:industrialvisit/payment.dart';
 import 'package:industrialvisit/payment1.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'homescreen.dart';
 
 class booking1 extends StatefulWidget {
+
   const booking1({Key? key}) : super(key: key);
 
   @override
@@ -13,6 +15,12 @@ class booking1 extends StatefulWidget {
 }
 
 class _booking1State extends State<booking1> {
+   String price='';
+
+
+   bool isLoading = false;
+   late SharedPreferences localStorage;
+   late int user_id;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +43,7 @@ class _booking1State extends State<booking1> {
 
               ElevatedButton(onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Payment2(price: '',)));
+                    MaterialPageRoute(builder: (context) => Payment2(price:price)));
               },
                 style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50.0)),
