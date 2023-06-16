@@ -78,11 +78,11 @@ class _Payment2State extends State<Payment2> {
     var body = json.decode(res.body);
     print(body);
     if (body['success'] == true) {
-     // price=body['data']['price'];
-     // print("package${price}");
-       _showDialog(context);
-
-       print(body);
+     price=body['data']['price'];
+     print(price);
+       // _showDialog(context);
+       //
+       // print(body);
       Fluttertoast.showToast(
         msg: body['message'].toString(),
         backgroundColor: Colors.grey,

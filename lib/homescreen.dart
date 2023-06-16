@@ -10,6 +10,8 @@ import 'package:industrialvisit/payment1.dart';
 import 'package:industrialvisit/profile.dart';
 import 'package:industrialvisit/usercreatedpackages.dart';
 import 'package:industrialvisit/userprofile.dart';
+import 'package:industrialvisit/viewbookings.dart';
+import 'package:industrialvisit/viewucpbookings.dart';
 import 'package:industrialvisit/welcome.dart';
 import 'booking.dart';
 import 'chat.dart';
@@ -28,7 +30,7 @@ class _homescreenState extends State<homescreen> {
 
         body: SingleChildScrollView(
         child:Container(
-height: 600,
+height: 900,
 
 
 
@@ -129,7 +131,7 @@ height: 600,
     ),
       GestureDetector(
         onTap: () {
-         // Navigator.push(context, MaterialPageRoute(builder: (context)=>payment()));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>viewbookings()));
         },
         child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.white),
           child: Column(
@@ -142,7 +144,21 @@ height: 600,
           ),
         ),
       ),
+      GestureDetector(
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>viewucpbookings()));
+        },
+        child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.white),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset("images/read.png",height: 80,),
 
+              Text("Other Bookings",style: TextStyle(color: Colors.black,fontSize:19,fontStyle: FontStyle.normal ),)
+            ],
+          ),
+        ),
+      ),
     ],
     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,mainAxisSpacing: 10,crossAxisSpacing: 10),
     ),

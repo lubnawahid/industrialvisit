@@ -3,8 +3,9 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:industrialvisit/travelagency/packageedit.dart';
 
-import '../api.dart';
+import 'api.dart';
 
 class viewbookings extends StatefulWidget {
   const viewbookings({Key? key}) : super(key: key);
@@ -14,9 +15,8 @@ class viewbookings extends StatefulWidget {
 }
 
 class _viewbookingsState extends State<viewbookings> {
-  List _loaddata = [];
+  List _loaddata=[];
   late int id;
-
   _fetchData() async {
     var res = await Api()
         .getData('/api/booking_all_view');
@@ -37,7 +37,6 @@ class _viewbookingsState extends State<viewbookings> {
       );
     }
   }
-
   @override
   void initState() {
     // TODO: implement initState
@@ -47,6 +46,8 @@ class _viewbookingsState extends State<viewbookings> {
 
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
 
       appBar: AppBar(
@@ -71,13 +72,14 @@ class _viewbookingsState extends State<viewbookings> {
             ListView.builder(
 
                 physics: NeverScrollableScrollPhysics(),
-                itemCount: _loaddata.length,
+                itemCount:_loaddata.length,
                 shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  int id = _loaddata[index]['id'];
+                itemBuilder: (context, index)
+                {
+                  int id= _loaddata[index]['id'];
                   return GestureDetector(
-                    onTap: () =>
-                    {
+                    onTap: () => {
+
                     },
                     // itemCount: 7,
                     // itemBuilder: (context, index)
@@ -94,20 +96,21 @@ class _viewbookingsState extends State<viewbookings> {
                     child: ListTile(
 
                       // subtitle: Text("24/06/23"),
-                        leading: Icon(Icons.book, color: Colors.red,),
-                        title: Text(
+                        leading: Icon(Icons.book,color: Colors.red,),
+                        title:  Text(
                           _loaddata[index]['packagename'],
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         trailing: ElevatedButton(
 
-                          onPressed: () {
-                            // Navigator.push(context, MaterialPageRoute(builder: (context) => packageedit(id:id) ));
+                          onPressed: (){
+                           // Navigator.push(context, MaterialPageRoute(builder: (context) => packageedit(id:id) ));
                           },
-                          child: const Text('Booked'),
+                          child:const Text('Booked'),
                         )
                     ),
                   );
+
                 }
             ),
             // floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,

@@ -1,9 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:industrialvisit/payment.dart';
 import 'package:industrialvisit/payment1.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'api.dart';
 import 'homescreen.dart';
 
 class booking1 extends StatefulWidget {
@@ -22,6 +25,26 @@ class _booking1State extends State<booking1> {
    late SharedPreferences localStorage;
    late int user_id;
   @override
+
+  initState() {
+    super.initState();
+    _viewPro();
+  }
+   Future<void> _viewPro() async {
+     // int id = widget.id;
+     // print("id${id}");
+     var res = await Api().getData('/api/booking_all_view/');
+     var body = json.decode(res.body);
+     print(body);
+     setState(() {
+       price = body['data']['price'];
+       // collegename = body['data']['collegename'];
+       // bookingdate = body['data']['bookingdate'];
+       // // place = body['data']['place'];
+       // numberofstudents = body['data']['numberofstudents'];
+
+     });
+   }
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
