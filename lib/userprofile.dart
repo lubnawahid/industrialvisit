@@ -238,13 +238,13 @@ class _userprofileState extends State<userprofile> {
   late int user_id;
   String name="";
  // String name='';
-  String place='';
+  String collegename='';
   String phonenumber='';
   late SharedPreferences prefs;
   TextEditingController nameController=TextEditingController();
   //TextEditingController agencynameController=TextEditingController();
 
-  TextEditingController placeController=TextEditingController();
+  TextEditingController collegenameController=TextEditingController();
   TextEditingController phonenumberController=TextEditingController();
   @override
 
@@ -268,14 +268,14 @@ class _userprofileState extends State<userprofile> {
     setState(() {
       name = body['data']['name'];
       //agencyname = body['data']['agencyname'];
-      place = body['data']['place'];
+      collegename = body['data']['collegename'];
       phonenumber = body['data']['phonenumber'];
 
 
 
       nameController.text = name;
      // agencynameController.text = agencyname;
-      placeController.text=place;
+      collegenameController.text=collegename;
       phonenumberController.text=phonenumber;
 
     });
@@ -287,11 +287,11 @@ class _userprofileState extends State<userprofile> {
     prefs = await SharedPreferences.getInstance();
     user_id = (prefs.getInt('user_id') ?? 0 );
     print(user_id);
-    var uri = Uri.parse(Api().url+'/api/userprofile_update/'+ user_id.toString()); // Replace with your API endpoint
+    var uri = Uri.parse(Api().url+'/api/userprofile_update/'+user_id.toString()); // Replace with your API endpoint
     var request = http.MultipartRequest('PUT', uri);
     request.fields['name'] = name;
    // request.fields['agencyname'] = agencyname;
-    request.fields['place'] = place;
+    request.fields['collegename'] = collegename;
     request.fields['phonenumber'] = contact;
 
     print(request.fields);
@@ -374,7 +374,7 @@ class _userprofileState extends State<userprofile> {
               SizedBox(height: 60,),
               buildTextField("Name",nameController),
              // buildTextField("Agency name",agencynameController),
-              buildTextField("Place",placeController),
+              buildTextField("collegename",collegenameController),
               buildTextField("Phone number", phonenumberController),
 
               SizedBox(height: 70,),
@@ -399,7 +399,7 @@ class _userprofileState extends State<userprofile> {
 
                   ElevatedButton(
                     onPressed: (){
-                      _update(nameController.text,placeController.text,phonenumberController.text);
+                      _update(nameController.text,collegenameController.text,phonenumberController.text);
                     },
                     child: Text("EDIT",style: TextStyle(fontSize: 15, letterSpacing: 2, color: Colors.white),),
                     style: ElevatedButton.styleFrom(
