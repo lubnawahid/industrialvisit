@@ -11,6 +11,7 @@ import 'package:industrialvisit/profile.dart';
 import 'package:industrialvisit/usercreatedpackages.dart';
 import 'package:industrialvisit/userprofile.dart';
 import 'package:industrialvisit/viewbookings.dart';
+import 'package:industrialvisit/viewtravelagency.dart';
 import 'package:industrialvisit/viewucpbookings.dart';
 import 'package:industrialvisit/welcome.dart';
 import 'booking.dart';
@@ -256,7 +257,7 @@ class _homescreenState extends State<homescreen> {
                       ),
                     ),
                   ),
-
+SizedBox(height: 30,),
                   GridView.count(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
@@ -395,7 +396,7 @@ class _homescreenState extends State<homescreen> {
                           color: Colors.transparent,
                           child: InkWell(
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>chat()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>viewtravelagency()));
                             },
                             child: Column(
                               children: [
@@ -552,7 +553,7 @@ class _homescreenState extends State<homescreen> {
               currentAccountPicture: CircleAvatar(
                 backgroundColor: Colors.orange,
                 child: Text(
-                  "T",
+                  "L",
                   style: TextStyle(fontSize: 40.0),
                 ),
               ),

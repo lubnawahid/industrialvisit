@@ -188,7 +188,7 @@ class _agencyhomescreenState extends State<agencyhomescreen> {
                       ),
                     ),
                   ),
-
+SizedBox(height: 50,),
                   GridView.count(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),

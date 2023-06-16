@@ -15,6 +15,7 @@ class _chatState extends State<chat> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle:true,
         title: Text("Message Here"),
 
 
