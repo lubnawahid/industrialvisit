@@ -8,6 +8,8 @@ import 'package:industrialvisit/travelagency/viewpayment.dart';
 
 import '../agencyprofile.dart';
 //import '../welcome.dart';
+import '../chat.dart';
+import 'chat.dart';
 import 'managepackages.dart';
 
 // class agencyhomescreen extends StatefulWidget {
@@ -287,7 +289,7 @@ SizedBox(height: 50,),
                           color: Colors.transparent,
                           child: InkWell(
                             onTap: () {
-                            //  Navigator.push(context, MaterialPageRoute(builder: (context)=>viewbookings()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>agencychat()));
 
                             },
                             child: Column(
