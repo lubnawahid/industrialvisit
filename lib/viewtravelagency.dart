@@ -16,10 +16,11 @@ class viewtravelagency extends StatefulWidget {
 
 class _viewtravelagencyState extends State<viewtravelagency> {
   List _loaddata=[];
-  late int id;
+  // late int id;
   _fetchData() async {
-    var res = await Api()
-        .getData('/api/travelagency_all_view');
+
+
+    var res = await Api().getData('/api/travelagency_all_view');
     if (res.statusCode == 200) {
       var items = json.decode(res.body)['data'];
       print(items);
@@ -99,13 +100,13 @@ class _viewtravelagencyState extends State<viewtravelagency> {
                       // subtitle: Text("24/06/23"),
                         leading: Icon(Icons.travel_explore_sharp,color: Colors.red,),
                         title:  Text(
-                          _loaddata[index]['name'],
+                          _loaddata[index]['agencyname'],
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         trailing: ElevatedButton(
 
                           onPressed: (){
-                             Navigator.push(context, MaterialPageRoute(builder: (context) => chat() ));
+                             Navigator.push(context, MaterialPageRoute(builder: (context) => chat(id:id) ));
                           },
                           child:const Text('Message'),
                         )

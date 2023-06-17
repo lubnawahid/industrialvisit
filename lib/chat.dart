@@ -10,167 +10,90 @@ import 'api.dart';
 import 'chatdetailpage.dart';
 
 class chat extends StatefulWidget {
-  const chat({Key? key}) : super(key: key);
-
+  final int id;
+  const chat({required this.id});
   @override
   State<chat> createState() => _chatState();
 }
 
 class _chatState extends State<chat> {
 //   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         centerTitle:true,
-//         title: Text("Message Here"),
-//
-//
-//       ),
-//     body: Stack(
-//       children: <Widget>[
-//
-//         /*ListView.builder(
-//           itemCount: messages.length,
-//           shrinkWrap: true,
-//           padding: EdgeInsets.only(top: 10,bottom: 10),
-//           physics: NeverScrollableScrollPhysics(),
-//           itemBuilder: (context, index){
-//             return Container(
-//               padding: EdgeInsets.only(left: 16,right: 16,top: 10,bottom: 10),
-//               child: Text(messages[index].messageContent),
-//             );
-//           },
-//         ),*/
-//     ListView.builder(
-//     itemCount: messages.length,
-//     shrinkWrap: true,
-//     padding: EdgeInsets.only(top: 10,bottom: 10),
-//     physics: NeverScrollableScrollPhysics(),
-//     itemBuilder: (context, index){
-//     return Container(
-//     padding: EdgeInsets.only(left: 14,right: 14,top: 10,bottom: 10),
-//     child:
-//         Align(
-//
-//           alignment: (messages[index].messageType == "sender"?Alignment.topLeft:Alignment.topRight),
-//           child: Container(
-//             decoration: BoxDecoration(
-//               borderRadius: BorderRadius.circular(20),
-//               color: (messages[index].messageType  == "receiver"?Colors.grey.shade200:Colors.blue[200]),
-//             ),
-//             padding: EdgeInsets.all(16),
-//             child: Text(messages[index].messageContent, style: TextStyle(fontSize: 15),),
-//           ),
-//         ),
-//     );
-//     },
-//     ),
-//
-//        Align( alignment: Alignment.bottomLeft,
-//           child: Container(
-//             padding: EdgeInsets.only(left: 10,bottom: 10,top: 10),
-//             height: 70,
-//             width: double.infinity,
-//             color: Colors.white,
-//             child: Row(
-//               children: <Widget>[
-//                 GestureDetector(
-//                   onTap: (){
-//                   },
-//                   child: Container(
-//                     height: 30,
-//                     width: 30,
-//                     decoration: BoxDecoration(
-//                       color: Colors.lightBlue,
-//                       borderRadius: BorderRadius.circular(30),
-//                     ),
-//                     child: Icon(Icons.add, color: Colors.white, size: 20, ),
-//                   ),
-//                 ),
-//                 SizedBox(width: 15,),
-//                 Expanded(
-//                   child: TextField(
-//                     decoration: InputDecoration(
-//                         hintText: "Write message...",
-//                         hintStyle: TextStyle(color: Colors.black54),
-//                         border: InputBorder.none
-//                     ),
-//                   ),
-//                 ),
-//                 SizedBox(width: 15,),
-//                 FloatingActionButton(
-//                   onPressed: (){},
-//                   child: Icon(Icons.send,color: Colors.white,size: 18,),
-//                   backgroundColor: Colors.blue,
-//                   elevation: 0,
-//                 ),
-//               ],
-//
-//             ),
-//           ),
-//         ),
-//       ],
-//     ),
-//     );
-//
-//
-//
-//   }
-// }
-  TextEditingController messageController=TextEditingController();
- //DateTime datetime = DateTime.now();
-  //String datetime1='';
-  late SharedPreferences prefs;
+
+String message="";
+late int id;
   late int user_id;
   late int travelagency_id;
-  bool _isLoading=false;
-  void chat()
+  late SharedPreferences localStorage;
+  bool  _isLoading = false;
+  TextEditingController messageController = TextEditingController();
+@override
+void initState() {
+  // TODO: implement initState
+  super.initState();
+  _viewPro();
+}
 
-  async {
-   // datetime1 = DateFormat("yyyy-MM-dd").format(datetime);
-    prefs = await SharedPreferences.getInstance();
-    user_id = (prefs.getInt('user')?? 0);
-    travelagency_id = (prefs.getInt('travelagency')?? 0);
-    setState(() {
-      _isLoading = true;
-    });
+Future<void> _viewPro() async {
+  int id = widget.id;
+  print("id${id}");
 
-    var data = {
-      "message": messageController.text.trim(),
-      "user_id": user_id.toString(),
-      "travelagency_id":travelagency_id.toString(),
-    };
+  var res = await Api().getData('/api/travelagency_single_view/' + id.toString());
+  var body = json.decode(res.body);
+  print(body);
+  setState(() {
+    user_id = body['data']['user_id'];
+    travelagency_id = body['data']['travelagency_id'];
+    message = body['data']['message'];
 
-    print(" data${data}");
-    var res = await Api().authData(data,'/api/chat');
-    var body = json.decode(res.body);
+    messageController.text=message;
+
+  });
+}
+Future<void> chat() async {
+  setState(() {
+    _isLoading = true;
+  });
+  int id = widget.id;
+
+  localStorage = await SharedPreferences.getInstance();
+  user_id = (localStorage.getInt('user_id') ?? 0);
+  var data = {
+    "user_id": user_id.toString(),
+    "travelagency_id":id.toString(),
+
+    "message":messageController.text,
+
+  };
+  print(data);
+  var res = await Api().authData(data,'/api/user_chat');
+  var body = json.decode(res.body);
+  print(body);
+  if(body['success']==true)
+  {
     print(body);
-    if(body['success']==true)
-    {
 
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>homescreen()));
-      Fluttertoast.showToast(
-        msg: body['message'].toString(),
-        backgroundColor: Colors.grey,
-      );
-    }
-    else
-    {
-      Fluttertoast.showToast(
-        msg: body['message'].toString(),
-        backgroundColor: Colors.grey,
-      );
 
-    }
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>homescreen()));
+    Fluttertoast.showToast(
+      msg: body['message'].toString(),
+      backgroundColor: Colors.grey,
+    );
   }
- // TextEditingController dateInput = TextEditingController();
+  else
+  {
+    Fluttertoast.showToast(
+      msg: body['message'].toString(),
+      backgroundColor: Colors.grey,
+    );
 
-  @override
-  // void initState() {
-  //   dateInput.text = ""; //set the initial value of text field
-  //   super.initState();
-  // }
-  @override
+  }
+}
+
+
+
+
+@override
+
   Widget build(BuildContext context) {
     var size=MediaQuery.of(context).size;
     return Scaffold(
