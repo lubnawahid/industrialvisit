@@ -270,6 +270,42 @@ SizedBox(height: 50,),
                           ),
                         ),
                       ),
+                      Container(
+                        padding: EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(15),
+                            boxShadow: [
+                              BoxShadow(
+                                  offset: Offset(0,17),
+                                  blurRadius: 17,
+                                  spreadRadius: -23
+                              )
+                            ]
+                        ),
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            onTap: () {
+                            //  Navigator.push(context, MaterialPageRoute(builder: (context)=>viewbookings()));
+
+                            },
+                            child: Column(
+                              children: [
+
+                                new Image.asset('images/chatting.jpg',
+                                  height: 90,
+                                  width: 150,
+                                  alignment: Alignment.center,
+                                ),
+                                SizedBox(height: 10,),
+                                Text('Chat',textAlign: TextAlign.center,style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),)
+
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
 
 
 
