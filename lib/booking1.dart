@@ -18,12 +18,13 @@ class booking1 extends StatefulWidget {
 }
 
 class _booking1State extends State<booking1> {
-   String price='';
+
 
 
    bool isLoading = false;
    late SharedPreferences localStorage;
    late int user_id;
+   String price='';
   @override
 
   initState() {
@@ -32,7 +33,7 @@ class _booking1State extends State<booking1> {
   }
    Future<void> _viewPro() async {
      // int id = widget.id;
-     // print("id${id}");
+      print("price${price}");
      var res = await Api().getData('/api/booking_all_view/');
      var body = json.decode(res.body);
      print(body);

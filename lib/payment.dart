@@ -52,13 +52,13 @@ class _Payment2State extends State<Payment2> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    price=widget.price;
-    print(price);
+    // price=widget.price;
+    // print(price);
   }
   Future placepackage() async {
     price=widget.price;
 
-    print(price);
+    print("price${price}");
     prefs = await SharedPreferences.getInstance();
     user_id = (prefs.getInt('user_id') ?? 0);
     booking_id =(prefs.getInt('booking_id') ?? 0);
@@ -70,7 +70,7 @@ class _Payment2State extends State<Payment2> {
     var data = {
       "user_id": user_id.toString(),
       "booking_id":booking_id.toString(),
-      "amount": price,
+      "price": price,
       "date":formattedDate
     };
     print(data);
