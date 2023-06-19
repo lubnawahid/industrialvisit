@@ -24,7 +24,7 @@ class _booking1State extends State<booking1> {
    bool isLoading = false;
    late SharedPreferences localStorage;
    late int user_id;
-   String price='';
+   String packagecost='';
   @override
 
   initState() {
@@ -33,12 +33,12 @@ class _booking1State extends State<booking1> {
   }
    Future<void> _viewPro() async {
      // int id = widget.id;
-      print("price${price}");
+      print("price${packagecost}");
      var res = await Api().getData('/api/booking_all_view/');
      var body = json.decode(res.body);
      print(body);
      setState(() {
-       price = body['data']['price'];
+       packagecost = body['data']['packagecost'];
        // collegename = body['data']['collegename'];
        // bookingdate = body['data']['bookingdate'];
        // // place = body['data']['place'];
@@ -67,7 +67,7 @@ class _booking1State extends State<booking1> {
 
               ElevatedButton(onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Payment2(price:price)));
+                    MaterialPageRoute(builder: (context) => Payment2(packagecost:packagecost)));
               },
                 style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50.0)),

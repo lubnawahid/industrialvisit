@@ -9,13 +9,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'api.dart';
 import 'homescreen.dart';
-
-
 class Payment2 extends StatefulWidget {
-  final String price;
+  final String packagecost;
 
 
-  Payment2({required this.price});
+  Payment2({required this.packagecost});
 
   @override
   State<Payment2> createState() => _Payment2State();
@@ -30,15 +28,15 @@ class _Payment2State extends State<Payment2> {
   DateTime? _selectDate;
   late SharedPreferences prefs;
   bool isLoading = false;
-  late int user_id,booking_id;
-  late String price;
+  late int user_id, id;
+  late String packagecost;
   Future<void> _showDialog(BuildContext context) {
     return showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
             // title: const Text("payment successfull"),
-            content: Image.asset("/images/pay.png"),
+            content: Image.asset("images/paymnt.jpg"),
             actions: [
               ElevatedButton(onPressed: (){
                 Navigator.pushReplacement(
@@ -52,25 +50,23 @@ class _Payment2State extends State<Payment2> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    // price=widget.price;
-    // print(price);
+    packagecost=widget.packagecost;
+    print(packagecost);
   }
-  Future placepackage() async {
-    price=widget.price;
+  Future PackagePayment() async {
+    packagecost=widget.packagecost;
 
-    print("price${price}");
+    print(packagecost);
     prefs = await SharedPreferences.getInstance();
     user_id = (prefs.getInt('user_id') ?? 0);
-    booking_id =(prefs.getInt('booking_id') ?? 0);
     print('login_id_complaint ${user_id}');
     setState(() {
       isLoading = true;
     });
 
     var data = {
-      "user_id": user_id.toString(),
-      "booking_id":booking_id.toString(),
-      "price": price,
+      "user": user_id.toString(),
+      "amount": packagecost,
       "date":formattedDate
     };
     print(data);
@@ -78,11 +74,10 @@ class _Payment2State extends State<Payment2> {
     var body = json.decode(res.body);
     print(body);
     if (body['success'] == true) {
-     price=body['data']['price'];
-     print(price);
-       // _showDialog(context);
-       //
-       // print(body);
+
+      _showDialog(context);
+
+      print(body);
       Fluttertoast.showToast(
         msg: body['message'].toString(),
         backgroundColor: Colors.grey,
@@ -179,8 +174,8 @@ class _Payment2State extends State<Payment2> {
               TextField(
                 readOnly: true,
                 decoration: InputDecoration(
-                  labelText:price ,
-                  hintText:price ,
+                  labelText:packagecost,
+                  hintText:packagecost,
                   hintStyle: TextStyle(
                       color: Colors.green
                   ),
@@ -191,17 +186,17 @@ class _Payment2State extends State<Payment2> {
 
               SizedBox(height: 30),
               SizedBox(height: 30,
-                width: 180,
+                width: 100,
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       primary: Colors.blue,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(30),
                       ),
                       // padding: EdgeInsets.all(20)
                     ),
                     onPressed: (){
-                      placepackage();
+                      PackagePayment();
                     } ,
                     child: Text("CONTINUE")),
               ),
@@ -212,3 +207,4 @@ class _Payment2State extends State<Payment2> {
     );
   }
 }
+

@@ -36,17 +36,19 @@ class _bookingState extends State<booking> {
     }
   }
   String name = "";
+
   String collegename = "";
   String bookingdate = "";
- // String place = "";
   String numberofstudents = "";
   late int user_id;
-  late SharedPreferences localStorage;
+  late int packagecost;
+   late SharedPreferences localStorage;
   bool  _isLoading = false;
   TextEditingController namecontroller = TextEditingController();
   TextEditingController collegenamecontroller = TextEditingController();
   TextEditingController bookingdatecontroller = TextEditingController();
   TextEditingController numberofstudentscontroller = TextEditingController();
+ // TextEditingController packagecostcontroller = TextEditingController();
 
 
 
@@ -57,11 +59,14 @@ class _bookingState extends State<booking> {
   }
   Future<void> _viewPro() async {
     int id = widget.id;
+    //int packageprice = widget.packageprice;
     print("id${id}");
+
     var res = await Api().getData('/api/packages_single_view/' + id.toString());
     var body = json.decode(res.body);
     print(body);
     setState(() {
+
       name = body['data']['name'];
       collegename = body['data']['collegename'];
       bookingdate = body['data']['bookingdate'];
@@ -78,8 +83,11 @@ class _bookingState extends State<booking> {
     int id = widget.id;
     localStorage = await SharedPreferences.getInstance();
     user_id = (localStorage.getInt('user_id') ?? 0);
+   // packageprice =(localStorage.getInt('packageprice') ?? 0) as String;
     var data = {
+
       "user": user_id.toString(),
+
       "packages":id.toString(),
       "bookingdate":startDate,
 "collegename":collegenamecontroller.text,
@@ -256,21 +264,21 @@ class _bookingState extends State<booking> {
                   ),
                   // Container(
                   //   padding: const EdgeInsets.all(10),
-                  //   child: TextFormField(
+                  // child: TextFormField(
                   //     validator: (value) {
                   //       if (value == null || value.isEmpty) {
-                  //         return 'please enter some text';
-                  //       }
+                  //          return 'please enter some text';
+                  //      }
                   //       return null;
                   //     },
-                  //     controller: accommodationcontroller,
-                  //     decoration: const InputDecoration(
+                  //      controller: packagecostcontroller,
+                  //      decoration: const InputDecoration(
                   //       border: OutlineInputBorder(),
-                  //       labelText: 'Accommodation',
-                  //       hintText: 'Accommodation',
-                  //     ),
+                  //       labelText: 'Packagecost',
+                  //      hintText: 'Packagecost',
+                  //      ),
                   //   ),
-                  // ),
+                  //  ),
                   // Container(
                   //   padding: const EdgeInsets.all(10),
                   //   child: TextFormField(

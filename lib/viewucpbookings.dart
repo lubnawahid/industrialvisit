@@ -99,15 +99,11 @@ class _viewucpbookingsState extends State<viewucpbookings> {
                         leading: Icon(Icons.book,color: Colors.red,),
                         title:  Text(
                           _loaddata[index]['companyname'],
+
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        trailing: ElevatedButton(
-
-                          onPressed: (){
-                            // Navigator.push(context, MaterialPageRoute(builder: (context) => packageedit(id:id) ));
-                          },
-                          child:const Text('Booked'),
-                        )
+                        subtitle: Text(_loaddata[index]['date']),
+                        trailing: const Text('Booked')
                     ),
                   );
 

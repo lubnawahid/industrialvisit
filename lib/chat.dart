@@ -7,7 +7,7 @@ import 'package:industrialvisit/homescreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'api.dart';
-import 'chatdetailpage.dart';
+
 
 class chat extends StatefulWidget {
   final int id;

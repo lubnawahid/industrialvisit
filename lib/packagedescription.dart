@@ -19,7 +19,7 @@ class packagedescription extends StatefulWidget {
 class _packagedescriptionState extends State<packagedescription> {
   bool   _isLoading = false;
   late SharedPreferences localStorage;
-
+String price='';
   TextEditingController packagenameController=TextEditingController();
 
   TextEditingController companynameController=TextEditingController();

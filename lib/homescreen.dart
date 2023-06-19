@@ -16,6 +16,7 @@ import 'package:industrialvisit/viewucpbookings.dart';
 import 'package:industrialvisit/welcome.dart';
 import 'booking.dart';
 import 'chat.dart';
+import 'feedback.dart';
 import 'login.dart';
 // class homescreen extends StatefulWidget {
 //   const homescreen({Key? key}) : super(key: key);
@@ -586,15 +587,15 @@ SizedBox(height: 30,),
             //     Navigator.push(context, MaterialPageRoute(builder: (context)=>Complaint_Details()));
             //   },
             // ),
-            // ListTile(
-            //   leading: Icon(
-            //     Icons.feedback,
-            //   ),
-            //   title: const Text('Feedback'),
-            //   onTap: () {
-            //     Navigator.push(context, MaterialPageRoute(builder: (context)=>RatingBarScreen()));
-            //   },
-            // ),
+            ListTile(
+              leading: Icon(
+                Icons.feedback,
+              ),
+              title: const Text('Feedback'),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>feedback()));
+              },
+            ),
             ListTile(
               leading: Icon(
                 Icons.logout,
