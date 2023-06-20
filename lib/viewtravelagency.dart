@@ -98,7 +98,7 @@ class _viewtravelagencyState extends State<viewtravelagency> {
                     child: ListTile(
 
                       // subtitle: Text("24/06/23"),
-                        leading: Icon(Icons.travel_explore_sharp,color: Colors.red,),
+                        leading: Icon(Icons.message,color: Colors.red,),
                         title:  Text(
                           _loaddata[index]['agencyname'],
                           style: TextStyle(fontWeight: FontWeight.bold),
