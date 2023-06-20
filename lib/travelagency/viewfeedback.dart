@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import 'api.dart';
+import '../api.dart';
 class viewfeedback extends StatefulWidget {
   const viewfeedback({Key? key}) : super(key: key);
 
@@ -82,7 +82,8 @@ class _viewfeedbackState extends State<viewfeedback> {
                     ),
                     SizedBox(width: 14,),
 
-                    Text(_loaddata[index]['date'],style: TextStyle(fontSize: 15))
+                    Text(_loaddata[index]['date'],style: TextStyle(fontSize: 15)),
+                    //Text(_loaddata[index]['collegename'],style: TextStyle(fontSize: 15),),
                   ],
                 ),
                 SizedBox(height: 12,),

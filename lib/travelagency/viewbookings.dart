@@ -99,13 +99,7 @@ class _viewbookingsState extends State<viewbookings> {
                           _loaddata[index]['packagename'],
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        trailing: ElevatedButton(
-
-                          onPressed: () {
-                            // Navigator.push(context, MaterialPageRoute(builder: (context) => packageedit(id:id) ));
-                          },
-                          child: const Text('Booked'),
-                        )
+                        trailing: const Text('Booked')
                     ),
                   );
                 }

@@ -5,7 +5,7 @@ import 'package:industrialvisit/travelagency/agencyprofile1.dart';
 import 'package:industrialvisit/travelagency/userpackagedetail.dart';
 import 'package:industrialvisit/travelagency/viewbookings.dart';
 import 'package:industrialvisit/travelagency/viewpayment.dart';
-import 'package:industrialvisit/viewfeedback.dart';
+import 'package:industrialvisit/travelagency/viewfeedback.dart';
 
 import '../agencyprofile.dart';
 //import '../welcome.dart';
