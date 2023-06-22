@@ -169,6 +169,7 @@ class _userpackagedetailState extends State<userpackagedetail> {
     _loaddata[index]['companyname'],
     style: TextStyle(fontWeight: FontWeight.bold),
     ),
+
     subtitle: Text(_loaddata[index]['companydescription']),
 
 

@@ -27,7 +27,7 @@ class _feedback3State extends State<feedback3> {
                 alignment: Alignment.center,),
               Padding(
                 padding: EdgeInsets.all(10),
-                child: Text("Your feedback was done successfully",
+                child: Text("Thank you for your feedback",
                   textAlign: TextAlign.center, selectionColor: Colors.blue,),
               ),
 

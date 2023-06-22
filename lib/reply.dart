@@ -1,32 +1,28 @@
 import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
+import 'package:industrialvisit/travelagency/chat2.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../api.dart';
-import '../chat.dart';
-import 'chat2.dart';
+import 'api.dart';
 
-class agencychat extends StatefulWidget {
-  const agencychat({Key? key}) : super(key: key);
+class reply extends StatefulWidget {
+  const reply({Key? key}) : super(key: key);
 
   @override
-  State<agencychat> createState() => _agencychatState();
+  State<reply> createState() => _replyState();
 }
 
-class _agencychatState extends State<agencychat> {
-
+class _replyState extends State<reply> {
   bool isObscurePassword=true;
   late int user_id;
-  String u_name="";
-  String message="";
+  String t_name="";
+  String reply="";
   late SharedPreferences prefs;
-  TextEditingController u_nameController=TextEditingController();
-  TextEditingController messageController=TextEditingController();
-    List _loaddata=[];
+  TextEditingController t_nameController=TextEditingController();
+  TextEditingController replyController=TextEditingController();
+  List _loaddata=[];
 
 
   @override
@@ -42,7 +38,7 @@ class _agencychatState extends State<agencychat> {
     prefs = await SharedPreferences.getInstance();
     user_id = (prefs.getInt('user_id') ?? 0 );
     print('${user_id }');
-    var res = await Api().getData('/api/single_chat_view/'+user_id.toString());
+    var res = await Api().getData('/api/single_reply_view/'+user_id.toString());
 
     var body = json.decode(res.body);
     // var body = json.decode(res.body);
@@ -50,18 +46,18 @@ class _agencychatState extends State<agencychat> {
 
 
     setState(() {
-      u_name = body['data']['u_name'];
-      message = body['data']['message'];
+      t_name = body['data']['t_name'];
+      reply = body['data']['reply'];
       //agencyname = body['data']['agencyname'];
-     // collegename = body['data']['collegename'];
+      // collegename = body['data']['collegename'];
       //phonenumber = body['data']['phonenumber'];
 
 
 
-      u_nameController.text = u_name;
+      t_nameController.text = t_name;
       // agencynameController.text = agencyname;
-      messageController.text=message;
-     // phonenumberController.text=phonenumber;
+      replyController.text=reply;
+      // phonenumberController.text=phonenumber;
 
     });
   }
@@ -70,7 +66,7 @@ class _agencychatState extends State<agencychat> {
     int? userid = prefs.getInt('user_id');
     print(userid);
     var res = await Api()
-        .getData('/api/single_chat_view/' +userid.toString());
+        .getData('/api/single_reply_view/' +userid.toString());
     if (res.statusCode == 200) {
       var items = json.decode(res.body)['data'];
       print(items);
@@ -103,7 +99,7 @@ class _agencychatState extends State<agencychat> {
         // IconButton( onPressed: (){
         //   Navigator.pop(context);
         // },icon:Icon(Icons.arrow_back_ios,size: 20,color: Colors.black,)),
-        title: Text("User's Messages"),
+        title: Text("Travelagency's Reply"),
         // actions: [
         //   IconButton(icon: Icon(Icons.add), onPressed: () {
         //     //Navigator.push(context, MaterialPageRoute(builder: (context) => packageadd()));
@@ -123,7 +119,7 @@ class _agencychatState extends State<agencychat> {
                 shrinkWrap: true,
                 itemBuilder: (context, index)
                 {
-                  int id= _loaddata[index]['id'];
+                  //int id= _loaddata[index]['id'];
                   return GestureDetector(
                     onTap: () => {
 
@@ -145,17 +141,17 @@ class _agencychatState extends State<agencychat> {
                       // subtitle: Text("24/06/23"),
                         leading: Icon(Icons.message,color: Colors.red,),
                         title:  Text(
-                          _loaddata[index]['u_name'],
+                          _loaddata[index]['t_name'],
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        subtitle: Text(_loaddata[index]['message']),
-                        trailing: ElevatedButton(
-
-                          onPressed: (){
-                           Navigator.push(context, MaterialPageRoute(builder: (context) => agencychat2(id:id) ));
-                          },
-                          child:const Text('Reply'),
-                        )
+                        subtitle: Text(_loaddata[index]['reply']),
+                        // trailing: ElevatedButton(
+                        //
+                        //   onPressed: (){
+                        //   //  Navigator.push(context, MaterialPageRoute(builder: (context) => agencychat2(id:id) ));
+                        //   },
+                        //   child:const Text('Reply'),
+                        // )
                     ),
                   );
 
@@ -173,9 +169,3 @@ class _agencychatState extends State<agencychat> {
     );
   }
 }
-
-
-
-
-
-

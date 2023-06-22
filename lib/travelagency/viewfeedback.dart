@@ -66,7 +66,7 @@ class _viewfeedbackState extends State<viewfeedback> {
                   children: [
                     CircleAvatar(
                       backgroundColor: Colors.white,
-                      child: Icon(Icons.notifications_outlined,color: Colors.green,size: 36,),
+                      child: Icon(Icons.notifications_outlined,color: Colors.blue,size: 36,),
                     ),
                     SizedBox(width: 16,),
                     Expanded(
@@ -83,6 +83,7 @@ class _viewfeedbackState extends State<viewfeedback> {
                     SizedBox(width: 14,),
 
                     Text(_loaddata[index]['date'],style: TextStyle(fontSize: 15)),
+
                     //Text(_loaddata[index]['collegename'],style: TextStyle(fontSize: 15),),
                   ],
                 ),
@@ -106,7 +107,7 @@ class _viewfeedbackState extends State<viewfeedback> {
       //   },
       //   label: const Text('New'),
       //   icon: const Icon(Icons.add),
-      //   backgroundColor: Colors.blue,
+      //   backgroundColor: Colors.blue,/
       // ),
 
     );

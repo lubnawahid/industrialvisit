@@ -68,7 +68,7 @@ class _feedbackState extends State<feedback> {
                   children: [
                     CircleAvatar(
                       backgroundColor: Colors.white,
-                      child: Icon(Icons.notifications_outlined,color: Colors.green,size: 36,),
+                      child: Icon(Icons.notifications_outlined,color: Colors.blue,size: 36,),
                     ),
                     SizedBox(width: 16,),
                     Expanded(
