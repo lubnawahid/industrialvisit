@@ -25,6 +25,7 @@ String? payment;
 String formattedDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
 class _Payment2State extends State<Payment2> {
+  TextEditingController packagecostController = TextEditingController();
   DateTime? _selectDate;
   late SharedPreferences prefs;
   bool isLoading = false;
@@ -51,7 +52,7 @@ class _Payment2State extends State<Payment2> {
     // TODO: implement initState
     super.initState();
     packagecost=widget.packagecost;
-    print(packagecost);
+    print('packagecost${packagecost}');
   }
   Future PackagePayment() async {
     packagecost=widget.packagecost;
@@ -59,7 +60,7 @@ class _Payment2State extends State<Payment2> {
     print(packagecost);
     prefs = await SharedPreferences.getInstance();
     user_id = (prefs.getInt('user_id') ?? 0);
-    print('login_id_complaint ${user_id}');
+    print('login_id ${user_id}');
     setState(() {
       isLoading = true;
     });
@@ -70,7 +71,7 @@ class _Payment2State extends State<Payment2> {
       "date":formattedDate
     };
     print(data);
-    var res = await Api().authData(data, '/api/package_payment');
+    var res = await Api().authData(data, '/api/package_payment' + packagecost.toString());
     var body = json.decode(res.body);
     print(body);
     if (body['success'] == true) {
@@ -173,6 +174,7 @@ class _Payment2State extends State<Payment2> {
               SizedBox(height: 10),
               TextField(
                 readOnly: true,
+                controller: packagecostController,
                 decoration: InputDecoration(
                   labelText:packagecost,
                   hintText:packagecost,

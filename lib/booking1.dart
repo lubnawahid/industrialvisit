@@ -33,7 +33,7 @@ class _booking1State extends State<booking1> {
   }
    Future<void> _viewPro() async {
      // int id = widget.id;
-      print("price${packagecost}");
+      print("packagecost${packagecost}");
      var res = await Api().getData('/api/booking_all_view/');
      var body = json.decode(res.body);
      print(body);

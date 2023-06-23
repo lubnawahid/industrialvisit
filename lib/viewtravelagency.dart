@@ -18,7 +18,7 @@ class viewtravelagency extends StatefulWidget {
 class _viewtravelagencyState extends State<viewtravelagency> {
   List _loaddata = [];
 
-  // late int id;
+  late int id;
   _fetchData() async {
     var res = await Api().getData('/api/travelagency_all_view');
     if (res.statusCode == 200) {
@@ -114,8 +114,10 @@ class _viewtravelagencyState extends State<viewtravelagency> {
                                 ElevatedButton(
 
                                   onPressed: () {
+
+
                                      Navigator.push(context, MaterialPageRoute(
-                                         builder: (context) => reply()));
+                                         builder: (context) => reply(id:id)));
                                   },
                                   child: const Text('Reply'),
                                 ),
