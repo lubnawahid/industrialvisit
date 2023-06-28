@@ -10,10 +10,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'api.dart';
 import 'homescreen.dart';
 class Payment2 extends StatefulWidget {
-  final String packagecost;
+  final String price;
 
 
-  Payment2({required this.packagecost});
+  Payment2({required this.price});
 
   @override
   State<Payment2> createState() => _Payment2State();
@@ -25,12 +25,13 @@ String? payment;
 String formattedDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
 class _Payment2State extends State<Payment2> {
-  TextEditingController packagecostController = TextEditingController();
+
   DateTime? _selectDate;
   late SharedPreferences prefs;
   bool isLoading = false;
-  late int user_id, id;
-  late String packagecost;
+  late int user_id, bookings;
+  late String amount;
+
   Future<void> _showDialog(BuildContext context) {
     return showDialog(
         context: context,
@@ -51,13 +52,13 @@ class _Payment2State extends State<Payment2> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    packagecost=widget.packagecost;
-    print('packagecost${packagecost}');
+    amount=widget.price;
+
+    print(amount);
   }
   Future PackagePayment() async {
-    packagecost=widget.packagecost;
+    amount=widget.price;
 
-    print(packagecost);
     prefs = await SharedPreferences.getInstance();
     user_id = (prefs.getInt('user_id') ?? 0);
     print('login_id ${user_id}');
@@ -67,11 +68,11 @@ class _Payment2State extends State<Payment2> {
 
     var data = {
       "user": user_id.toString(),
-      "amount": packagecost,
+      "amount": amount,
       "date":formattedDate
     };
     print(data);
-    var res = await Api().authData(data, '/api/package_payment' + packagecost.toString());
+    var res = await Api().authData(data, '/api/package_payment');
     var body = json.decode(res.body);
     print(body);
     if (body['success'] == true) {
@@ -174,16 +175,18 @@ class _Payment2State extends State<Payment2> {
               SizedBox(height: 10),
               TextField(
                 readOnly: true,
-                controller: packagecostController,
+               // controller: packagecostController,
                 decoration: InputDecoration(
-                  labelText:packagecost,
-                  hintText:packagecost,
+                  labelText:amount,
+                  hintText:amount,
                   hintStyle: TextStyle(
                       color: Colors.green
                   ),
                   border:OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30)),
+                      borderRadius: BorderRadius.circular(30)
+                  ),
                 ),
+              //  controller: TextEditingController(text: packagecost),
               ),
 
               SizedBox(height: 30),
@@ -198,6 +201,7 @@ class _Payment2State extends State<Payment2> {
                       // padding: EdgeInsets.all(20)
                     ),
                     onPressed: (){
+
                       PackagePayment();
                     } ,
                     child: Text("CONTINUE")),

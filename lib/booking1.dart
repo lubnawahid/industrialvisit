@@ -24,7 +24,7 @@ class _booking1State extends State<booking1> {
    bool isLoading = false;
    late SharedPreferences localStorage;
    late int user_id;
-   String packagecost='';
+   String price='';
   @override
 
   initState() {
@@ -67,7 +67,7 @@ class _booking1State extends State<booking1> {
 
               ElevatedButton(onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Payment2(packagecost:packagecost)));
+                    MaterialPageRoute(builder: (context) => Payment2(price:price)));
               },
                 style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50.0)),
