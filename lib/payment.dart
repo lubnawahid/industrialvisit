@@ -29,8 +29,8 @@ class _Payment2State extends State<Payment2> {
   DateTime? _selectDate;
   late SharedPreferences prefs;
   bool isLoading = false;
-  late int user_id, bookings;
-  late String amount;
+  late int user_id,bookings,packages;
+  late String price;
 
   Future<void> _showDialog(BuildContext context) {
     return showDialog(
@@ -52,12 +52,12 @@ class _Payment2State extends State<Payment2> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    amount=widget.price;
+    price=widget.price;
 
-    print(amount);
+    print('amount:$price');
   }
   Future PackagePayment() async {
-    amount=widget.price;
+    price=widget.price;
 
     prefs = await SharedPreferences.getInstance();
     user_id = (prefs.getInt('user_id') ?? 0);
@@ -68,7 +68,7 @@ class _Payment2State extends State<Payment2> {
 
     var data = {
       "user": user_id.toString(),
-      "amount": amount,
+      "price": price,
       "date":formattedDate
     };
     print(data);
@@ -177,8 +177,8 @@ class _Payment2State extends State<Payment2> {
                 readOnly: true,
                // controller: packagecostController,
                 decoration: InputDecoration(
-                  labelText:amount,
-                  hintText:amount,
+                  labelText:price,
+                  hintText:price,
                   hintStyle: TextStyle(
                       color: Colors.green
                   ),
