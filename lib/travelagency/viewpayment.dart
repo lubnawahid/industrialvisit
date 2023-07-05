@@ -1,5 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
+import '../api.dart';
 
 class viewpayment extends StatefulWidget {
   const viewpayment({Key? key}) : super(key: key);
@@ -9,46 +14,93 @@ class viewpayment extends StatefulWidget {
 }
 
 class _viewpaymentState extends State<viewpayment> {
+  List _loaddata=[];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _fetchData();
+  }
+  _fetchData() async {
+    var res = await Api()
+        .getData('/api/payment_all_view');
+    if (res.statusCode == 200) {
+      var items = json.decode(res.body)['data'];
+      print(items);
+      setState(() {
+        _loaddata = items;
+
+      });
+    } else {
+      setState(() {
+        _loaddata =[];
+        Fluttertoast.showToast(
+          msg:"Currently there is no data available",
+          backgroundColor: Colors.grey,
+        );
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
-          leading:
-          IconButton( onPressed: (){
-            Navigator.pop(context);
-          },icon:Icon(Icons.arrow_back_ios,size: 20,color: Colors.black,)),
-          title: Text("Payment Details")),
+        backgroundColor: Colors.blue,
+        title: Text('PAYMENT_DETAILS',style: TextStyle(fontSize: 14),),
+
+      ),
+
       body: ListView.builder(
-          itemCount: 7,
-          itemBuilder: (context, index)
-          {
-            index += 1;
-            return GestureDetector(
-              onTap: () => {
+        shrinkWrap: true,
+        itemCount: _loaddata.length,
+        itemBuilder: (context,index){
 
-              },
-              child: Container(
-                  margin: EdgeInsets.all(8),
-                  padding: EdgeInsets.all(4),
-                  decoration: BoxDecoration(),
-                  child: ListTile(
-                    title: Text(
-                      "Payment $index",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+          return Padding(
+            padding: const EdgeInsets.only(top: 16,right: 12,left: 12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CircleAvatar(
+                      backgroundColor: Colors.white,
+                      child: Icon(Icons.payment,color: Colors.red,size: 28,),
                     ),
-                     subtitle: Text("shyam kumar"),
-                    leading: Icon(Icons.payment,color: Colors.black,),
-                    trailing: GestureDetector(
-                        onTap: () => {
-                        //  Navigator.push(context, MaterialPageRoute(builder: (context) => packageedit())),
-                        },
-                        child: Text("24/10/23")),
-                  )
-              ),
-            );
 
-          }),
+                    Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+
+                         Text("Name: "+_loaddata[index]['name'],style: TextStyle(fontSize: 16),textAlign: TextAlign.justify,),
+                          Text("credited : "+_loaddata[index]['price'],style: TextStyle(fontSize: 13),textAlign: TextAlign.justify,),
+
+
+                        ],
+                      ),
+                    ),
+                    SizedBox(width: 14,),
+
+                    Text(_loaddata[index]['date'],style: TextStyle(fontSize: 10))
+                  ],
+                ),
+                SizedBox(height: 12,),
+                Divider(
+                  color: Colors.grey[300],
+                  thickness: 2,
+                )
+              ],
+            ),
+          );
+        },
+
+
+      ),
+
+
+
 
     );
   }

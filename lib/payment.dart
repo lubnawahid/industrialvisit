@@ -22,6 +22,7 @@ enum Gender { credit_card,debit_card,net_banking, cashon_delivery }
 Gender? _payment = Gender.credit_card;
 String? payment;
 
+
 String formattedDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
 class _Payment2State extends State<Payment2> {
@@ -31,6 +32,7 @@ class _Payment2State extends State<Payment2> {
   bool isLoading = false;
   late int user_id,bookings,packages;
   late String price;
+ // String name='';
 
   Future<void> _showDialog(BuildContext context) {
     return showDialog(
@@ -68,6 +70,7 @@ class _Payment2State extends State<Payment2> {
 
     var data = {
       "user": user_id.toString(),
+     //"name":name,
       "price": price,
       "date":formattedDate
     };

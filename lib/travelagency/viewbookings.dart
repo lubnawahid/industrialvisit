@@ -97,8 +97,10 @@ class _viewbookingsState extends State<viewbookings> {
                         leading: Icon(Icons.book, color: Colors.red,),
                         title: Text(
                           _loaddata[index]['packagename'],
+
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
+                        subtitle:  Text(_loaddata[index]['name']),
                         trailing: const Text('Booked')
                     ),
                   );
