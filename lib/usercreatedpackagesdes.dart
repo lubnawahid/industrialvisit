@@ -25,7 +25,11 @@ class _userpackagedescriptionState extends State<userpackagedescription> {
   TextEditingController placeController=TextEditingController();
   TextEditingController dateController=TextEditingController();
   TextEditingController daysController=TextEditingController();
-  var companyname,companydescription,place,date,days;
+  String companyname ='';
+  String companydescription='';
+  String place='';
+  String date='';
+  String days='';
 
 
 
