@@ -31,7 +31,15 @@ String price='';
   TextEditingController guidedetailsController=TextEditingController();
   TextEditingController packagecostController = TextEditingController();
 
-var packagename,companyname,companydescription,packagedate,packagetime,accommodation,fooddetails,guidedetails,packagecost;
+String packagename='';
+String companyname='';
+String companydescription='';
+String packagedate='';
+String packagetime='';
+String accommodation='';
+String fooddetails='';
+String guidedetails='';
+String packagecost='';
 
 
 

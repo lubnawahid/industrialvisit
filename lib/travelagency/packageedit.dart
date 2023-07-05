@@ -147,7 +147,7 @@ class _packageeditState extends State<packageedit> {
 
         elevation: 0,
         brightness: Brightness.light,
-        backgroundColor: Colors.pinkAccent,
+        backgroundColor: Colors.blue,
         title: Text('Edit Packages'),
         leading:
         IconButton(onPressed: () {

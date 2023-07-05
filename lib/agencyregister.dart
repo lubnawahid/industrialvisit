@@ -70,7 +70,7 @@ class _agencyregisterState extends State<agencyregister> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.pinkAccent,
+        backgroundColor: Colors.blue,
         title: Text("Registration"),
       ),
       body: SingleChildScrollView(
@@ -283,7 +283,7 @@ class _agencyregisterState extends State<agencyregister> {
                 style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50.0)),
-                    primary: Colors.pinkAccent,
+                    primary: Colors.blue,
                     fixedSize: Size(300, 50)),
                 child: Text(
                   'Register',
@@ -309,7 +309,7 @@ class _agencyregisterState extends State<agencyregister> {
                     },
                     child: const Text(
                       'login',
-                      style: TextStyle(color:Colors.pinkAccent,fontSize: 16),
+                      style: TextStyle(color:Colors.blue,fontSize: 16),
                     ),
                   ),
                 ],
