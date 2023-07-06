@@ -55,9 +55,9 @@ class _bookingState extends State<booking> {
   @override
   initState() {
     super.initState();
-    _viewPro();
+  //  _viewPro();
   }
-  Future<void> _viewPro() async {
+ /* Future<void> _viewPro() async {
     int id = widget.id;
     //int packageprice = widget.packageprice;
     print("id${id}");
@@ -75,7 +75,7 @@ class _bookingState extends State<booking> {
 
     });
   }
-
+*/
   Future<void> bookpackage() async {
     setState(() {
       _isLoading = true;
@@ -83,14 +83,14 @@ class _bookingState extends State<booking> {
     int id = widget.id;
     localStorage = await SharedPreferences.getInstance();
     user_id = (localStorage.getInt('user_id') ?? 0);
-   // packageprice =(localStorage.getInt('packageprice') ?? 0) as String;
+
     var data = {
 
       "user": user_id.toString(),
 
       "packages":id.toString(),
       "bookingdate":startDate,
-"collegename":collegenamecontroller.text,
+      "collegename":collegenamecontroller.text,
       "numberofstudents":numberofstudentscontroller.text,
       "name":namecontroller.text,
 
@@ -98,13 +98,15 @@ class _bookingState extends State<booking> {
     print(data);
     var res = await Api().authData(data,'/api/package_booking');
     var body = json.decode(res.body);
-    print(body);
+
+    print("itemssssso${body}");
     if(body['success']==true)
     {
-      print(body);
+      int bookid=body['data']['id'];
+      print("items rtoo${body}");
 
 
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>booking1()));
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>booking1(id:bookid)));
       Fluttertoast.showToast(
         msg: body['message'].toString(),
         backgroundColor: Colors.grey,

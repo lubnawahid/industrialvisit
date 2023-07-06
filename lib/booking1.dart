@@ -10,8 +10,10 @@ import 'api.dart';
 import 'homescreen.dart';
 
 class booking1 extends StatefulWidget {
+  final int id;
 
-  const booking1({Key? key}) : super(key: key);
+
+  booking1({required this.id});
 
   @override
   State<booking1> createState() => _booking1State();
@@ -24,6 +26,7 @@ class _booking1State extends State<booking1> {
    bool isLoading = false;
    late SharedPreferences localStorage;
    late int user_id;
+   late int id;
    String price='';
   @override
 
@@ -32,18 +35,14 @@ class _booking1State extends State<booking1> {
     _viewPro();
   }
    Future<void> _viewPro() async {
-     // int id = widget.id;
+     int id = widget.id;
      // print("price${price}");
-     var res = await Api().getData('/api/booking_all_view');
+     var res = await Api().getData('/api/booking_single_view/' +id.toString());
      var body = json.decode(res.body);
-     print(body);
+     print("items book${body}");
      setState(() {
-       price = body['data'][0]['packagecost'];
+       price = body['data']['packagecost'];
        print("price${price}");
-       // collegename = body['data']['collegename'];
-       // bookingdate = body['data']['bookingdate'];
-       // // place = body['data']['place'];
-       // numberofstudents = body['data']['numberofstudents'];
 
      });
    }

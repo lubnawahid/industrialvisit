@@ -29,24 +29,24 @@ class _usercreatedbookingState extends State<usercreatedbooking> {
   TextEditingController collegenamecontroller = TextEditingController();
   TextEditingController numberofstudentscontroller = TextEditingController();
   @override
-  initState() {
-    super.initState();
-    _viewPro();
-  }
-  Future<void> _viewPro() async {
-    int id = widget.id;
-    print("id${id}");
-    var res = await Api().getData('/api/user_packages_single_view/' + id.toString());
-    var body = json.decode(res.body);
-    print(body);
-    setState(() {
-      name = body['data']['name'];
-      collegename = body['data']['collegename'];
-      // place = body['data']['place'];
-      numberofstudents = body['data']['numberofstudents'];
-
-    });
-  }
+  // initState() {
+  //   super.initState();
+  //   _viewPro();
+  // }
+  // Future<void> _viewPro() async {
+  //   int id = widget.id;
+  //   print("id${id}");
+  //   var res = await Api().getData('/api/user_packages_single_view/' + id.toString());
+  //   var body = json.decode(res.body);
+  //   print(body);
+  //   setState(() {
+  //     name = body['data']['name'];
+  //     collegename = body['data']['collegename'];
+  //     // place = body['data']['place'];
+  //     numberofstudents = body['data']['numberofstudents'];
+  //
+  //   });
+  // }
   Future<void> userbookpackage() async {
     setState(() {
       _isLoading = true;
@@ -66,13 +66,15 @@ class _usercreatedbookingState extends State<usercreatedbooking> {
     print(data);
     var res = await Api().authData(data,'/api/usercreatedpackage_booking');
     var body = json.decode(res.body);
-    print(body);
+    print("itemssssso${body}");
+   // print(body);
     if(body['success']==true)
     {
-      print(body);
+      int bookid=body['data']['id'];
+      print("items rtoo${body}");
 
 
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>booking1()));
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>booking1(id:bookid)));
       Fluttertoast.showToast(
         msg: body['message'].toString(),
         backgroundColor: Colors.grey,
