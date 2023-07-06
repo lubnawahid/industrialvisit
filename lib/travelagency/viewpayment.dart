@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../api.dart';
 
@@ -15,6 +16,8 @@ class viewpayment extends StatefulWidget {
 
 class _viewpaymentState extends State<viewpayment> {
   List _loaddata=[];
+  late int id;
+  late SharedPreferences prefs;
   @override
   void initState() {
     // TODO: implement initState
@@ -22,8 +25,10 @@ class _viewpaymentState extends State<viewpayment> {
     _fetchData();
   }
   _fetchData() async {
-    var res = await Api()
-        .getData('/api/payment_all_view');
+    prefs = await SharedPreferences.getInstance();
+    int? id = prefs.getInt('id');
+    print(id);
+    var res = await Api().getData('/api/payment_single_view/' +id.toString());
     if (res.statusCode == 200) {
       var items = json.decode(res.body)['data'];
       print(items);
@@ -47,7 +52,7 @@ class _viewpaymentState extends State<viewpayment> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text('PAYMENT_DETAILS',style: TextStyle(fontSize: 14),),
+        title: Text('PAYMENT DETAILS',style: TextStyle(fontSize: 14),),
 
       ),
 

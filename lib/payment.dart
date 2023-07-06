@@ -32,7 +32,7 @@ class _Payment2State extends State<Payment2> {
   bool isLoading = false;
   late int user_id,bookings,packages;
   late String price;
- // String name='';
+ String name='';
 
   Future<void> _showDialog(BuildContext context) {
     return showDialog(
@@ -70,7 +70,7 @@ class _Payment2State extends State<Payment2> {
 
     var data = {
       "user": user_id.toString(),
-     //"name":name,
+     "name":name,
       "price": price,
       "date":formattedDate
     };
