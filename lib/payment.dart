@@ -30,10 +30,10 @@ class _Payment2State extends State<Payment2> {
   DateTime? _selectDate;
   late SharedPreferences prefs;
   bool isLoading = false;
-  late int user_id,bookings,packages;
+  late int user_id,bookings,packages,id;
   late String price;
  String name='';
-
+String tname='';
   Future<void> _showDialog(BuildContext context) {
     return showDialog(
         context: context,
@@ -70,6 +70,8 @@ class _Payment2State extends State<Payment2> {
 
     var data = {
       "user": user_id.toString(),
+      "id": id.toString(),
+      "tname":tname,
      "name":name,
       "price": price,
       "date":formattedDate

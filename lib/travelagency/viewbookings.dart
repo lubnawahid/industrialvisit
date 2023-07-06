@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../api.dart';
 
@@ -16,10 +17,13 @@ class viewbookings extends StatefulWidget {
 class _viewbookingsState extends State<viewbookings> {
   List _loaddata = [];
   late int id;
-
+  late SharedPreferences prefs;
   _fetchData() async {
+    prefs = await SharedPreferences.getInstance();
+    id = prefs.getInt('user_id')?? 0;
+    print('${id }');
     var res = await Api()
-        .getData('/api/booking_all_view');
+        .getData('/api/booking_single_view/' + id.toString());
     if (res.statusCode == 200) {
       var items = json.decode(res.body)['data'];
       print(items);
