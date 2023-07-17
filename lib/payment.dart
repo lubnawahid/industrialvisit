@@ -70,7 +70,7 @@ String tname='';
 
     var data = {
       "user": user_id.toString(),
-      "id": id.toString(),
+      //"id": id.toString(),
       "tname":tname,
      "name":name,
       "price": price,
