@@ -29,7 +29,7 @@ class _viewpaymentState extends State<viewpayment> {
     prefs = await SharedPreferences.getInstance();
      id = prefs.getInt('id')?? 0;
     print('${id }');
-    var res = await Api().getData('/api/payment_single_view/' +id.toString());
+    var res = await Api().getData('/api/payment_all_view');
     if (res.statusCode == 200) {
       var items = json.decode(res.body)['data'];
       print(items);
