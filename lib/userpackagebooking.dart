@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:industrialvisit/usercreatedbooking1.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'api.dart';
@@ -23,6 +24,7 @@ class _usercreatedbookingState extends State<usercreatedbooking> {
   String collegename = "";
   String numberofstudents = "";
   late int user_id;
+  late int packagecost;
   late SharedPreferences localStorage;
   bool  _isLoading = false;
   TextEditingController namecontroller = TextEditingController();
@@ -74,7 +76,7 @@ class _usercreatedbookingState extends State<usercreatedbooking> {
       print("items rtoo${body}");
 
 
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>booking1(id:bookid)));
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>userbooking1(id:bookid)));
       Fluttertoast.showToast(
         msg: body['message'].toString(),
         backgroundColor: Colors.grey,
