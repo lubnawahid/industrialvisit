@@ -23,7 +23,7 @@ class _viewbookingsState extends State<viewbookings> {
     userid = prefs.getInt('user_id')?? 0;
     print('${userid }');
     var res = await Api()
-        .getData('/api/booking_single_view/' + userid.toString());
+        .getData('/api/booking_all_view');
     if (res.statusCode == 200) {
       var items = json.decode(res.body)['data'];
       print(items);

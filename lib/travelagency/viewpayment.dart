@@ -81,7 +81,7 @@ class _viewpaymentState extends State<viewpayment> {
                         children: [
 
                          Text("Name: "+_loaddata[index]['name'],style: TextStyle(fontSize: 16),textAlign: TextAlign.justify,),
-                          Text("credited : "+_loaddata[index]['price'],style: TextStyle(fontSize: 13),textAlign: TextAlign.justify,),
+                         Text("credited : "+_loaddata[index]['price'],style: TextStyle(fontSize: 13),textAlign: TextAlign.justify,),
 
 
                         ],
