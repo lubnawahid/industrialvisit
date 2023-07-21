@@ -16,14 +16,10 @@ class viewbookings extends StatefulWidget {
 
 class _viewbookingsState extends State<viewbookings> {
   List _loaddata = [];
-  late int userid;
-  late SharedPreferences prefs;
+
+  late int id;
   _fetchData() async {
-    prefs = await SharedPreferences.getInstance();
-    userid = prefs.getInt('user_id')?? 0;
-    print('${userid }');
-    var res = await Api()
-        .getData('/api/booking_all_view');
+    var res = await Api().getData('/api/booking_single_view');
     if (res.statusCode == 200) {
       var items = json.decode(res.body)['data'];
       print(items);

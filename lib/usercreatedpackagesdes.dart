@@ -25,11 +25,13 @@ class _userpackagedescriptionState extends State<userpackagedescription> {
   TextEditingController placeController=TextEditingController();
   TextEditingController dateController=TextEditingController();
   TextEditingController daysController=TextEditingController();
+  TextEditingController priceController=TextEditingController();
   String companyname ='';
   String companydescription='';
   String place='';
   String date='';
   String days='';
+  String price='';
 
 
 
@@ -46,8 +48,9 @@ class _userpackagedescriptionState extends State<userpackagedescription> {
       companydescription = body['data']['companydescription'];
       date = body['data']['date'];
       place = body['data']['place'];
-
+      price = body['data']['price'];
       days= body['data']['days'];
+
 
 
 
@@ -56,7 +59,7 @@ class _userpackagedescriptionState extends State<userpackagedescription> {
       companydescriptionController.text=companydescription;
       dateController.text = date;
       placeController.text = place;
-
+      priceController.text = price;
       daysController.text = days;
 
     });
@@ -196,26 +199,26 @@ class _userpackagedescriptionState extends State<userpackagedescription> {
                         fontSize: 15,
                       ),
                     ),
-                    // SizedBox(
-                    //   height: 40,
-                    // ),
-                    // Text(
-                    //   "Food Details",
-                    //   style: TextStyle(
-                    //     fontSize: 18,
-                    //     fontWeight: FontWeight.bold,
-                    //   ),
-                    // ),
-                    // SizedBox(
-                    //   height: 15,
-                    // ),
-                    //
-                    // Text(
-                    //   fooddetails,
-                    //   style: TextStyle(
-                    //     fontSize: 15,
-                    //   ),
-                    // ),
+                    SizedBox(
+                      height: 40,
+                     ),
+                     Text(
+                       "Package Price",
+                      style: TextStyle(
+                         fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                     ),
+                    ),
+                     SizedBox(
+                       height: 15,
+                    ),
+
+                     Text(
+                       price,
+                      style: TextStyle(
+                        fontSize: 15,
+                       ),
+                     ),
 
                     // SizedBox(
                     //   height: 40,
@@ -263,7 +266,7 @@ class _userpackagedescriptionState extends State<userpackagedescription> {
                         style: style,
                         onPressed: () {
                           int id= widget.id;
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => usercreatedbooking(id: id)));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => booking(id: id)));
                         },
                         child: const Text('Book Now'),
                       ),
