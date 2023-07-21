@@ -77,7 +77,7 @@ class _Payment3State extends State<Payment3> {
       "date":formattedDate
     };
     print(data);
-    var res = await Api().authData(data, '/api/package_payment');
+    var res = await Api().authData(data, '/api/user_package_payment');
     var body = json.decode(res.body);
     print(body);
     if (body['success'] == true) {

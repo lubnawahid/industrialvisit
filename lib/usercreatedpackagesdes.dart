@@ -266,7 +266,7 @@ class _userpackagedescriptionState extends State<userpackagedescription> {
                         style: style,
                         onPressed: () {
                           int id= widget.id;
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => booking(id: id)));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => usercreatedbooking(id: id)));
                         },
                         child: const Text('Book Now'),
                       ),
