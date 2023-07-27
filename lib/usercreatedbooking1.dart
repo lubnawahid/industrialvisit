@@ -68,7 +68,7 @@ class _userbooking1State extends State<userbooking1> {
 
               ElevatedButton(onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Payment3(price:price)));
+                    MaterialPageRoute(builder: (context) => UserPayment(price:price)));
               },
                 style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50.0)),

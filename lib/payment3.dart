@@ -9,14 +9,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'api.dart';
 import 'homescreen.dart';
-class Payment3 extends StatefulWidget {
+class UserPayment extends StatefulWidget {
   final String price;
 
 
-  Payment3({required this.price});
+  UserPayment({required this.price});
 
   @override
-  State<Payment3> createState() => _Payment3State();
+  State<UserPayment> createState() => _UserPaymentState();
 }
 enum Gender { credit_card,debit_card,net_banking, cashon_delivery }
 Gender? _payment = Gender.credit_card;
@@ -25,15 +25,14 @@ String? payment;
 
 String formattedDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
-class _Payment3State extends State<Payment3> {
+class _UserPaymentState extends State<UserPayment> {
 
   DateTime? _selectDate;
   late SharedPreferences prefs;
   bool isLoading = false;
   late int user_id,bookings,packages,id;
   late String price;
-//  String name='';
-// String tname='';
+
   Future<void> _showDialog(BuildContext context) {
     return showDialog(
         context: context,
@@ -70,9 +69,7 @@ class _Payment3State extends State<Payment3> {
 
     var data = {
       "user": user_id.toString(),
-      //"id": id.toString(),
-      //  "tname":tname,
-      // "name":name,
+
       "price": price,
       "date":formattedDate
     };

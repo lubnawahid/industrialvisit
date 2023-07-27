@@ -19,6 +19,12 @@ class login extends StatefulWidget {
 }
 
 class _loginState extends State<login> {
+  bool _obscureText = true;
+  void _togglePasswordVisibility(){
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
 
   String user="user";
   String ta="travelagency";
@@ -126,16 +132,24 @@ ststatus == status
     padding: const EdgeInsets.all(8),
     child: TextField(
       controller: pwdController,
-    obscureText: true,
+
+    obscureText: _obscureText,
     decoration: InputDecoration(
 
     prefixIcon: Icon(Icons.lock),
     labelText: "password",
-    hintText: "password",
-    suffixIcon: Icon(Icons.remove_red_eye),
 
 
-    border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))
+
+    border:
+    OutlineInputBorder(
+        borderRadius: BorderRadius.circular(30)),
+      suffixIcon:IconButton(
+        icon: Icon(
+          _obscureText ? Icons.visibility : Icons.visibility_off,
+        ),
+        onPressed: _togglePasswordVisibility,
+      ),
     ),
 
     ),

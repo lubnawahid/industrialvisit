@@ -70,9 +70,7 @@ class _Payment2State extends State<Payment2> {
 
     var data = {
       "user": user_id.toString(),
-      //"id": id.toString(),
-     //  "tname":tname,
-     // "name":name,
+
       "price": price,
       "date":formattedDate
     };
