@@ -11,9 +11,10 @@ import 'homescreen.dart';
 
 class booking1 extends StatefulWidget {
   final int id;
+  final int agency;
 
 
-  booking1({required this.id});
+  booking1({required this.id,required this.agency});
 
   @override
   State<booking1> createState() => _booking1State();
@@ -25,7 +26,7 @@ class _booking1State extends State<booking1> {
 
    bool isLoading = false;
    late SharedPreferences localStorage;
-   late int user_id;
+   late int user_id,travelagency_id;
 
    late int id;
    String price='';
@@ -68,7 +69,7 @@ class _booking1State extends State<booking1> {
 
               ElevatedButton(onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Payment2(price:price)));
+                    MaterialPageRoute(builder: (context) => Payment2(price:price,travelagency_id:widget.agency)));
               },
                 style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50.0)),

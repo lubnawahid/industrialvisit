@@ -9,8 +9,8 @@ import 'api.dart';
 import 'booking1.dart';
 
 class booking extends StatefulWidget {
-  final int id;
-  const booking({required this.id});
+  final int id;final int agency;
+  const booking({required this.id,required this.agency});
 
 
   @override
@@ -106,7 +106,7 @@ class _bookingState extends State<booking> {
       print("items rtoo${body}");
 
 
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>booking1(id:bookid)));
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>booking1(id:bookid,agency:widget.agency)));
       Fluttertoast.showToast(
         msg: body['message'].toString(),
         backgroundColor: Colors.grey,

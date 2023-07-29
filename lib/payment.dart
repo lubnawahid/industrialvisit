@@ -11,9 +11,9 @@ import 'api.dart';
 import 'homescreen.dart';
 class Payment2 extends StatefulWidget {
   final String price;
+final int travelagency_id;
 
-
-  Payment2({required this.price});
+  Payment2({required this.price,required this.travelagency_id});
 
   @override
   State<Payment2> createState() => _Payment2State();
@@ -32,6 +32,7 @@ class _Payment2State extends State<Payment2> {
   bool isLoading = false;
   late int user_id,bookings,packages,id;
   late String price;
+  late int travelagency_id;
 //  String name='';
 // String tname='';
   Future<void> _showDialog(BuildContext context) {
@@ -70,7 +71,7 @@ class _Payment2State extends State<Payment2> {
 
     var data = {
       "user": user_id.toString(),
-
+      "travelagency_id":widget.travelagency_id.toString(),
       "price": price,
       "date":formattedDate
     };

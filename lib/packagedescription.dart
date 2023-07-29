@@ -40,6 +40,7 @@ String accommodation='';
 String fooddetails='';
 String guidedetails='';
 String packagecost='';
+late int agencyid;
 
 
 
@@ -60,6 +61,7 @@ String packagecost='';
       fooddetails = body['data']['fooddetails'];
       guidedetails = body['data']['guidedetails'];
       packagecost = body['data']['packagecost'];
+      agencyid= body['data']['travelagency'];
       packagenameController.text = packagename;
       companynameController.text=companyname;
       companydescriptionController.text=companydescription;
@@ -277,7 +279,7 @@ style: TextStyle(fontSize: 15),
                         style: style,
                         onPressed: () {
                           int id= widget.id;
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => booking(id : id)));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => booking(id : id,agency:agencyid)));
                         },
                         child: const Text('Book Now'),
                       ),
