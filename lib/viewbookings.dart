@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:industrialvisit/travelagency/packageedit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'api.dart';
 
@@ -16,26 +17,32 @@ class viewbookings extends StatefulWidget {
 
 class _viewbookingsState extends State<viewbookings> {
   List _loaddata=[];
+  late SharedPreferences prefs;
   late int id;
   _fetchData() async {
+
+    prefs = await SharedPreferences.getInstance();
+    int? user = prefs.getInt('user_id');
+    print(user);
+
     var res = await Api()
-        .getData('/api/booking_all_view');
+        .getData('/api/booking_single_view/'+user.toString());
     if (res.statusCode == 200) {
+      var body = json.decode(res.body);
+
       var items = json.decode(res.body)['data'];
-      print(items);
+      print("booked Items${items}");
       setState(() {
         _loaddata = items;
       });
     } else {
-      setState(() {
-        _loaddata = [];
-        Fluttertoast.showToast(
-          msg: "Currently there is no data available",
-          backgroundColor: Colors.grey,
-        );
-      }
+      _loaddata = [];
+      Fluttertoast.showToast(
+        msg:"Currently there is no data available",
+        backgroundColor: Colors.grey,
       );
     }
+
   }
   @override
   void initState() {

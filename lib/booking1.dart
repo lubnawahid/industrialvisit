@@ -35,11 +35,19 @@ class _booking1State extends State<booking1> {
   initState() {
     super.initState();
     _viewPro();
+    int id = widget.id;
+    print("widgwetid${id}");
+    int aid = widget.agency;
+    print("agenttid${aid}");
   }
    Future<void> _viewPro() async {
      int id = widget.id;
-     // print("price${price}");
-     var res = await Api().getData('/api/booking_single_view/' +id.toString());
+     print("widgwetid${id}");
+
+     localStorage = await SharedPreferences.getInstance();
+     user_id = (localStorage.getInt('user_id') ?? 0);
+     print('login_id ${user_id}');
+     var res = await Api().getData('/api/booking_single_view/' +user_id.toString());
      var body = json.decode(res.body);
      print("items book${body}");
      setState(() {

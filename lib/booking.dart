@@ -57,26 +57,10 @@ class _bookingState extends State<booking> {
     super.initState();
   //  _viewPro();
   }
- /* Future<void> _viewPro() async {
-    int id = widget.id;
-    //int packageprice = widget.packageprice;
-    print("id${id}");
 
-    var res = await Api().getData('/api/packages_single_view/' + id.toString());
-    var body = json.decode(res.body);
-    print(body);
-    setState(() {
-
-      name = body['data']['name'];
-      collegename = body['data']['collegename'];
-      bookingdate = body['data']['bookingdate'];
-     // place = body['data']['place'];
-      numberofstudents = body['data']['numberofstudents'];
-
-    });
-  }
-*/
   Future<void> bookpackage() async {
+    int ageid=widget.agency;
+    print("agent${ageid}");
     setState(() {
       _isLoading = true;
     });
@@ -87,7 +71,7 @@ class _bookingState extends State<booking> {
     var data = {
 
       "user": user_id.toString(),
-
+       "travelagency_id":widget.agency.toString(),
       "packages":id.toString(),
       "bookingdate":startDate,
       "collegename":collegenamecontroller.text,
