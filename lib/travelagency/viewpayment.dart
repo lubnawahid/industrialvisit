@@ -16,8 +16,8 @@ class viewpayment extends StatefulWidget {
 
 class _viewpaymentState extends State<viewpayment> {
   List _loaddata=[];
-
-  late int id;
+  bool isLoading = false;
+  int travelagency=0;
   late SharedPreferences prefs;
   @override
   void initState() {
@@ -28,9 +28,10 @@ class _viewpaymentState extends State<viewpayment> {
   _fetchData() async {
 
     prefs = await SharedPreferences.getInstance();
-    //  id = prefs.getInt('id')?? 0;
-    // print('${id }');
-    var res = await Api().getData('/api/payment_all_view');
+    travelagency = prefs.getInt('user_id')?? 0;
+    print(travelagency);
+    var res = await Api()
+        .getData('/api/payment_single_view/' + travelagency.toString());
     if (res.statusCode == 200) {
       var items = json.decode(res.body)['data'];
       print(items);
