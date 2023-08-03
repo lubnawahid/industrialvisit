@@ -51,7 +51,7 @@ class _booking1State extends State<booking1> {
      var body = json.decode(res.body);
      print("items book${body}");
      setState(() {
-       price = body['data']['packagecost'];
+       price = body['data'][0]['packagecost'];
        print("price${price}");
 
      });
