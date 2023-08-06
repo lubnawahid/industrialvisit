@@ -42,12 +42,12 @@ class _booking1State extends State<booking1> {
   }
    Future<void> _viewPro() async {
      int id = widget.id;
-     print("widgwetid${id}");
-
-     localStorage = await SharedPreferences.getInstance();
-     user_id = (localStorage.getInt('user_id') ?? 0);
-     print('login_id ${user_id}');
-     var res = await Api().getData('/api/booking_single_view/' +user_id.toString());
+     // print("widgwetid${id}");
+     //
+     // localStorage = await SharedPreferences.getInstance();
+     // user_id = (localStorage.getInt('user_id') ?? 0);
+     // print('login_id ${user_id}');
+     var res = await Api().getData('/api/booking_single_view/' +id.toString());
      var body = json.decode(res.body);
      print("items book${body}");
      setState(() {
