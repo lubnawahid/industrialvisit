@@ -16,25 +16,30 @@ class viewbookings extends StatefulWidget {
 
 class _viewbookingsState extends State<viewbookings> {
   List _loaddata = [];
-
+  int travelagency=0;
+  late SharedPreferences prefs;
   late int id;
   _fetchData() async {
-    var res = await Api().getData('/api/booking_single_view');
+    prefs = await SharedPreferences.getInstance();
+    travelagency = prefs.getInt('user_id')?? 0;
+    print(travelagency);
+    var res = await Api()
+        .getData('/api/tbooking_single_view/' + travelagency.toString());
     if (res.statusCode == 200) {
       var items = json.decode(res.body)['data'];
       print(items);
       setState(() {
         _loaddata = items;
+
       });
     } else {
       setState(() {
-        _loaddata = [];
+        _loaddata =[];
         Fluttertoast.showToast(
-          msg: "Currently there is no data available",
+          msg:"Currently there is no data available",
           backgroundColor: Colors.grey,
         );
-      }
-      );
+      });
     }
   }
 

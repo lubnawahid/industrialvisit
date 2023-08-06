@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class Api {
-  final String url = "https://f9a8-2401-4900-615e-9802-84be-2348-3247-84dd.ngrok-free.app";
+  final String url = "https://840a-2401-4900-647e-98a0-edbd-2f98-abc6-757f.ngrok-free.app";
 
   authData(data, apiUrl) async {
     var fullUrl = url + apiUrl;
