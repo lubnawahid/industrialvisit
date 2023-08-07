@@ -40,8 +40,8 @@ class _Payment2State extends State<Payment2> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            // title: const Text("payment successfull"),
-            content: Image.asset("images/paymnt.jpg"),
+             title: const Text("payment successfull"),
+          //  content: Image.asset("images/paymnt.jpg",height: 125,width: 125,),
             actions: [
               ElevatedButton(onPressed: (){
                 Navigator.pushReplacement(

@@ -24,9 +24,9 @@ class _paymentState extends State<payment1> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset("images/pay.png",
-                height: 600,
+                height: 1000,
 
-                width: 300,
+                width: 500,
                 alignment: Alignment.center,),
               Padding(
               padding: EdgeInsets.all(10),
